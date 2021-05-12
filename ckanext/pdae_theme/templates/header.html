@@ -1,0 +1,114 @@
+{% ckan_extends %}
+
+{% block header_wrapper %}
+  {% if c.userobj %}
+    {% block header_account %}
+      <nav class="bg-blue-sapphire">
+        <div class="container-fluid">
+          {% block header_account_container_content %}
+            <div data-module="me" data-me="{{ c.userobj.id }}">
+              <ul class="nav justify-content-end">
+                {% if c.userobj.sysadmin %}
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
+                      <i class="bi bi-hammer" aria-hidden="true"></i>
+                      <span class="text">{{ _('Admin') }}</span>
+                    </a>
+                  </li>
+                {% endif %}
+                <li class="nav-item">
+                  <a href="{{ h.url_for('user.read', id=c.userobj.name) }}" class="nav-link text-white" title="{{ _('View profile') }}">
+                  {{ h.user_image((c.user if c and c.user else ''), size=22) }}
+                    <span class="username">{{ c.userobj.display_name }}</span>
+                  </a>
+                </li>
+                {% set new_activities = h.new_activities() %}
+                <li class="nav-item">
+                  {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
+                  <a class="nav-link text-white" href="{{ h.url_for('dashboard.index') }}" title="{{ notifications_tooltip }}">
+                    <i class="bi bi-speedometer2" aria-hidden="true"></i>
+                    <span class="text">Dashboard</span>
+                    <span class="badge {% if new_activities > 0 %}bg-sinopia{% endif %}">{{ new_activities }}</span>
+                  </a>
+                </li>
+                {% block header_account_settings_link %}
+                  <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ h.url_for('user.edit', id=c.userobj.name) }}" title="{{ _('Profile settings') }}">
+                      <i class="bi bi-gear" aria-hidden="true"></i>
+                      <span class="text">{{ _('Profile settings') }}</span>
+                    </a>
+                  </li>
+                {% endblock %}
+              </ul>
+            </div>
+          {% endblock %}
+        </div>
+      </nav>
+    {% endblock %}
+  {% endif %}
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-cultured">
+      <div class="container-fluid">
+        <a href="{{ h.url_for('home.index') }}" class="navbar-brand">
+          <img src="/images/site-logo.svg" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-label="Desplegar menú">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav w-100 align-items-center justify-content-around">
+            <li class="nav-item">
+              <a href="{{ h.url_for('home.index') }}" class="nav-link text-center active" aria-current="page">
+                Inicio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ h.url_for('dataset.search') }}" class="nav-link text-center">
+                Catálogo de<br/>Datos Abiertos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-center">
+                Blog / Noticias
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-center">
+                Normativa
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-center">
+                Centro de<br/>aprendizaje
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link text-center">
+                Participación<br/>ciudadana
+              </a>
+            </li>
+            {% if c.userobj %}
+              <li class="nav-item bg-blue-sapphire flex-shrink-0">
+                <a href="{{ h.url_for('/user/_logout') }}" class="nav-link text-center text-white">
+                  Cerrar sesión
+                </a>
+              </li>
+            {% else %}
+              <li class="nav-item bg-blue-sapphire flex-shrink-0">
+                <a href="{{ h.url_for('user.login') }}" class="nav-link text-center text-white">
+                  Portal de gestores
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% block header_debug %}
+      {% if g.debug and not g.debug_supress_header %}
+        <div class="debug">Controller : {{ c.controller }}<br/>Action : {{ c.action }}</div>
+      {% endif %}
+    {% endblock %}
+    <div class="flag"></div>
+  </header>
+{% endblock %}
