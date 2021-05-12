@@ -36,7 +36,9 @@
             <h2 class="fs-2">
               Datos de <span class="fw-bold">la pandemia</span>
             </h2>
-            <p class="fs-5 mt-4 mb-0">¿Quieres conocer los datos que se han generado durante la pandemia por COVID-19 en Ecuador?</p>
+            <p class="fs-5 mt-4 mb-0">
+              ¿Quieres conocer los datos que se han generado durante la pandemia por COVID-19 en Ecuador?
+            </p>
             <a href="#" class="button fs-md border border-white mt-4">Explorar</a>
           </div>
         </div>
@@ -84,8 +86,8 @@
             <div class="col-lg-10">
               <div class="d-flex flex-wrap justify-content-center mt-4">
                 {% for org in organizations %}
-                  <a href="#" class="button button-sm button-sinopia-i me-3 mb-3">
-                    {{ org }}
+                  <a href="{% url_for 'dataset.search', organization=org.name %}" class="button button-sm button-sinopia-i me-3 mb-3">
+                    {{ org.display_name }}
                   </a>
                 {% endfor %}
               </div>
@@ -126,7 +128,9 @@
             <h2 class="fs-2">
               ¿Qué datos te gustaría acceder desde este <span class="fw-bold">Portal de Datos Abiertos</span>?
             </h2>
-            <a href="#" class="button fs-md border border-white mt-4">Cuéntanos aquí</a>
+            <a href="#" class="button fs-md border border-white mt-4">
+              Cuéntanos aquí
+            </a>
           </div>
         </div>
       </div>
