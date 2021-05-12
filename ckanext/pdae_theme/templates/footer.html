@@ -1,0 +1,94 @@
+<footer>
+  <div class="flag"></div>
+  <div class="bg-blue-sapphire text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 mb-3 mb-lg-0">
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="{{ h.url_for(controller='dataset', action='search') }}" class="text-white text-decoration-none">
+                Catálogo de Datos Abiertos
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-white text-decoration-none">
+                Blog / Noticias
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-white text-decoration-none">
+                Centro de aprendizaje
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-2 mb-3 mb-lg-0">
+          <p class="fw-bold fs-md">Contáctanos</p>
+          <ul class="list-inline mb-0">
+            <li class="list-inline-item">
+              <a href="#" aria-label="Visitar Twitter" target="_blank">
+                <i class="bi bi-twitter"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" aria-label="Visitar Facebook" target="_blank">
+                <i class="bi bi-facebook"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" aria-label="Abrir grupo de Telegram" target="_blank">
+                <i class="bi bi-telegram"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-4 mb-3 mb-lg-0">
+          <ul class="list-unstyled">
+            <li>Av. Patria y Av. 12 de Octubre</li>
+            <li>Edificio Planifica Ecuador</li>
+            <li>Código Postal: 170525/ Quito - Ecuador</li>
+          </ul>
+        </div>
+        <div class="col-lg-3 mb-3 mb-lg-0">
+          <ul class="list-unstyled">
+            <li>Teléfono: 593-2 3 97-8900</li>
+            <li class="fw-bold">www.planificacion.gob.ec</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-eagle-green text-white py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="row">
+            <div class="col-sm-6 col-lg-4 mb-4 mb-lg-0">
+              <p class="text-center">Desarrollado por:</p>
+              <img class="img-fluid d-block mx-auto" src="/images/datasketch.svg" alt="">
+            </div>
+            <div class="col-sm-6 col-lg-8 mb-4 mb-lg-0">
+              <p class="text-center">Financiado por:</p>
+              <img class="img-fluid d-block mx-auto" src="/images/cooperacion-alemana.svg" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-4 mb-lg-0 text-center">
+          <div class="d-flex align-items-center justify-content-center h-100">
+            <img src="/images/footer-text.svg" alt="">
+          </div>
+        </div>
+        <div class="col-lg-3 mb-3 mb-lg-0 text-center">
+          <div class="d-flex align-items-center justify-content-center h-100">
+            <img class="img-fluid" src="/images/ecuador_lenin.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% block footer_debug %}
+    {% if g.debug %}
+      {% include 'snippets/debug.html' %}
+    {% endif %}
+  {% endblock %}
+</footer>

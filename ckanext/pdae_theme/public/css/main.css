@@ -1,0 +1,148 @@
+@font-face {
+  font-family: 'Museo Sans';
+  src: url(../fonts/MuseoSans-300.otf);
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Museo Sans';
+  src: url(../fonts/MuseoSans_700.otf);
+  font-weight: 700;
+}
+
+body {
+  font-family: 'Museo Sans';
+  font-weight: 300;
+  /* font-size: 16px; */
+}
+
+a {
+  color: inherit;
+}
+
+.accordion-button,
+.accordion-button:not(.collapsed) {
+  background-color: #0a3f4c;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.accordion-button::after,
+.accordion-button:not(.collapsed)::after {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNiAxNicgZmlsbD0nI2ZmZmZmZic+PHBhdGggZmlsbC1ydWxlPSdldmVub2RkJyBkPSdNMS42NDYgNC42NDZhLjUuNSAwIDAgMSAuNzA4IDBMOCAxMC4yOTNsNS42NDYtNS42NDdhLjUuNSAwIDAgMSAuNzA4LjcwOGwtNiA2YS41LjUgMCAwIDEtLjcwOCAwbC02LTZhLjUuNSAwIDAgMSAwLS43MDh6Jy8+PC9zdmc+);
+}
+
+.accordion-body .form-check-input:checked + .form-check-label {
+  font-weight: 700;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #0f5a6b;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  color: #ce370f;
+  font-weight: 700;
+}
+
+.page-item.active .page-link {
+  background-color: #ce370f;
+}
+
+.page-link {
+  background-color: transparent;
+}
+
+.bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-blue-sapphire {
+  background-color:#0f5a6b;
+}
+
+.bg-cultured {
+  background-color: #fbf9f8;
+}
+
+.bg-eagle-green {
+  background-color: #0a3f4c;
+}
+
+.bg-sinopia {
+  background-color: #ce370f;
+}
+
+.button {
+  color: #ffffff;
+  display: inline-block;
+  padding: 0.5rem 2.5rem;
+  text-decoration: none;
+  border-color: transparent;
+}
+
+.button:hover,
+.button:focus {
+  color: #ffffff;
+}
+
+.button-sm {
+  padding: 0.5rem 1rem;
+}
+
+.button-blue-sapphire {
+  background-color: #0a3f4c;
+  color: #ffffff;
+}
+
+.button-sinopia {
+  background-color: #ce370f;
+  color: #ffffff;
+}
+
+.button-sinopia-i {
+  background-color: #ffffff;
+  color: #ce370f;
+}
+
+.button-teal-blue {
+  background-color: #1D6D7F;
+  color: #ffffff;
+}
+
+.button-teal-blue:hover,
+.button-teal-blue:focus {
+  color: #ffffff;
+}
+
+.flag {
+  height: 0.5rem;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMzY2IiBoZWlnaHQ9IjEwIj48cGF0aCBmaWxsPSIjZmY5YTIyIiBkPSJNMCAwaDY4M3YxMEgweiIvPjxwYXRoIGZpbGw9IiMxZDZkN2YiIGQ9Ik02ODMgMGgzNDF2MTBINjgzeiIvPjxwYXRoIGZpbGw9IiNlMjQzMjkiIGQ9Ik0xMDI0IDBoMzQydjEwaC0zNDJ6Ii8+PC9zdmc+);
+}
+
+.fs-md {
+  font-size: 18px;
+}
+
+.py-6 {
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+}
+
+.text-blue-sapphire {
+  color: #0f5a6b;
+}
+
+.text-jungle-green {
+  color: #102223;
+}
+
+.text-sinopia {
+  color: #ce370f;
+}
+
+.text-yellow-star {
+  color: #ff9a22;
+}
