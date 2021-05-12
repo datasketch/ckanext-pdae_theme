@@ -1,0 +1,11 @@
+<div class="flash-messages">
+  {% block flash_inner %}
+    {% for message in h.flash.pop_messages() | list %}
+      {% set cat = 'alert-danger' if message.category == 'alert-error' else message.category %}
+      <div class="alert {{ cat }} alert-dismissible fade show rounded-0 mb-0" role="alert">
+        <span>{{ h.literal(message) }}</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+      </div>
+    {% endfor %}
+  {% endblock %}
+</div>

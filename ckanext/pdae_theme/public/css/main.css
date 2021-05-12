@@ -16,7 +16,8 @@ body {
   /* font-size: 16px; */
 }
 
-a {
+a,
+a:hover {
   color: inherit;
 }
 

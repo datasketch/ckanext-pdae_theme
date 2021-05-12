@@ -86,6 +86,9 @@
       </div>
     </div>
   </div>
+  {% if g.debug and not g.debug_supress_header %}
+    <div class="debug">Controller : {{ c.controller }}<br/>Action : {{ c.action }}</div>
+  {% endif %}
   {% block footer_debug %}
     {% if g.debug %}
       {% include 'snippets/debug.html' %}

@@ -4,138 +4,138 @@
 {% set organizations = h.get_facet_items_dict('organization', c.search_facets, limit=5) %}
 
 {% block content %}
-  <main id="content">
-    <section class="bg-cultured py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="d-flex flex-column align-items-center">
-              <div class="row">
-                <div class="col-6 offset-3">
-                  <img class="img-fluid" src="/images/datos-abiertos.png" alt="">
-                </div>
-              </div>
-              <h1 class="text-blue-sapphire fs-1 fw-bold text-center">
-                Busca en nuestro catálogo de Datos Abiertos
-              </h1>
-              <p class="text-blue-sapphire fs-5 mt-4">
-                Explora más de <span class="fw-bold">70,000 conjuntos de datos</span> de más de <span class="fw-bold">250 instituciones</span>.
-              </p>
-              <div class="col-lg-5 mt-4">
-                {% snippet "home/snippets/search.html" %}
+<main id="content">
+  <section class="bg-cultured py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="d-flex flex-column align-items-center">
+            <div class="row">
+              <div class="col-6 offset-3">
+                <img class="img-fluid" src="/images/datos-abiertos.png" alt="">
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="bg text-white py-5" style="background-image: url(/images/textura-roja.jpg);">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-10 offset-lg-1">
-            <div class="text-center">
-              <h2 class="fs-2">
-                Datos de <span class="fw-bold">la pandemia</span>
-              </h2>
-              <p class="fs-5 mt-4 mb-0">
-                ¿Quieres conocer los datos que se han generado durante la pandemia por COVID-19 en Ecuador?
-              </p>
-              <a href="#" class="button fs-md border border-white mt-4">Explorar</a>
+            <h1 class="text-blue-sapphire fs-1 fw-bold text-center">
+              Busca en nuestro catálogo de Datos Abiertos
+            </h1>
+            <p class="text-blue-sapphire fs-5 mt-4">
+              Explora más de <span class="fw-bold">70,000 conjuntos de datos</span> de más de <span class="fw-bold">250 instituciones</span>.
+            </p>
+            <div class="col-lg-5 mt-4">
+              {% snippet "home/snippets/search.html" %}
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <section class="bg-cultured py-6">
-      <div class="container">
-        <div class="text-center">
-          <h2 class="text-sinopia fw-bold fs-1">
-            Novedades
-          </h2>
-          <p class="fs-5 text-blue-sapphire">
-            Conoce los conjuntos de datos <span class="fw-bold">agregados o actualizados recientemente</span>
-          </p>
+    </div>
+  </section>
+  <section class="bg text-white py-5" style="background-image: url(/images/textura-roja.jpg);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div class="text-center">
+            <h2 class="fs-2">
+              Datos de <span class="fw-bold">la pandemia</span>
+            </h2>
+            <p class="fs-5 mt-4 mb-0">
+              ¿Quieres conocer los datos que se han generado durante la pandemia por COVID-19 en Ecuador?
+            </p>
+            <a href="#" class="button fs-md border border-white mt-4">Explorar</a>
+          </div>
         </div>
       </div>
-    </section>
-    {# Dinamico #}
-    <section class="text-white">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xl-6 bg" style="background-image: url(/images/waves-blue.jpg);">
-            <div class="d-flex flex-column align-items-center py-5 p-lg-5 h-100 justify-content-between">
-              <h2 class="text-center fs-2">
-                Explora los <span class="fw-bold">temas con<br/>más publicaciones</span>
-              </h2>
-              <div class="col-lg-10">
-                <div class="d-flex flex-wrap justify-content-center mt-4">
-                  {% for tag in tags %}
-                    <a href="{% url_for 'dataset.search', tags=tag.name %}" class="button button-sm button-teal-blue me-2 mb-2">
-                      {{ tag.display_name | title }}
-                    </a>
-                  {% endfor %}
-                </div>
+    </div>
+  </section>
+  <section class="bg-cultured py-6">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="text-sinopia fw-bold fs-1">
+          Novedades
+        </h2>
+        <p class="fs-5 text-blue-sapphire">
+          Conoce los conjuntos de datos <span class="fw-bold">agregados o actualizados recientemente</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  {# Dinamico #}
+  <section class="text-white">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-6 bg" style="background-image: url(/images/waves-blue.jpg);">
+          <div class="d-flex flex-column align-items-center py-5 p-lg-5 h-100 justify-content-between">
+            <h2 class="text-center fs-2">
+              Explora los <span class="fw-bold">temas con<br/>más publicaciones</span>
+            </h2>
+            <div class="col-lg-10">
+              <div class="d-flex flex-wrap justify-content-center mt-4">
+                {% for tag in tags %}
+                  <a href="{% url_for 'dataset.search', tags=tag.name %}" class="button button-sm button-teal-blue me-2 mb-2">
+                    {{ tag.display_name | title }}
+                  </a>
+                {% endfor %}
               </div>
-              <a href="#" class="button fs-md border border-white mt-4">Ver ranking</a>
             </div>
+            <a href="#" class="button fs-md border border-white mt-4">Ver ranking</a>
           </div>
-          <div class="col-xl-6 bg" style="background-image: url(/images/waves-orange.jpg);">
-            <div class="d-flex flex-column align-items-center py-5 p-lg-5 h-100 justify-content-between">
-              <h2 class="text-center fs-2">
-                Explora las <span class="fw-bold">entidades que más<br/>conjuntos de datos publican</span>
-              </h2>
-              <div class="col-lg-10">
-                <div class="d-flex flex-wrap justify-content-center mt-4">
-                  {% for org in organizations %}
-                    <a href="{% url_for 'dataset.search', organization=org.name %}" class="button button-sm button-sinopia-i me-2 mb-2">
-                      {{ org.display_name }}
-                    </a>
-                  {% endfor %}
-                </div>
+        </div>
+        <div class="col-xl-6 bg" style="background-image: url(/images/waves-orange.jpg);">
+          <div class="d-flex flex-column align-items-center py-5 p-lg-5 h-100 justify-content-between">
+            <h2 class="text-center fs-2">
+              Explora las <span class="fw-bold">entidades que más<br/>conjuntos de datos publican</span>
+            </h2>
+            <div class="col-lg-10">
+              <div class="d-flex flex-wrap justify-content-center mt-4">
+                {% for org in organizations %}
+                  <a href="{% url_for 'dataset.search', organization=org.name %}" class="button button-sm button-sinopia-i me-2 mb-2">
+                    {{ org.display_name }}
+                  </a>
+                {% endfor %}
               </div>
-              <a href="#" class="button fs-md border border-white mt-4">
-                Ver ranking
-              </a>
             </div>
+            <a href="#" class="button fs-md border border-white mt-4">
+              Ver ranking
+            </a>
           </div>
         </div>
       </div>
-    </section>
-    <section class="bg-cultured py-6">
-      <div class="container">
-        <div class="text-center">
-          <h2 class="text-sinopia fw-bold fs-1">
-            Los más descargados
-          </h2>
-          <p class="fs-5 text-blue-sapphire">
-            Conoce los conjuntos de datos <span class="fw-bold">más populares</span> en nuestro portal
-          </p>
-        </div>
-        <div class="text-center">
-          <h2 class="text-sinopia fw-bold fs-1">
-            Centro de aprendizaje
-          </h2>
-          <p class="fs-5 text-blue-sapphire">
-            Accede a los <span class="fw-bold">tutoriales de uso</span> de este portal, a <span class="fw-bold">cursos de capacitación en Datos Abiertos</span> y mucho más.
-          </p>
-        </div>
+    </div>
+  </section>
+  <section class="bg-cultured py-6">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="text-sinopia fw-bold fs-1">
+          Los más descargados
+        </h2>
+        <p class="fs-5 text-blue-sapphire">
+          Conoce los conjuntos de datos <span class="fw-bold">más populares</span> en nuestro portal
+        </p>
       </div>
-    </section>
-    <section class="bg text-white py-5" style="background-image: url(/images/textura-datos-naranja.jpg);">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 offset-lg-2">
-            <div class="text-center">
-              <h2 class="fs-2">
-                ¿Qué datos te gustaría acceder desde este <span class="fw-bold">Portal de Datos Abiertos</span>?
-              </h2>
-              <a href="#" class="button fs-md border border-white mt-4">
-                Cuéntanos aquí
-              </a>
-            </div>
+      <div class="text-center">
+        <h2 class="text-sinopia fw-bold fs-1">
+          Centro de aprendizaje
+        </h2>
+        <p class="fs-5 text-blue-sapphire">
+          Accede a los <span class="fw-bold">tutoriales de uso</span> de este portal, a <span class="fw-bold">cursos de capacitación en Datos Abiertos</span> y mucho más.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="bg text-white py-5" style="background-image: url(/images/textura-datos-naranja.jpg);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+          <div class="text-center">
+            <h2 class="fs-2">
+              ¿Qué datos te gustaría acceder desde este <span class="fw-bold">Portal de Datos Abiertos</span>?
+            </h2>
+            <a href="#" class="button fs-md border border-white mt-4">
+              Cuéntanos aquí
+            </a>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 {% endblock %}
