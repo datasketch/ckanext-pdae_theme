@@ -119,6 +119,7 @@ a:hover {
 }
 
 .button-sm {
+  font-size: 14px;
   padding: 0.5rem 1rem;
 }
 
@@ -150,6 +151,7 @@ a:hover {
 .flag {
   height: 0.5rem;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMzY2IiBoZWlnaHQ9IjEwIj48cGF0aCBmaWxsPSIjZmY5YTIyIiBkPSJNMCAwaDY4M3YxMEgweiIvPjxwYXRoIGZpbGw9IiMxZDZkN2YiIGQ9Ik02ODMgMGgzNDF2MTBINjgzeiIvPjxwYXRoIGZpbGw9IiNlMjQzMjkiIGQ9Ik0xMDI0IDBoMzQydjEwaC0zNDJ6Ii8+PC9zdmc+);
+  background-size: cover;
 }
 
 .fs-md {

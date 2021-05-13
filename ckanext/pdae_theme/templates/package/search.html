@@ -58,6 +58,14 @@
             </div>
           </div>
           <div class="py-4">
+            {% if h.check_access('package_create') %}
+              <div class="text-end mb-4">
+                <a href="{{ h.url_for('%s.new' % dataset_type) }}" class="button button-sm button-sinopia fw-bold">
+                  <i class="bi bi-plus"></i>
+                  {{ _('Add ' + dataset_type.title()) }}
+                </a>
+              </div>
+            {% endif %}
             <div class="d-grid gap-4">
               {% block package_search_results_list %}
                 {{ super() }}

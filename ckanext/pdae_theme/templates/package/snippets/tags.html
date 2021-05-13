@@ -1,0 +1,11 @@
+{% if tags %}
+<ul class="list-inline mb-0">
+  {% for tag in tags %}
+    <li class="list-inline-item bg-blue-sapphire text-white px-2">
+      <a href="{% url_for 'dataset.search', tags=tag.name %}" class="text-decoration-none">
+        {{ tag.display_name }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}

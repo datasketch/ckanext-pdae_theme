@@ -1,0 +1,155 @@
+{% ckan_extends %}
+
+{% block primary_content %}
+<div class="bg-white px-5 py-4">
+  <div class="d-flex align-items-center justify-content-between">
+    {% if pkg.tags %}
+      {% snippet "package/snippets/tags.html", tags=pkg.tags %}
+    {% endif %}
+    {% snippet "package/snippets/social_share.html" %}
+  </div>
+  <div class="row mt-4">
+    <div class="col-lg-11">
+      <h1 class="fs-2 text-blue-sapphire fw-bold">
+        {{ h.dataset_display_name(pkg) }}
+      </h1>
+      {% if pkg.organization %}
+        <p class="fw-bold fs-5 text-sinopia">
+          <em>{{ pkg.organization.title }}</em>
+        </p>
+      {% endif %}
+      {% set resources = h.dict_list_reduce(pkg.resources, 'format') %}
+      {% if resources %}
+        <div class="d-flex align-items-center">
+          {% for resource in resources %}
+            <a href="{% url_for 'dataset.search', res_format=resource %}" class="text-decoration-none bg-sinopia text-white py-1 px-2 me-2 fs-sm">{{ resource }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% if pkg.notes %}
+        <div class="text-jungle-green fs-md mt-4 mb-0">
+          {{ h.render_markdown(h.get_translated(pkg, 'notes')) }}
+        </div>
+      {% else %}
+        <p class="text-jungle-green fs-md mt-4 mb-0">
+          Este conjunto de datos no tiene una descripción
+        </p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="mt-4">
+    <h2 class="text-blue-sapphire fw-bold fs-5">Dimensiones</h2>
+    <p class="fs-md text-jungle-green mb-0">156,789 filas x 15 columnas</p>
+  </div>
+  <div class="mt-4">
+    <h2 class="text-blue-sapphire fw-bold fs-5">Vista previa</h2>
+  </div>
+  <div class="mt-4">
+    <h2 class="text-blue-sapphire fw-bold fs-5">
+      Nivel de apertura de datos <span class="badge" title="El nivel de apertura de datos se refiere a..."><i class="bi bi-info-circle text-blue-sapphire"></i></span>
+    </h2>
+    <p>
+      <i class="bi bi-star-fill text-yellow-star"></i>
+      <i class="bi bi-star-fill text-yellow-star"></i>
+      <i class="bi bi-star-fill text-yellow-star"></i>
+      <i class="bi bi-star text-yellow-star"></i>
+      <i class="bi bi-star text-yellow-star"></i>
+    </p>
+  </div>
+  <a href="#" class="button button-sm button-sinopia d-inline-flex align-items-center mt-3 fw-bold">
+    <i class="bi bi-exclamation-triangle"></i>
+    <span class="ms-2">Reportar datos</span>
+  </a>
+</div>
+{% endblock %}
+
+{% block secondary_content %}
+<div class="bg-white p-4">
+  <h2 class="text-sinopia fw-bold fs-5">Metadatos</h2>
+  {% if pkg.organization %}
+    <div class="mt-3 text-jungle-green fs-md">
+      <p class="mb-0">Fuente</p>
+      <p class="fw-bold mb-0">
+        {{ pkg.organization.title }}
+      </p>
+    </div>
+  {% endif %}
+  {% if pkg.url %}
+    <div class="mt-3 text-jungle-green fs-md">
+      <p class="mb-0">Página web</p>
+      <p class="fw-bold mb-0">
+        <a href="{{ pkg.url }}" class="text-decoration text-break" target="_blank">
+          {{ pkg.url }}
+        </a>
+      </p>
+    </div>
+  {% endif %}
+  {% if pkg.author %}
+    <div class="mt-3 text-jungle-green fs-md">
+      <p class="mb-0">Autor</p>
+      <p class="fw-bold mb-0">
+        {{ pkg.author }}
+      </p>
+    </div>
+  {% endif %}
+  {% if pkg.author_email %}
+    <div class="mt-3 text-jungle-green fs-md">
+      <p class="mb-0">Correo electrónico</p>
+      <p class="fw-bold mb-0">
+        <a href="mailto:{{pkg.author_email}}" class="text-decoration text-break">{{pkg.author_email}}</a>
+      </p>
+    </div>
+  {% endif %}
+  {% if pkg.metadata_modified %}
+  <div class="mt-3 text-jungle-green fs-md">
+    <p class="mb-0">Fecha de actualización</p>
+    <p class="fw-bold mb-0">
+      {{ h.render_datetime(pkg.metadata_modified, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}</span>
+    </p>
+  </div>
+  {% endif %}
+  {% if pkg.metadata_created %}
+    <div class="mt-3 text-jungle-green fs-md">
+      <p class="mb-0">Fecha de creación</p>
+      <p class="fw-bold mb-0">
+        {{ h.render_datetime(pkg.metadata_created, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}</span>
+      </p>
+    </div>
+  {% endif %}
+  {% if pkg.license_title %}
+    <div class="mt-3 text-jungle-green fs-md">
+      <p class="mb-0">Licencia de uso</p>
+      <p class="fw-bold mb-0">
+        {% if pkg.license_url %}
+          <a href="{{ pkg_dict.license_url }}" rel="dc:rights" target="_blank">
+            {{ pkg.license_title }}
+          </a>
+          {% if pkg.isopen %}
+            <a href="http://opendefinition.org/okd/" title="{{ _('This dataset satisfies the Open Definition.') }}">
+              <img class="open-data" src="{{ h.url_for_static('/base/images/od_80x15_blue.png') }}" alt="[Open Data]" />
+            </a>
+          {% endif %}
+        {% else %}
+          {% if pkg_dict.license_id %}
+            <span property="dc:rights">{{ pkg.license_title }}</span>
+            {% if pkg.isopen %}
+              <a href="http://opendefinition.org/okd/" title="{{ _('This dataset satisfies the Open Definition.') }}">
+                <img class="open-data" src="{{ h.url_for_static('/base/images/od_80x15_blue.png') }}" alt="[Open Data]" />
+              </a>
+            {% endif %}
+          {% else %}
+            <span>{{ _('No License Provided') }}</span>
+          {% endif %}
+        {% endif %}
+      </p>
+    </div>
+  {% endif %}
+  <!-- <div class="mt-3 text-jungle-green fs-md">
+    <p class="mb-0">Idioma</p>
+    <p class="fw-bold mb-0">Español</p>
+  </div> -->
+  <!-- <div class="mt-5 text-center">
+    <a href="" class="button button-sinopia fw-bold">Descargar metadatos</a>
+  </div> -->
+</div>
+{% endblock %}
