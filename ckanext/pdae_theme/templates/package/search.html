@@ -1,0 +1,410 @@
+{% ckan_extends %}
+
+{% set stats = h.get_site_statistics() %}
+{% set dataset_count = stats.dataset_count %}
+{% set organization_count = stats.organization_count %}
+
+{% set _facets = {
+  'fields': fields_grouped,
+  'search': search_facets,
+  'titles': facet_titles,
+  'translated_fields': translated_fields,
+  'remove_field': remove_field }
+%}
+{% set _sorting = [
+  (_('Relevance'), 'score desc, metadata_modified desc'),
+  (_('Name Ascending'), 'title_string asc'),
+  (_('Name Descending'), 'title_string desc'),
+  (_('Last Modified'), 'metadata_modified desc'),
+  (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ]
+%}
+
+{% block content %}
+<main id="content">
+  {% snippet "snippets/notification.html" %}
+  {% snippet "snippets/header_search.html", title="Catálogo de Datos Abiertos", query=q %}
+  <section class="bg-cultured pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3">
+          <h2 class="fs-5 fw-bold text-blue-sapphire mb-4">Filtros</h2>
+          <div class="accordion accordion-flush" id="accordion-filters">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading-topics">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#filters-by-topic" aria-expanded="true" aria-controls="filters-by-topic">
+                  Temas
+                </button>
+              </h2>
+              <div id="filters-by-topic" class="accordion-collapse collapse show" aria-labelledby="heading-topics" data-bs-parent="#accordion-filters">
+                <div class="accordion-body text-blue-sapphire">
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Geografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      COVID-19
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Cultura
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Demografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Deporte y recreación
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Economía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Contratación
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading-entity">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filters-by-entity" aria-expanded="true" aria-controls="filters-by-entity">
+                  Entidades
+                </button>
+              </h2>
+              <div id="filters-by-entity" class="accordion-collapse collapse" aria-labelledby="heading-entity" data-bs-parent="#accordion-filters">
+                <div class="accordion-body text-blue-sapphire">
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Geografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      COVID-19
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Cultura
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Demografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Deporte y recreación
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Economía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Contratación
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading-published-date">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filters-by-published-date" aria-expanded="true" aria-controls="filters-by-published-date">
+                  Fecha de publicación
+                </button>
+              </h2>
+              <div id="filters-by-published-date" class="accordion-collapse collapse" aria-labelledby="heading-published-date" data-bs-parent="#accordion-filters">
+                <div class="accordion-body text-blue-sapphire">
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Geografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      COVID-19
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Cultura
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Demografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Deporte y recreación
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Economía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Contratación
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading-update-date">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filters-by-update-date" aria-expanded="true" aria-controls="filters-by-update-date">
+                  Fecha de actualización
+                </button>
+              </h2>
+              <div id="filters-by-update-date" class="accordion-collapse collapse" aria-labelledby="heading-update-date" data-bs-parent="#accordion-filters">
+                <div class="accordion-body text-blue-sapphire">
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Geografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      COVID-19
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Cultura
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Demografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Deporte y recreación
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Economía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Contratación
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading-formats">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filters-by-formats" aria-expanded="true" aria-controls="filters-by-formats">
+                  Formatos disponibles
+                </button>
+              </h2>
+              <div id="filters-by-formats" class="accordion-collapse collapse" aria-labelledby="heading-formats" data-bs-parent="#accordion-filters">
+                <div class="accordion-body text-blue-sapphire">
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Geografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      COVID-19
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Cultura
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Demografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Deporte y recreación
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Economía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Contratación
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="heading-open-data">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#filters-by-open-data" aria-expanded="true" aria-controls="filters-by-open-data">
+                  Nivel de apertura de datos
+                </button>
+              </h2>
+              <div id="filters-by-open-data" class="accordion-collapse collapse" aria-labelledby="heading-open-data" data-bs-parent="#accordion-filters">
+                <div class="accordion-body text-blue-sapphire">
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Geografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      COVID-19
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Cultura
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Demografía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Deporte y recreación
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Economía
+                    </label>
+                  </div>
+                  <div class="d-flex flex-row-reverse align-items-center justify-content-between mt-2">
+                    <input type="checkbox" name="" id="" class="form-check-input mt-0">
+                    <label class="form-check-label">
+                      Contratación
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="row">
+            <div class="col-lg-8">
+              <h2 class="fs-5 fw-bold text-blue-sapphire mb-4">Búsqueda</h2>
+              <p class="text-blue-sapphire fs-5">
+                {% snippet 'snippets/search_result_text.html', query=q, count=page.item_count, type=dataset_type %}
+              </p>
+            </div>
+            <div class="col-lg-4">
+              <h2 class="fs-5 fw-bold text-blue-sapphire mb-4">
+                <label for="order-by">Ordenar por</label>
+              </h2>
+              <form method="get" data-module="select-switch">
+                <select name="sort" id="order-by" class="form-select fs-md" aria-label="Ordenar resultados">
+                  {% for label, value in _sorting %}
+                    {% if label and value %}
+                      <option value="{{ value }}"{% if sort_by_selected == value %}selected{% endif %}>{{ label }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+              </form>
+            </div>
+          </div>
+          <div class="py-4">
+            <div class="d-grid gap-4">
+              {% block package_search_results_list %}
+                {{ super() }}
+              {% endblock %}
+            </div>
+            <nav class="mt-4" aria-label="Paginación de resultados">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a href="#" class="page-link border-0 text-blue-sapphire fw-bold" aria-label="Página anterior">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">1</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">2</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">3</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link border-0 text-blue-sapphire fw-bold" aria-label="Página siguiente">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}

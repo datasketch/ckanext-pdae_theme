@@ -1,6 +1,6 @@
 <form method="get" action="{% url_for 'dataset.search' %}">
   <div class="position-relative">
-    <input type="text" placeholder="Busca por palabras claves" class="bg-white border-0 w-100 py-2 ps-3 pe-5" aria-label="{{ _('Search datasets') }}" name="q" value="" autocomplete="off">
+    <input type="text" placeholder="Busca por palabras claves" class="bg-white border-0 w-100 py-2 ps-3 pe-5" aria-label="{{ _('Search datasets') }}" name="q" value="{{ query }}" autocomplete="off">
     <img src="/images/loupe.svg" alt="" class="position-absolute top-50 end-0 translate-middle pe-2">
   </div>
   <div class="text-center">

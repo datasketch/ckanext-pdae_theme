@@ -127,6 +127,10 @@ a:hover {
   font-size: 18px;
 }
 
+.fs-sm {
+  font-size: 14px;
+}
+
 .py-6 {
   padding-bottom: 4rem;
   padding-top: 4rem;

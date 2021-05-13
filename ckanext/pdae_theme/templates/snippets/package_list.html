@@ -1,0 +1,9 @@
+{% ckan_extends %}
+
+{% block package_list %}
+  {% if packages %}
+    {% for package in packages %}
+      {% snippet 'snippets/package_item.html', package=package, truncate=truncate, truncate_title=truncate_title %}
+    {% endfor %}
+  {% endif %}
+{% endblock %}

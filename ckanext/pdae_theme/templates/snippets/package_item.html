@@ -1,0 +1,48 @@
+{% ckan_extends %}
+
+{% block package_item %}
+<div class="bg-white p-4">
+  <div class="row">
+    <div class="col-lg-8">
+      <h2 class="text-blue-sapphire fs-5 fw-bold">
+        {% if package.private %}
+          <i class="bi bi-lock-fill"></i>
+        {% endif %}
+        {{ h.link_to(h.truncate(title, truncate_title), h.url_for('%s.read' % package.type, id=package.name), class='text-decoration-none') }}
+        {% if package.get('state', '').startswith('draft') %}
+          <span class="badge bg-info text-dark">{{ _('Draft') }}</span>
+        {% elif package.get('state', '').startswith('deleted') %}
+          <span class="badge bd-danger">{{ _('Deleted') }}</span>
+        {% endif %}
+      </h2>
+    </div>
+    {% if package.resources and not hide_resources %}
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center justify-content-end">
+          {% for resource in h.dict_list_reduce(package.resources, 'format') %}
+            <a href="{{ h.url_for(package.type ~ '.read', id=package.name) }}" class="text-decoration-none bg-sinopia text-white py-1 px-2 me-2 fs-sm" data-format="{{ resource.lower() }}">
+              <span>{{ resource }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  <p class="fw-bold fs-md text-sinopia">
+    <em>{{ package.author }}</em>
+  </p>
+  <p class="text-jungle-green w-75">
+    {% if notes %}
+      {{ notes|urlize }}
+    {% else %}
+      {{ _("This dataset has no description") }}
+    {% endif %}
+  </p>
+  <p class="text-jungle-green mt-4 mb-0">
+    <em>
+      Última actualización:
+      <span class="fw-bold">{{ h.render_datetime(package.metadata_modified, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}</span>
+    </em>
+  </p>
+</div>
+{% endblock %}
