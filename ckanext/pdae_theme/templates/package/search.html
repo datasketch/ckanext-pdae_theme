@@ -23,7 +23,7 @@
 <main id="content">
   {% snippet "snippets/notification.html" %}
   {% snippet "snippets/header_search.html", title="Catálogo de Datos Abiertos", query=q %}
-  <section class="bg-cultured pb-5">
+  <section class="bg-cultured pt-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-3">
@@ -378,29 +378,14 @@
                 {{ super() }}
               {% endblock %}
             </div>
-            <nav class="mt-4" aria-label="Paginación de resultados">
-              <ul class="pagination justify-content-center">
-                <li class="page-item">
-                  <a href="#" class="page-link border-0 text-blue-sapphire fw-bold" aria-label="Página anterior">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item active">
-                  <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">1</a>
-                </li>
-                <li class="page-item">
-                  <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">2</a>
-                </li>
-                <li class="page-item">
-                  <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">3</a>
-                </li>
-                <li class="page-item">
-                  <a href="#" class="page-link border-0 text-blue-sapphire fw-bold" aria-label="Página siguiente">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+            {% block page_pagination %}
+              <div class="mt-4">
+                {{ super() }}
+                </div>
+            {% endblock %}
+            {% block package_search_results_api %}
+              {{ super() }}
+            {% endblock %}
           </div>
         </div>
       </div>

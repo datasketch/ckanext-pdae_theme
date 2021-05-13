@@ -1,5 +1,9 @@
 {% ckan_extends %}
 
+{% set is_home = c.controller == 'home' and c.action == 'index' %}
+{% set is_dataset_search = c.controller == 'dataset' and c.action == 'search' %}
+{% set is_user_login = c.controller == 'user' and c.action == 'login' %}
+
 {% block header_wrapper %}
   {% if c.userobj %}
     {% block header_account %}
@@ -58,12 +62,12 @@
         <div class="collapse navbar-collapse" id="menu">
           <ul class="navbar-nav w-100 align-items-center justify-content-around">
             <li class="nav-item">
-              <a href="{{ h.url_for('home.index') }}" class="nav-link text-center active" aria-current="page">
+              <a href="{{ h.url_for('home.index') }}" class="nav-link text-center{% if is_home %} active{% endif %}" {% if is_home %}aria-current="page"{% endif %}>
                 Inicio
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ h.url_for('dataset.search') }}" class="nav-link text-center">
+              <a href="{{ h.url_for('dataset.search') }}" class="nav-link text-center{% if is_dataset_search %} active{% endif %}" {% if is_dataset_search %}aria-current="page"{% endif %}>
                 Catálogo de<br/>Datos Abiertos
               </a>
             </li>
@@ -95,7 +99,7 @@
               </li>
             {% else %}
               <li class="nav-item bg-blue-sapphire flex-shrink-0">
-                <a href="{{ h.url_for('user.login') }}" class="nav-link text-center text-white">
+                <a href="{{ h.url_for('user.login') }}" class="nav-link text-center text-white" {% if is_user_login %}aria-current="page"{% endif %}>
                   Portal de gestores
                 </a>
               </li>
