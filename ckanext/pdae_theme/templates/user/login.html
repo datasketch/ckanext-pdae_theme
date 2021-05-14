@@ -2,31 +2,37 @@
 
 {% block content %}
 <main id="content">
-  {% snippet "snippets/pdae_theme_notification.html" %}
-  <section class="bg-cultured py-5">
+  {{ self.flash() }}
+  <section class="section bg-cultured">
     <div class="container">
       <div class="row">
-        <div class="col-lg-5">
-          <img src="/images/datos-abiertos.png" alt="" class="img-fluid w-50 d-block">
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-6">
+              <img src="/images/datos-abiertos.png" alt="" class="img-responsive">
+            </div>
+          </div>
           <div class="text-blue-sapphire">
-            <h1 class="fs-1">Portal de Gestores</h1>
-            <p class="mt-4">
+            <h1 class="fs-52 fw-light mt-0">Portal de Gestores</h1>
+            <p class="mt-16 leading-normal">
               Este ingreso es exclusivo para <span class="fw-bold">gestores de datos</span>. Al iniciar sesión con las credenciales que fueron entregadas a sus entidades, estos gestores pueden cargar y actualizar los conjuntos de datos disponibles en esta plataforma.
             </p>
-            <p>
+            <p class="leading-normal mt-16">
               Si no eres un gestor de datos y quieres consultar los datos disponibles, no es necesario que inicies sesión. Todos los datos abiertos están publicados en nuestro <a href="{{ h.url_for('dataset.search') }}" class="fw-bold text-underline">Catálogo de Datos Abiertos</a>.
             </p>
-            <a href="{{ h.url_for('dataset.search') }}" class="button fw-bold fs-md button-blue-sapphire mt-4">Ir al catálogo</a>
+            <a href="{{ h.url_for('dataset.search') }}" class="btn btn-lg btn-blue-sapphire mt-32">
+              Ir al catálogo
+            </a>
           </div>
         </div>
-        <div class="col-lg-5 offset-lg-2">
+        <div class="col-md-5 col-md-offset-2">
           <div class="text-center">
-            <h2 class="fs-2 text-sinopia fw-bold">Iniciar sesión</h2>
+            <h2 class="fs-35 text-sinopia">Iniciar sesión</h2>
             <p class="text-blue-sapphire">
               Si tienes problemas con tus credenciales, por favor escríbenos a <a href="mailto:correo@correo.gob.ec" class="fw-bold text-underline text-blue-sapphire">correo@correo.gob.ec</a>.
             </p>
           </div>
-          <div class="mt-5">
+          <div class="mt-32">
             {% snippet "user/snippets/login_form.html", action=g.login_handler, error_summary=error_summary %}
           </div>
         </div>

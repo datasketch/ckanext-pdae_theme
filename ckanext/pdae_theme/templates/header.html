@@ -11,33 +11,33 @@
         <div class="container-fluid">
           {% block header_account_container_content %}
             <div data-module="me" data-me="{{ c.userobj.id }}">
-              <ul class="nav justify-content-end">
+              <ul class="list-unstyled d-flex justify-content-end text-white">
                 {% if c.userobj.sysadmin %}
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
+                  <li>
+                    <a class="px-16 py-8 d-block text-decoration-none" href="{{ h.url_for(controller='admin', action='index') }}" title="{{ _('Sysadmin settings') }}">
                       <i class="bi bi-hammer" aria-hidden="true"></i>
                       <span class="text">{{ _('Admin') }}</span>
                     </a>
                   </li>
                 {% endif %}
-                <li class="nav-item">
-                  <a href="{{ h.url_for('user.read', id=c.userobj.name) }}" class="nav-link text-white" title="{{ _('View profile') }}">
+                <li>
+                  <a class="px-16 py-8 d-block text-decoration-none" href="{{ h.url_for('user.read', id=c.userobj.name) }}" title="{{ _('View profile') }}">
                   {{ h.user_image((c.user if c and c.user else ''), size=22) }}
                     <span class="username">{{ c.userobj.display_name }}</span>
                   </a>
                 </li>
                 {% set new_activities = h.new_activities() %}
-                <li class="nav-item">
+                <li>
                   {% set notifications_tooltip = ngettext('Dashboard (%(num)d new item)', 'Dashboard (%(num)d new items)', new_activities) %}
-                  <a class="nav-link text-white" href="{{ h.url_for('dashboard.index') }}" title="{{ notifications_tooltip }}">
+                  <a class="px-16 py-8 d-block text-decoration-none" href="{{ h.url_for('dashboard.index') }}" title="{{ notifications_tooltip }}">
                     <i class="bi bi-speedometer2" aria-hidden="true"></i>
                     <span class="text">Dashboard</span>
                     <span class="badge {% if new_activities > 0 %}bg-sinopia{% endif %}">{{ new_activities }}</span>
                   </a>
                 </li>
                 {% block header_account_settings_link %}
-                  <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ h.url_for('user.edit', id=c.userobj.name) }}" title="{{ _('Profile settings') }}">
+                  <li>
+                    <a class="px-16 py-8 d-block text-decoration-none" href="{{ h.url_for('user.edit', id=c.userobj.name) }}" title="{{ _('Profile settings') }}">
                       <i class="bi bi-gear" aria-hidden="true"></i>
                       <span class="text">{{ _('Profile settings') }}</span>
                     </a>
@@ -51,7 +51,61 @@
     {% endblock %}
   {% endif %}
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-cultured">
+    <nav class="bg-cultured">
+      <div class="container-fluid">
+        <ul class="pdae-navbar">
+          <li class="pdae-nav-item text-blue-sapphire">
+            <a href="{{ h.url_for('home.index') }}">
+              <img src="/images/site-logo.svg" alt="">
+            </a>
+          </li>
+          <li class="pdae-nav-item text-blue-sapphire{% if is_home %} active{% endif %}">
+            <a href="{{ h.url_for('home.index') }}" class="" {% if is_home %}aria-current="page"{% endif %}>
+              Inicio
+            </a>
+          </li>
+          <li class="pdae-nav-item text-blue-sapphire{% if is_dataset_search %} active{% endif %}">
+            <a href="{{ h.url_for('dataset.search') }}" {% if is_dataset_search %}aria-current="page"{% endif %}>
+              Catálogo de Datos Abiertos
+            </a>
+          </li>
+          <li class="pdae-nav-item text-blue-sapphire">
+            <a href="#" class="">
+              Blog / Noticias
+            </a>
+          </li>
+          <li class="pdae-nav-item text-blue-sapphire">
+            <a href="#" class="">
+              Normativa
+            </a>
+          </li>
+          <li class="pdae-nav-item text-blue-sapphire">
+            <a href="#" class="">
+              Centro de aprendizaje
+            </a>
+          </li>
+          <li class="pdae-nav-item text-blue-sapphire">
+            <a href="#" class="">
+              Participación ciudadana
+            </a>
+          </li>
+          {% if c.userobj %}
+            <li class="pdae-nav-item text-white flex-shrink-0">
+              <a href="{{ h.url_for('/user/_logout') }}" class="bg-blue-sapphire">
+                Cerrar sesión
+              </a>
+            </li>
+          {% else %}
+            <li class="pdae-nav-item text-white flex-shrink-0">
+              <a href="{{ h.url_for('user.login') }}" class="bg-blue-sapphire" {% if is_user_login %}aria-current="page"{% endif %}>
+                Portal de gestores
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-cultured">
       <div class="container-fluid">
         <a href="{{ h.url_for('home.index') }}" class="navbar-brand">
           <img src="/images/site-logo.svg" alt="">
@@ -107,7 +161,7 @@
           </ul>
         </div>
       </div>
-    </nav>
+    </nav> -->
     <div class="flag"></div>
   </header>
 {% endblock %}

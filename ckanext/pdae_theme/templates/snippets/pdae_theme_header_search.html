@@ -2,25 +2,23 @@
 {% set dataset_count = stats.dataset_count %}
 {% set organization_count = stats.organization_count %}
 
-<section class="bg-cultured py-5">
+<section class="bg-cultured section-lg">
   <div class="container">
     <div class="row">
-      <div class="col">
-        <div class="d-flex flex-column align-items-center">
-          <div class="row">
-            <div class="col-6 offset-3">
-              <img class="img-fluid" src="/images/datos-abiertos.png" alt="">
-            </div>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4">
+            <img class="img-responsive center-block" src="/images/datos-abiertos.png" alt="">
           </div>
-          <h1 class="text-blue-sapphire fs-1 fw-bold text-center">
-            {{ title }}
-          </h1>
-          <p class="text-blue-sapphire fs-5 mt-4">
-            Explora más de <span class="fw-bold">{{ dataset_count }} conjuntos de datos</span> de más de <span class="fw-bold">{{ organization_count }} instituciones</span>.
-          </p>
-          <div class="col-lg-5 mt-4">
-            {% snippet "snippets/pdae_theme_dataset_search.html", query=query %}
-          </div>
+        </div>
+        <h1 class="text-blue-sapphire fs-52 fw-bold text-center mt-0 leading-tight">
+          {{ title }}
+        </h1>
+        <p class="text-center text-blue-sapphire fs-22 mt-16">
+          Explora más de <span class="fw-bold">{{ dataset_count }} conjuntos de datos</span> de más de <span class="fw-bold">{{ organization_count }} instituciones</span>.
+        </p>
+        <div class="col-md-6 col-md-offset-3 mt-16">
+          {% snippet "snippets/pdae_theme_dataset_search.html", query=query %}
         </div>
       </div>
     </div>

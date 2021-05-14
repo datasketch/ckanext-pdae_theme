@@ -4,26 +4,25 @@
   {% set hide_empty = hide_empty or false %}
   {% with items = items or h.get_facet_items_dict(name, search_facets or c.search_facets) %}
     {% if items or not hide_empty %}
-      <div class="accordion-item">
-        {% set title = title or h.get_facet_title(name) %}
-        <h2 class="accordion-header" id="{{ name }}-filter-heading">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ name }}-filter" aria-expanded="true" aria-controls="{{ name }}-filter">
-            {{ title }}
-          </button>
-        </h2>
-        <div id="{{ name }}-filter" class="accordion-collapse collapse show" aria-labelledby="{{ name }}-filter-heading" {% if parent_id %}data-bs-parent="#{{ parent_id }}"{% endif %}>
-          <div class="accordion-body text-blue-sapphire">
+      <div class="panel bg-blue-sapphire border-0">
+        <div id="{{ name }}-filter-heading" class="panel-heading" role="tab">
+          <h2 class="panel-title">
+            <a role="button" data-toggle="collapse" href="#{{ name }}-filter" aria-expanded="true" aria-controls="{{ name }}-filter" class="d-block text-decoration-none">
+              {{ title }}
+            </a>
+          </h2>
+        </div>
+        <div id="{{ name }}-filter" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{ name }}-filter-heading">
+          <div class="panel-body bg-white border-0">
             {% if items %}
               {% for item in items %}
                 {% set index = loop.index %}
                 {% set href = h.remove_url_param(name, item.name, extras=extras, alternative_url=alternative_url) if item.active else h.add_url_param(new_params={name: item.name}, extras=extras, alternative_url=alternative_url) %}
                 {% set label = label_function(item) if label_function else item.display_name %}
                 {% set label_truncated = h.truncate(label, 22) if not label_function else label %}
-                <a href="{{ href }}" class="d-flex flex-row-reverse align-items-center justify-content-between text-decoration-none {% if index == 1 %}mt-0{% else %}mt-2{% endif %}">
-                  <input type="checkbox" class="form-check-input mt-0" {% if item.active %}checked{% endif %}>
-                  <label class="form-check-label">
-                    {{ label }}
-                  </label>
+                <a href="{{ href }}" class="d-flex flex-row-reverse align-items-center justify-content-between text-decoration-none text-blue-sapphire {% if index == 1 %}mt-0{% else %}mt-8{% endif %}">
+                  <div class="mock-checkbox{% if item.active %} checked{% endif %}"></div>
+                  <span>{{ label }}</span>
                 </a>
               {% endfor %}
             {% else %}

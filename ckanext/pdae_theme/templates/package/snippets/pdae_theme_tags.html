@@ -1,8 +1,8 @@
 {% if tags %}
-<ul class="list-inline mb-0">
+<ul class="list-inline d-flex flex-wrap">
   {% for tag in tags %}
-    <li class="list-inline-item bg-blue-sapphire text-white px-2">
-      <a href="{% url_for 'dataset.search', tags=tag.name %}" class="text-decoration-none">
+    <li class="text-white py-5">
+      <a class="text-decoration-none bg-blue-sapphire py-4 px-8 fs-14" href="{% url_for 'dataset.search', tags=tag.name %}">
         {{ tag.display_name }}
       </a>
     </li>

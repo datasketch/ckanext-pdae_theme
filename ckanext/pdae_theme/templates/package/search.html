@@ -26,55 +26,55 @@
   <section class="bg-cultured pb-5">
     <div class="container">
       <div class="row">
-        <div class="col-lg-3">
-          <h2 class="fs-5 fw-bold text-blue-sapphire mb-4">Filtros</h2>
-          <div class="accordion accordion-flush" id="accordion-filters">
+        <div class="col-md-3">
+          <h2 class="fs-22 fw-bold text-blue-sapphire mb-16 mt-0">Filtros</h2>
+          <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">
             {% for facet in facet_titles %}
               {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets, hide_empty=true) }}
             {% endfor %}
           </div>
         </div>
-        <div class="col-lg-9">
+        <div class="col-md-9">
           <div class="row">
-            <div class="col-lg-8">
-              <h2 class="fs-5 fw-bold text-blue-sapphire mb-4">Búsqueda</h2>
-              <p class="text-blue-sapphire fs-5">
+            <div class="col-md-8">
+              <h2 class="fs-22 fw-bold text-blue-sapphire mb-16 mt-0">
+                Búsqueda
+              </h2>
+              <p class="text-blue-sapphire fs-22">
                 {% snippet 'snippets/search_result_text.html', query=q, count=page.item_count, type=dataset_type %}
               </p>
             </div>
-            <div class="col-lg-4">
-              <h2 class="fs-5 fw-bold text-blue-sapphire mb-4">
-                <label for="order-by">Ordenar por</label>
+            <div class="col-md-4">
+              <h2 class="fs-22 fw-bold text-blue-sapphire mb-16 mt-0">
+                <label for="field-order-by" class="fs-22 m-0">Ordenar por</label>
               </h2>
-              <form method="get" data-module="select-switch">
-                <select name="sort" id="order-by" class="form-select fs-md" aria-label="Ordenar resultados">
+              <form id="dataset-search-form" method="get" data-module="select-switch">
+                <select name="sort" id="field-order-by" class="form-control" aria-label="Ordenar resultados">
                   {% for label, value in sorting %}
                     {% if label and value %}
-                      <option value="{{ value }}"{% if sort_by_selected == value %}selected{% endif %}>{{ label }}</option>
+                      <option value="{{ value }}"{% if sort_by_selected == value %}selected="selected"{% endif %}>{{ label }}</option>
                     {% endif %}
                   {% endfor %}
                 </select>
               </form>
             </div>
           </div>
-          <div class="py-4">
+          <div class="py-16">
             {% if h.check_access('package_create') %}
-              <div class="text-end mb-4">
-                <a href="{{ h.url_for('%s.new' % dataset_type) }}" class="button button-sm button-sinopia fw-bold">
+              <div class="text-right mb-16">
+                <a href="{{ h.url_for('%s.new' % dataset_type) }}" class="btn btn-sinopia fw-bold">
                   <i class="bi bi-plus"></i>
                   {{ _('Add ' + dataset_type.title()) }}
                 </a>
               </div>
             {% endif %}
-            <div class="d-grid gap-4">
+            <div class="d-grid gap-16">
               {% block package_search_results_list %}
                 {{ super() }}
               {% endblock %}
             </div>
             {% block page_pagination %}
-              <div class="mt-4">
-                {{ super() }}
-                </div>
+              {{ super() }}
             {% endblock %}
             {% block package_search_results_api %}
               {{ super() }}

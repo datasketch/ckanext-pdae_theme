@@ -1,23 +1,23 @@
 {% ckan_extends %}
 
 {% block content %}
-  <section class="bg-cultured py-6">
+  <section class="bg-cultured section">
     <div class="container">
-      <a href="{{ h.url_for('dataset.search') }}" class="fw-bold text-sinopia text-decoration-none">
+      <a href="{{ h.url_for('dataset.search') }}" class="fw-bold text-sinopia text-decoration-none fs-22">
         <i class="b bi-chevron-left"></i>
         <span>Volver al catálogo</span>
       </a>
       {% if not is_activity_archive %}
         {% if h.check_access('package_update', {'id': pkg.id}) %}
-          <div class="text-end">
-            <a href="{{ h.url_for('%s.edit' % pkg.type, id=pkg.name) }}" class="button button-sm button-sinopia fw-bold">
+          <div class="text-right">
+            <a href="{{ h.url_for('%s.edit' % pkg.type, id=pkg.name) }}" class="btn btn-sinopia">
               <i class="bi bi-wrench"></i>
               {{ _('Manage') }}
             </a>
           </div>
         {% endif %}
       {% endif %}
-      <div class="row mt-3">
+      <div class="row mt-16">
         <div class="col-lg-8">
           {% block primary_content %}{% endblock %}
         </div>
