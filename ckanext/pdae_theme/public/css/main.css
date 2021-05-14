@@ -46,6 +46,18 @@ a:hover {
   font-weight: 700;
 }
 
+.nav-tabs .learn-tab {
+  background-color: #0f5a6b;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.nav-tabs .learn-tab.active {
+  background-color: #fbf9f8;
+  color: #0f5a6b;
+}
+
 .page-item.active .page-link {
   background-color: #ce370f;
 }
