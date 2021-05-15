@@ -1,0 +1,8 @@
+pdae_theme:
+  contents:
+    - pdae_theme.css
+  filter: cssrewrite
+
+pdae_theme_navbar:
+  contents:
+    - pdae_theme_navbar.js

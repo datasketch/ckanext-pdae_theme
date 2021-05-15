@@ -51,10 +51,22 @@
     {% endblock %}
   {% endif %}
   <header>
-    <nav class="bg-cultured">
+    <nav class="bg-cultured" data-module="pdae_theme_navbar" data-module-trigger="navbar-toggle" data-module-target="navbar-menu">
       <div class="container-fluid">
-        <ul class="pdae-navbar">
+        <ul class="pdae-navbar justify-content-between pdae-navbar-xs">
           <li class="pdae-nav-item text-blue-sapphire">
+            <a href="{{ h.url_for('home.index') }}">
+              <img src="/images/site-logo.svg" alt="">
+            </a>
+          </li>
+          <li class="pdae-nav-item text-blue-sapphire">
+            <button class="fs-35 btn bg-cultured" id="navbar-toggle">
+              <i class="bi bi-list"></i>
+            </button>
+          </li>
+        </ul>
+        <ul class="pdae-navbar pdae-navbar-md" id="navbar-menu">
+          <li class="pdae-nav-item text-blue-sapphire hidden-xs hidden-sm">
             <a href="{{ h.url_for('home.index') }}">
               <img src="/images/site-logo.svg" alt="">
             </a>

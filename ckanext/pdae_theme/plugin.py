@@ -14,10 +14,9 @@ class PdaeThemePlugin(plugins.SingletonPlugin):
     plugins.implements(plugins.IBlueprint)
 
     def update_config(self, config_):
-        print(vars(plugins.IRoutes.after_map))
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic',
+        toolkit.add_resource('assets',
                              'pdae_theme')
 
     def get_blueprint(self):
