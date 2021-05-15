@@ -19,9 +19,10 @@
   (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ]
 %}
 
+
 {% block content %}
 <main id="content">
-  {% snippet "snippets/pdae_theme_notification.html" %}
+  {{ self.flash() }}
   {% snippet "snippets/pdae_theme_header_search.html", title="Catálogo de Datos Abiertos", query=q %}
   <section class="bg-cultured pb-5">
     <div class="container">
@@ -48,15 +49,7 @@
               <h2 class="fs-22 fw-bold text-blue-sapphire mb-16 mt-0">
                 <label for="field-order-by" class="fs-22 m-0">Ordenar por</label>
               </h2>
-              <form id="dataset-search-form" method="get" data-module="select-switch">
-                <select name="sort" id="field-order-by" class="form-control" aria-label="Ordenar resultados">
-                  {% for label, value in sorting %}
-                    {% if label and value %}
-                      <option value="{{ value }}"{% if sort_by_selected == value %}selected="selected"{% endif %}>{{ label }}</option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-              </form>
+              {{ h.snippet('package/snippets/pdae_theme_sort_by.html', facet_titles=facet_titles, search_facets=search_facets, sorting=sorting) }}
             </div>
           </div>
           <div class="py-16">

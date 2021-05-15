@@ -1,6 +1,8 @@
 {% ckan_extends %}
 
 {% block content %}
+<main id="content">
+  {{ self.flash() }}
   <section class="bg-cultured section">
     <div class="container">
       <a href="{{ h.url_for('dataset.search') }}" class="fw-bold text-sinopia text-decoration-none fs-22">
@@ -27,4 +29,5 @@
       </div>
     </div>
   </section>
+</main>
 {% endblock %}

@@ -2,90 +2,92 @@
 
 {% block content %}
 <main id="content">
-  <div class="bg-cultured">
-    <ul class="nav nav-tabs nav-justified pt-5 bg-platinum" role="tablist">
-      <li class="nav-item" role="presentation">
-        <button class="learn-tab nav-link active" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq-tab-content" type="button" role="tab" aria-controls="faq-tab-content" aria-selected="true">
+  <div class="learn-resources">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-justified pt-32" role="tablist" style="background-color: #e8e4e2;">
+      <li class="active" role="presentation">
+        <a id="faq-tab" href="#faq-tab-content" aria-controls="faq-tab-content" role="tab" data-toggle="tab">
           Preguntas frecuentes
-        </button>
+        </a>
       </li>
-      <li class="nav-item" role="presentation">
-        <button class="learn-tab nav-link" id="user-manual-tab" data-bs-toggle="tab" data-bs-target="#user-manual-tab-content" type="button" role="tab" aria-controls="user-manual-tab-content">
+      <li role="presentation">
+        <a id="user-manual-tab" href="#user-manual-tab-content" aria-controls="user-manual-tab-content" role="tab" data-toggle="tab">
           Manuales de usuario
-        </button>
+        </a>
       </li>
-      <li class="nav-item" role="presentation">
-        <button class="learn-tab nav-link" id="courses-tab" data-bs-toggle="tab" data-bs-target="#courses-tab-content" type="button" role="tab" aria-controls="courses-tab-content">
+      <li role="presentation">
+        <a id="courses-tab" href="#courses-tab-content" aria-controls="courses-tab-content" role="tab" data-toggle="tab">
           Cursos de capacitación
-        </button>
+        </a>
       </li>
     </ul>
-    <div class="tab-content py-6">
-      <div class="tab-pane fade show active" id="faq-tab-content" role="tabpanel" aria-labelledby="faq-tab">
+    <!-- Tab panes -->
+    <div class="tab-content active section">
+      <div class="tab-pane fade in active" id="faq-tab-content" role="tabpanel" aria-labelledby="faq-tab">
         <div class="container">
           <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-              <h1 class="text-blue-sapphire text-center fw-bold fs-1">
+            <div class="col-md-10 col-md-offset-1">
+              <h1 class="text-blue-sapphire text-center fw-bold fs-52">
                 Preguntas frecuentes
               </h1>
-              <div class="d-grid gap-4 mt-5">
-                <div class="bg-white p-4">
-                  <h2 class="text-blue-sapphire fs-4 fw-bold">
+              <div class="d-grid gap-16 mt-32">
+                <div class="bg-white p-20">
+                  <h2 class="text-blue-sapphire fs-22 fw-bold mt-0">
                     ¿Qué son los Datos Abiertos y por qué son importantes?
                   </h2>
-                  <p class="text-jungle-green mt-3">
+                  <p class="text-jungle-green mt-16">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet…
                   </p>
-                  <p class="text-jungle-green mb-0">
+                  <p class="text-jungle-green">
                     <em>Última actualización <span class="fw-bold">18 de Abril de 2021</span></em>
                   </p>
                 </div>
-                <div class="bg-white p-4">
-                  <h2 class="text-blue-sapphire fs-4 fw-bold">
+                <div class="bg-white p-20">
+                  <h2 class="text-blue-sapphire fs-22 fw-bold mt-0">
                     ¿Qué son los Datos Abiertos y por qué son importantes?
                   </h2>
-                  <p class="text-jungle-green mt-3">
+                  <p class="text-jungle-green mt-16">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet…
                   </p>
-                  <p class="text-jungle-green mb-0">
+                  <p class="text-jungle-green">
                     <em>Última actualización <span class="fw-bold">18 de Abril de 2021</span></em>
                   </p>
                 </div>
-                <div class="bg-white p-4">
-                  <h2 class="text-blue-sapphire fs-4 fw-bold">
+                <div class="bg-white p-20">
+                  <h2 class="text-blue-sapphire fs-22 fw-bold mt-0">
                     ¿Qué son los Datos Abiertos y por qué son importantes?
                   </h2>
-                  <p class="text-jungle-green mt-3">
+                  <p class="text-jungle-green mt-16">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet…
                   </p>
-                  <p class="text-jungle-green mb-0">
+                  <p class="text-jungle-green">
                     <em>Última actualización <span class="fw-bold">18 de Abril de 2021</span></em>
                   </p>
                 </div>
               </div>
-              <nav class="mt-4" aria-label="Paginación de resultados">
+              <div class="pagination-wrapper" aria-label="Paginación de resultados">
                 <ul class="pagination justify-content-center">
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold" aria-label="Página anterior">
+                  <li>
+                    <a href="#" aria-label="Página anterior">
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li>
-                  <li class="page-item active">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">1</a>
+                  <li class="active">
+                    <a href="#">1</a>
                   </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">2</a>
+                  <li>
+                    <a href="#">2</a>
                   </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">3</a>
+                  <li>
+                    <a href="#">3</a>
                   </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold" aria-label="Página siguiente">
+                  <li>
+                    <a href="#" aria-label="Página siguiente">
                       <span aria-hidden="true">&raquo;</span>
                     </a>
                   </li>
                 </ul>
-              </nav>
+              </div>
             </div>
           </div>
         </div>
@@ -93,68 +95,68 @@
       <div class="tab-pane fade" id="user-manual-tab-content" role="tabpanel" aria-labelledby="user-manual-tab">
         <div class="container">
           <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-              <h1 class="text-blue-sapphire text-center fw-bold fs-1">
+            <div class="col-md-10 col-md-offset-1">
+              <h1 class="text-blue-sapphire text-center fw-bold fs-52">
                 Manuales de usuario
               </h1>
-              <div class="d-grid gap-4 mt-5">
-                <div class="bg-white p-4">
-                  <h2 class="text-blue-sapphire fs-4 fw-bold">
-                    ¿Cómo descargar datos?
+              <div class="d-grid gap-16 mt-32">
+                <div class="bg-white p-20">
+                  <h2 class="text-blue-sapphire fs-22 fw-bold mt-0">
+                    ¿Qué son los Datos Abiertos y por qué son importantes?
                   </h2>
-                  <p class="text-jungle-green mt-3">
+                  <p class="text-jungle-green mt-16">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet…
                   </p>
-                  <p class="text-jungle-green mb-0">
+                  <p class="text-jungle-green">
                     <em>Última actualización <span class="fw-bold">18 de Abril de 2021</span></em>
                   </p>
                 </div>
-                <div class="bg-white p-4">
-                  <h2 class="text-blue-sapphire fs-4 fw-bold">
-                    ¿Cómo descargar datos?
+                <div class="bg-white p-20">
+                  <h2 class="text-blue-sapphire fs-22 fw-bold mt-0">
+                    ¿Qué son los Datos Abiertos y por qué son importantes?
                   </h2>
-                  <p class="text-jungle-green mt-3">
+                  <p class="text-jungle-green mt-16">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet…
                   </p>
-                  <p class="text-jungle-green mb-0">
+                  <p class="text-jungle-green">
                     <em>Última actualización <span class="fw-bold">18 de Abril de 2021</span></em>
                   </p>
                 </div>
-                <div class="bg-white p-4">
-                  <h2 class="text-blue-sapphire fs-4 fw-bold">
-                    ¿Cómo descargar datos?
+                <div class="bg-white p-20">
+                  <h2 class="text-blue-sapphire fs-22 fw-bold mt-0">
+                    ¿Qué son los Datos Abiertos y por qué son importantes?
                   </h2>
-                  <p class="text-jungle-green mt-3">
+                  <p class="text-jungle-green mt-16">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet…
                   </p>
-                  <p class="text-jungle-green mb-0">
+                  <p class="text-jungle-green">
                     <em>Última actualización <span class="fw-bold">18 de Abril de 2021</span></em>
                   </p>
                 </div>
               </div>
-              <nav class="mt-4" aria-label="Paginación de resultados">
+              <div class="pagination-wrapper" aria-label="Paginación de resultados">
                 <ul class="pagination justify-content-center">
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold" aria-label="Página anterior">
+                  <li>
+                    <a href="#" aria-label="Página anterior">
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li>
-                  <li class="page-item active">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">1</a>
+                  <li class="active">
+                    <a href="#">1</a>
                   </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">2</a>
+                  <li>
+                    <a href="#">2</a>
                   </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">3</a>
+                  <li>
+                    <a href="#">3</a>
                   </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold" aria-label="Página siguiente">
+                  <li>
+                    <a href="#" aria-label="Página siguiente">
                       <span aria-hidden="true">&raquo;</span>
                     </a>
                   </li>
                 </ul>
-              </nav>
+              </div>
             </div>
           </div>
         </div>
@@ -162,68 +164,68 @@
       <div class="tab-pane fade" id="courses-tab-content" role="tabpanel" aria-labelledby="courses-tab">
         <div class="container">
           <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-              <h1 class="text-blue-sapphire text-center fw-bold fs-1">
+            <div class="col-md-10 col-md-offset-1">
+              <h1 class="text-blue-sapphire text-center fw-bold fs-52">
                 Cursos de capacitación
               </h1>
-              <div class="d-grid gap-4 mt-5">
-                <div class="bg-white p-4">
-                  <h2 class="text-blue-sapphire fs-4 fw-bold">
-                    Estructuración de datos
+              <div class="d-grid gap-16 mt-32">
+                <div class="bg-white p-20">
+                  <h2 class="text-blue-sapphire fs-22 fw-bold mt-0">
+                    ¿Qué son los Datos Abiertos y por qué son importantes?
                   </h2>
-                  <p class="text-jungle-green mt-3">
+                  <p class="text-jungle-green mt-16">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet…
                   </p>
-                  <p class="text-jungle-green mb-0">
+                  <p class="text-jungle-green">
                     <em>Última actualización <span class="fw-bold">18 de Abril de 2021</span></em>
                   </p>
                 </div>
-                <div class="bg-white p-4">
-                  <h2 class="text-blue-sapphire fs-4 fw-bold">
-                    Estructuración de datos
+                <div class="bg-white p-20">
+                  <h2 class="text-blue-sapphire fs-22 fw-bold mt-0">
+                    ¿Qué son los Datos Abiertos y por qué son importantes?
                   </h2>
-                  <p class="text-jungle-green mt-3">
+                  <p class="text-jungle-green mt-16">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet…
                   </p>
-                  <p class="text-jungle-green mb-0">
+                  <p class="text-jungle-green">
                     <em>Última actualización <span class="fw-bold">18 de Abril de 2021</span></em>
                   </p>
                 </div>
-                <div class="bg-white p-4">
-                  <h2 class="text-blue-sapphire fs-4 fw-bold">
-                    Estructuración de datos
+                <div class="bg-white p-20">
+                  <h2 class="text-blue-sapphire fs-22 fw-bold mt-0">
+                    ¿Qué son los Datos Abiertos y por qué son importantes?
                   </h2>
-                  <p class="text-jungle-green mt-3">
+                  <p class="text-jungle-green mt-16">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet…
                   </p>
-                  <p class="text-jungle-green mb-0">
+                  <p class="text-jungle-green">
                     <em>Última actualización <span class="fw-bold">18 de Abril de 2021</span></em>
                   </p>
                 </div>
               </div>
-              <nav class="mt-4" aria-label="Paginación de resultados">
+              <div class="pagination-wrapper" aria-label="Paginación de resultados">
                 <ul class="pagination justify-content-center">
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold" aria-label="Página anterior">
+                  <li>
+                    <a href="#" aria-label="Página anterior">
                       <span aria-hidden="true">&laquo;</span>
                     </a>
                   </li>
-                  <li class="page-item active">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">1</a>
+                  <li class="active">
+                    <a href="#">1</a>
                   </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">2</a>
+                  <li>
+                    <a href="#">2</a>
                   </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold">3</a>
+                  <li>
+                    <a href="#">3</a>
                   </li>
-                  <li class="page-item">
-                    <a href="#" class="page-link border-0 text-blue-sapphire fw-bold" aria-label="Página siguiente">
+                  <li>
+                    <a href="#" aria-label="Página siguiente">
                       <span aria-hidden="true">&raquo;</span>
                     </a>
                   </li>
                 </ul>
-              </nav>
+              </div>
             </div>
           </div>
         </div>

@@ -5,8 +5,8 @@ import ckan.plugins.toolkit as toolkit
 from flask import Blueprint, render_template
 
 
-def faq():
-    return render_template('faq.html')
+def learn():
+    return render_template('home/learn.html')
 
 
 class PdaeThemePlugin(plugins.SingletonPlugin):
@@ -24,7 +24,7 @@ class PdaeThemePlugin(plugins.SingletonPlugin):
         blueprint = Blueprint(self.name, self.__module__)
         blueprint.template_folder = 'templates'
         rules = [
-            ('/faq', 'faq', faq)
+            ('/centro-de-aprendizaje', 'learn', learn)
         ]
         for rule in rules:
             blueprint.add_url_rule(*rule)

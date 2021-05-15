@@ -1,0 +1,19 @@
+<form id="dataset-search-form" method="get" data-module="select-switch">
+  {% for facet in facet_titles %}
+    {% set items = h.get_facet_items_dict(facet, search_facets) %}
+    {% if items %}
+      {% for item in items %}
+        {% if item.active %}
+          <input type="hidden" name="{{facet}}" value="{{item.name}}">
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  <select name="sort" id="field-order-by" class="form-control" aria-label="Ordenar resultados">
+    {% for label, value in sorting %}
+      {% if label and value %}
+        <option value="{{ value }}"{% if sort_by_selected == value %}selected="selected"{% endif %}>{{ label }}</option>
+      {% endif %}
+    {% endfor %}
+  </select>
+</form>

@@ -52,6 +52,7 @@ a:hover {
 }
 
 .pagination li a {
+  background-color: transparent;
   border: 0;
   color: #0f5a6b;
   display: block;
@@ -320,6 +321,10 @@ a:hover {
   padding: 24px;
 }
 
+.pt-32 {
+  padding-top: 32px;
+}
+
 .px-8 {
   padding-left: 8px;
   padding-right: 8px;
@@ -450,6 +455,23 @@ a:hover {
   gap: 32px;
   grid-template-columns: 1fr;
   grid-template-areas: "d" "c" "b" "a";
+}
+
+.learn-resources .nav-tabs.nav-justified > li > a {
+  background-color: #0f5a6b;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.learn-resources .nav-tabs > li.active > a {
+  background-color: #fbf9f8;
+  color: #0f5a6b;
+}
+
+.learn-resources .nav-tabs.nav-justified > li.active > a,
+.learn-resources .nav-tabs.nav-justified > li > a {
+  border-bottom-color: transparent;
 }
 
 .login-form .form-control {
