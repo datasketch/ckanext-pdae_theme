@@ -1,8 +1,29 @@
-pdae_theme:
+pdae_theme_css:
+  output: ckanext-pdae_theme/%(version)s_pdae_theme.css
   contents:
-    - pdae_theme.css
-  filter: cssrewrite
+    - styles/pdae_theme.css
+
 
 pdae_theme_navbar:
+  output: ckanext-pdae_theme/%(version)s_pdae_theme_navbar.js
   contents:
-    - pdae_theme_navbar.js
+    - js/pdae_theme_navbar.js
+  filters:
+    - rjsmin
+
+pdae_theme_slider:
+  output: ckanext-pdae_theme/%(version)s_pdae_theme_slider.js
+  contents:
+    - js/pdae_theme_slider.js
+  filters:
+    - rjsmin
+
+pdae_theme_swiper_js:
+  output: ckanext-pdae_theme/%(version)s_pdae_theme_swiper.js
+  contents:
+    - js/swiper-bundle.min.js
+
+pdae_theme_swiper_css:
+  output: ckanext-pdae_theme/%(version)s_pdae_theme_swiper.css
+  contents:
+    - styles/swiper-bundle.min.css

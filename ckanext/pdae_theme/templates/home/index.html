@@ -36,6 +36,12 @@
           Conoce los conjuntos de datos <span class="fw-bold">agregados o actualizados recientemente</span>
         </p>
       </div>
+      {% set latest_datasets = h.pdae_theme_get_datasets() %}
+      {% if latest_datasets %}
+        <div class="mt-32">
+          {{ h.snippet('home/snippets/pdae_theme_datasets_slider.html', datasets=latest_datasets) }}
+        </div>
+      {% endif %}
     </div>
   </section>
   <section class="text-white">
@@ -94,7 +100,13 @@
           Conoce los conjuntos de datos <span class="fw-bold">más populares</span> en nuestro portal
         </p>
       </div>
-      <div class="text-center">
+      {% set popular_datasets = h.pdae_theme_get_datasets() %}
+      {% if popular_datasets %}
+        <div class="mt-32">
+          {{ h.snippet('home/snippets/pdae_theme_datasets_slider.html', datasets=popular_datasets) }}
+        </div>
+      {% endif %}
+      <div class="text-center mt-128">
         <h2 class="text-sinopia fw-bold fs-45">
           Centro de aprendizaje
         </h2>
@@ -122,3 +134,14 @@
   </section>
 </main>
 {% endblock %}
+
+{%- block custom_styles %}
+  {{ super() }}
+  {% asset 'ckanext-pdae_theme/pdae_theme_swiper_css' %}
+{% endblock %}
+
+{%- block scripts %}
+  {{ super() }}
+  {% asset 'ckanext-pdae_theme/pdae_theme_swiper_js' %}
+  {% asset 'ckanext-pdae_theme/pdae_theme_slider' %}
+{% endblock -%}

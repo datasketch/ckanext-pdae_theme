@@ -1,16 +1,5 @@
 {% ckan_extends %}
 
-{% set stats = h.get_site_statistics() %}
-{% set dataset_count = stats.dataset_count %}
-{% set organization_count = stats.organization_count %}
-
-{% set _facets = {
-  'fields': fields_grouped,
-  'search': search_facets,
-  'titles': facet_titles,
-  'translated_fields': translated_fields,
-  'remove_field': remove_field }
-%}
 {% set sorting = [
   (_('Relevance'), 'score desc, metadata_modified desc'),
   (_('Name Ascending'), 'title_string asc'),

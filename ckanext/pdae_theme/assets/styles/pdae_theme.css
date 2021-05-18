@@ -114,6 +114,10 @@ a:hover {
   transform: translateY(-50%);
 }
 
+.swiper-slide {
+  height: auto !important;
+}
+
 @media screen and (min-width: 992px) {
   .btn-lg {
     font-size: 18px;
@@ -211,6 +215,10 @@ a:hover {
   flex-direction: row-reverse;
 }
 
+.flex-grow {
+  flex-grow: 1;
+}
+
 .flex-shrink-0 {
   flex-shrink: 0;
 }
@@ -255,6 +263,10 @@ a:hover {
   gap: 16px;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .has-bg-image {
   background-position: center;
   background-repeat: no-repeat;
@@ -285,6 +297,10 @@ a:hover {
   margin: 0 !important;
 }
 
+.mb-0 {
+  margin-bottom: 0;
+}
+
 .mb-16 {
   margin-bottom: 16px;
 }
@@ -309,6 +325,10 @@ a:hover {
   margin-top: 32px;
 }
 
+.mt-128 {
+  margin-top: 128px;
+}
+
 .p-16 {
   padding: 16px;
 }
@@ -319,6 +339,10 @@ a:hover {
 
 .p-24 {
   padding: 24px;
+}
+
+.pb-0 {
+  padding-bottom: 0;
 }
 
 .pt-32 {
@@ -333,6 +357,11 @@ a:hover {
 .px-16 {
   padding-left: 16px;
   padding-right: 16px;
+}
+
+.px-24 {
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .py-4 {
