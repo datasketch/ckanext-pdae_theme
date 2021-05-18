@@ -1,64 +1,66 @@
 {% if datasets %}
-  <div class="swiper-container" data-module="pdae_theme_slider">
-    <div class="swiper-wrapper">
-      {% for dataset in datasets %}
-        <div class="swiper-slide">
-          <div class="bg-white h-full d-flex flex-column">
-            <div class="p-24 pb-0 flex-grow">
-              <h3 class="text-blue-sapphire fs-22 fw-bold m-0 leading-tight">
-                {% if dataset.private %}
-                  <i class="bi bi-lock-fill" aria-label="{{ _('Private') }}"></i>
-                {% endif %}
-                {% set title = h.dataset_display_name(dataset) %}
-                {{ h.link_to(h.truncate(title, 40), h.url_for('%s.read' % dataset.type, id=dataset.name), class='text-decoration-none', title=title) }}
-                {% if dataset.get('state', '').startswith('draft') %}
-                  <span class="badge">{{ _('Draft') }}</span>
-                {% elif dataset.get('state', '').startswith('deleted') %}
-                  <span class="badge">{{ _('Deleted') }}</span>
-                {% endif %}
-              </h3>
-              <div class="mt-16">
-                <p class="fw-bold fs-18 text-sinopia">
-                  <em>{{ dataset.author }}</em>
-                </p>
-                <p class="text-jungle-green">
-                  {% if dataset.notes %}
-                    {{ h.truncate(dataset.notes, 100)|urlize }}
-                  {% else %}
-                    {{ _("This dataset has no description") }}
+  <div class="slider-wrapper" data-module="pdae_theme_slider">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {% for dataset in datasets %}
+          <div class="swiper-slide">
+            <div class="bg-white h-full d-flex flex-column">
+              <div class="p-24 pb-0 flex-grow">
+                <h3 class="text-blue-sapphire fs-22 fw-bold m-0 leading-tight">
+                  {% if dataset.private %}
+                    <i class="bi bi-lock-fill" aria-label="{{ _('Private') }}"></i>
                   {% endif %}
-                </p>
-                {% if dataset.resources %}
-                  <ul class="list-inline d-flex align-items-center">
-                    {% for resource in h.dict_list_reduce(dataset.resources, 'format') %}
-                      <li class="py-5 text-white">
-                        <a href="{{ h.url_for(dataset.type ~ '.read', id=dataset.name) }}" class="text-decoration-none bg-sinopia py-4 px-8 fs-14" data-format="{{ resource.lower() }}">
-                          <span>{{ resource }}</span>
-                        </a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                {% endif %}
-              </div>
-            </div>
-            <div>
-              <div class="px-24 py-16">
-                <div class="text-jungle-green">
-                  <p class="mb-0">
-                    <em>Última actualización:</em>
+                  {% set title = h.dataset_display_name(dataset) %}
+                  {{ h.link_to(h.truncate(title, 40), h.url_for('%s.read' % dataset.type, id=dataset.name), class='text-decoration-none', title=title) }}
+                  {% if dataset.get('state', '').startswith('draft') %}
+                    <span class="badge">{{ _('Draft') }}</span>
+                  {% elif dataset.get('state', '').startswith('deleted') %}
+                    <span class="badge">{{ _('Deleted') }}</span>
+                  {% endif %}
+                </h3>
+                <div class="mt-16">
+                  <p class="fw-bold fs-18 text-sinopia">
+                    <em>{{ dataset.author }}</em>
                   </p>
-                  <p class="mb-0">
-                    <em><span class="fw-bold">{{ h.render_datetime(dataset.metadata_modified, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}</span></em>
+                  <p class="text-jungle-green">
+                    {% if dataset.notes %}
+                      {{ h.truncate(dataset.notes, 100)|urlize }}
+                    {% else %}
+                      {{ _("This dataset has no description") }}
+                    {% endif %}
                   </p>
+                  {% if dataset.resources %}
+                    <ul class="list-inline d-flex align-items-center">
+                      {% for resource in h.dict_list_reduce(dataset.resources, 'format') %}
+                        <li class="py-5 text-white">
+                          <a href="{{ h.url_for(dataset.type ~ '.read', id=dataset.name) }}" class="text-decoration-none bg-sinopia py-4 px-8 fs-14" data-format="{{ resource.lower() }}">
+                            <span>{{ resource }}</span>
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
                 </div>
               </div>
-              {{ h.link_to('Explorar', h.url_for('%s.read' % dataset.type, id=dataset.name), class='text-decoration-none btn btn-blue-sapphire d-block', title=title) }}
+              <div>
+                <div class="px-24 py-16">
+                  <div class="text-jungle-green">
+                    <p class="mb-0">
+                      <em>Última actualización:</em>
+                    </p>
+                    <p class="mb-0">
+                      <em><span class="fw-bold">{{ h.render_datetime(dataset.metadata_modified, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}</span></em>
+                    </p>
+                  </div>
+                </div>
+                {{ h.link_to('Explorar', h.url_for('%s.read' % dataset.type, id=dataset.name), class='text-decoration-none btn btn-blue-sapphire d-block', title=title) }}
+              </div>
             </div>
           </div>
-        </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
     </div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    <div class="slider-prev"></div>
+    <div class="slider-next"></div>
   </div>
 {% endif %}

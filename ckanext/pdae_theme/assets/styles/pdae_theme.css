@@ -364,6 +364,11 @@ a:hover {
   padding-right: 24px;
 }
 
+.px-64 {
+  padding-left: 64px;
+  padding-right: 64px;
+}
+
 .py-4 {
   padding-top: 4px;
   padding-bottom: 4px;
@@ -566,6 +571,39 @@ a:hover {
 
 .pdae-nav-item a:hover {
   text-decoration: none;
+}
+
+.slider-wrapper {
+  padding: 0 64px;
+  position: relative;
+}
+
+.slider-prev,
+.slider-next {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOC4zNzciIGhlaWdodD0iMzMuMTE4Ij48cGF0aCBkPSJNNS41MzEgMzMuMTE4bC01LjUzLTQuMjkxIDkuNTE4LTEyLjI2OEwuMDAxIDQuMjkgNS41MzItLjAwMWwxMi44NDYgMTYuNTZ6IiBmaWxsPSIjMGY1YTZiIi8+PC9zdmc+");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 36px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+}
+
+.slider-prev.swiper-button-disabled,
+.slider-next.swiper-button-disabled {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOC4zNzciIGhlaWdodD0iMzMuMTE4Ij48cGF0aCBkPSJNNS41MzEgMzMuMTE4bC01LjUzLTQuMjkxIDkuNTE4LTEyLjI2OEwuMDAxIDQuMjkgNS41MzItLjAwMWwxMi44NDYgMTYuNTZ6IiBmaWxsPSIjMGY1YTZiIiBmaWxsLW9wYWNpdHk9IjAuMyIvPjwvc3ZnPg==");
+  cursor: not-allowed;
+}
+
+.slider-prev {
+  left: 16px;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.slider-next {
+  right: 16px;
 }
 
 @media screen and (min-width: 992px) {

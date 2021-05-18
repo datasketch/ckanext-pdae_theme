@@ -7,11 +7,15 @@ ckan.module('pdae_theme_slider', function ($) {
         console.error('Swiper lib must be available to use this module.')
         return
       }
-      const swiper = new window.Swiper(this.el.get(0), {
+      const container = this.el.find('.swiper-container')
+      const nextEl = this.el.find('.slider-next')
+      const prevEl = this.el.find('.slider-prev')
+      
+      const swiper = new window.Swiper(container.get(0), {
         slidesPerView: 1,
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
+          nextEl: nextEl.get(0),
+          prevEl: prevEl.get(0)
         },
         breakpoints: {
           768: {
@@ -24,11 +28,6 @@ ckan.module('pdae_theme_slider', function ($) {
           }
         }
       })
-      // const trigger = document.getElementById(this.options.trigger)
-      // const target = document.getElementById(this.options.target)
-      // trigger.addEventListener('click', function() {
-      //   target.classList.toggle('navbar-open')
-      // })
     }
   }
 })
