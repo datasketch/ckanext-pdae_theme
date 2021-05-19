@@ -13,6 +13,7 @@ ckan.module('pdae_theme_slider', function ($) {
       
       const swiper = new window.Swiper(container.get(0), {
         slidesPerView: 1,
+        spaceBetween: 32,
         navigation: {
           nextEl: nextEl.get(0),
           prevEl: prevEl.get(0)
@@ -20,11 +21,11 @@ ckan.module('pdae_theme_slider', function ($) {
         breakpoints: {
           768: {
             slidesPerView: 2,
-            spaceBetween: 40
+            spaceBetween: 32
           },
           992: {
             slidesPerView: 3,
-            spaceBetween: 40
+            spaceBetween: 32
           }
         }
       })

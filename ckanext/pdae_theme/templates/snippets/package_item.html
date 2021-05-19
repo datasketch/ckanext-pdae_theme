@@ -18,7 +18,7 @@
     </div>
     {% if package.resources and not hide_resources %}
       <div class="col-md-4">
-        <ul class="list-inline d-flex align-items-center justify-content-end">
+        <ul class="list-inline d-flex align-items-center mt-16 md:justify-content-end md:mt-0">
           {% for resource in h.dict_list_reduce(package.resources, 'format') %}
             <li class="py-5 text-white">
               <a href="{{ h.url_for(package.type ~ '.read', id=package.name) }}" class="text-decoration-none bg-sinopia py-4 px-8 fs-14" data-format="{{ resource.lower() }}">

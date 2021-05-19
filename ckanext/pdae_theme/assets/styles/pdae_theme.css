@@ -325,8 +325,16 @@ a:hover {
   margin-top: 32px;
 }
 
+.mt-64 {
+  margin-top: 64px;
+}
+
 .mt-128 {
   margin-top: 128px;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
 }
 
 .p-16 {
@@ -408,6 +416,10 @@ a:hover {
   text-decoration: none;
 }
 
+.text-end {
+  text-align: right;
+}
+
 .text-jungle-green {
   color: #102223;
 }
@@ -439,6 +451,14 @@ a:hover {
   
   .fs-52 {
     font-size: 52px;
+  }
+
+  .md\:mt-0 {
+    margin-top: 0;
+  }
+
+  .md\:justify-content-end {
+    justify-content: flex-end;
   }
 }
 
@@ -537,36 +557,59 @@ a:hover {
 .pdae-navbar {
   list-style-type: none;
   margin-bottom: 0;
-  padding: 12px 0;
 }
 
 .pdae-navbar-md {
   display: none;
+  padding: 24px;
 }
 
 .pdae-navbar-md.navbar-open {
-  display: flex;
-  flex-direction: column;
+  background-color: #0f5a6b;
+  display: block;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.pdae-nav-overlay {
+  display: none;
+}
+
+.pdae-navbar-md.navbar-open + .pdae-nav-overlay {
+  position: fixed;
+  background-color: #102223;
+  opacity: 0.85;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  display: block;
 }
 
 .pdae-navbar-xs {
   align-items: center;
   display: flex;
   justify-content: space-between;
+  padding: 12px 0;
 }
 
 .pdae-nav-item {
   padding: 5px 0;
+  color: #ffffff;
 }
 
 .pdae-nav-item.active {
-  color: #ce370f;
+  color: #ffffff;
   font-weight: 700;
 }
 
 .pdae-nav-item a {
   padding: 8px;
-  display: inline-block;
+  display: block;
 }
 
 .pdae-nav-item a:hover {
@@ -574,7 +617,7 @@ a:hover {
 }
 
 .slider-wrapper {
-  padding: 0 64px;
+  padding: 0 48px;
   position: relative;
 }
 
@@ -598,12 +641,12 @@ a:hover {
 }
 
 .slider-prev {
-  left: 16px;
+  left: 12px;
   transform: translateY(-50%) rotate(180deg);
 }
 
 .slider-next {
-  right: 16px;
+  right: 12px;
 }
 
 @media screen and (min-width: 992px) {
@@ -620,8 +663,13 @@ a:hover {
   }
   
   .pdae-nav-item {
+    color: #0f5a6b;
     text-align: center;
     padding: 0;
+  }
+
+  .pdae-nav-item.active {
+    color: #ce370f;
   }
   
   .pdae-navbar-xs {
@@ -634,5 +682,25 @@ a:hover {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    background-color: #ffffff;
+    position: static;
+    padding: 12px;
+  }
+
+  .pdae-nav-overlay,
+  .pdae-navbar-md.navbar-open + .pdae-nav-overlay {
+    display: none;
+  }
+
+  .slider-wrapper {
+    padding: 0 64px;
+  }
+
+  .slider-prev {
+    left: 16px;
+  }
+  
+  .slider-next {
+    right: 16px;
   }
 }
