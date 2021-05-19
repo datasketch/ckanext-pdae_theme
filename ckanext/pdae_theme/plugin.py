@@ -1,8 +1,7 @@
-# import routes.mapper
-
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from flask import Blueprint, render_template
+from ckan.common import config
 
 
 def get_datasets(sort_key='metadata_modified desc'):
@@ -11,6 +10,11 @@ def get_datasets(sort_key='metadata_modified desc'):
     datasets = toolkit.get_action('package_search')(
         data_dict={'rows': 10, 'sort': sort_key})
     return datasets['results']
+
+
+def get_announce():
+    announce = config.get('ckan.pdae_theme.announce', '')
+    return announce
 
 
 def learn():
@@ -28,9 +32,18 @@ class PdaeThemePlugin(plugins.SingletonPlugin):
         toolkit.add_resource('assets',
                              'ckanext-pdae_theme')
 
+    def update_config_schema(self, schema):
+        ignore_missing = toolkit.get_validator('ignore_missing')
+        unicode_safe = toolkit.get_validator('unicode_safe')
+        schema.update({
+            'ckan.pdae_theme.announce': [ignore_missing, unicode_safe]
+        })
+        return schema
+
     def get_helpers(self):
         return {
-            'pdae_theme_get_datasets': get_datasets
+            'pdae_theme_get_datasets': get_datasets,
+            'get_announce': get_announce
         }
 
     def get_blueprint(self):

@@ -4,7 +4,16 @@
 {% set organizations = h.get_facet_items_dict('organization', c.search_facets, limit=5) %}
 
 {% block content %}
+{% set announce = h.get_announce() %}
 <main id="content">
+  {% if announce %}
+  <div class="announce">
+    <i class="bi bi-exclamation-triangle"></i>
+    <div class="announce-content">
+      {{ h.render_markdown(announce) }}
+    </div>
+  </div>
+  {% endif %}
   {{ self.flash() }}
   {% snippet "snippets/pdae_theme_header_search.html", title="Busca en nuestro catálogo de Datos Abiertos", query=q %}
   <section class="section has-bg-image text-white" style="background-image: url(/images/textura-roja.jpg);">
