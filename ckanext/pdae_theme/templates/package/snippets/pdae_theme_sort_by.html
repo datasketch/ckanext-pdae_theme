@@ -9,6 +9,9 @@
       {% endfor %}
     {% endif %}
   {% endfor %}
+  {% if query %}
+    <input type="hidden" name="q" value="{{query}}">
+  {% endif %}
   <select name="sort" id="field-order-by" class="form-control" aria-label="Ordenar resultados">
     {% for label, value in sorting %}
       {% if label and value %}

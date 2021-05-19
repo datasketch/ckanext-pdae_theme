@@ -8,9 +8,17 @@
   (_('Popular'), 'views_recent desc') if g.tracking_enabled else (false, false) ]
 %}
 
+{% set ns = namespace(show_filters=false) %}
+
 
 {% block content %}
 <main id="content">
+  {% for facet in facet_titles %}
+    {% set items = h.get_facet_items_dict(facet, search_facets or c.search_facets) %}
+    {% if items %}
+      {% set ns.show_filters = true %}
+    {% endif %}
+  {% endfor %}
   {{ self.flash() }}
   {% snippet "snippets/pdae_theme_header_search.html", title="Catálogo de Datos Abiertos", query=q %}
   <section class="bg-cultured pb-5">
@@ -18,17 +26,21 @@
       <div class="row">
         <div class="col-md-3">
           <h2 class="fs-22 fw-bold text-blue-sapphire mb-16 mt-0">Filtros</h2>
-          <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">
-            {% for facet in facet_titles %}
-              {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets, hide_empty=true) }}
-            {% endfor %}
+          {% if ns.show_filters %}
+            <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+              {% for facet in facet_titles %}
+                {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets, hide_empty=true) }}
+              {% endfor %}
+            </div>
+            <div class="text-center mt-32">
+              <a href="{{ h.url_for('dataset.search') }}" class="btn btn-sinopia">
+                Restablecer filtros
+              </a>
+            </div>
+          {% else %}
+            <p class="text-blue-sapphire fs-22">No hay filtros disponibles</p>
+          {% endif %}
           </div>
-          <div class="text-center mt-32">
-            <a href="{{ h.url_for('dataset.search') }}" class="btn btn-sinopia">
-              Restablecer filtros
-            </a>
-          </div>
-        </div>
         <div class="col-md-9 mt-32 md:mt-0">
           <div class="row">
             <div class="col-md-8">
@@ -43,7 +55,7 @@
               <h2 class="fs-22 fw-bold text-blue-sapphire mb-16 mt-0">
                 <label for="field-order-by" class="fs-22 m-0">Ordenar por</label>
               </h2>
-              {{ h.snippet('package/snippets/pdae_theme_sort_by.html', facet_titles=facet_titles, search_facets=search_facets, sorting=sorting) }}
+              {{ h.snippet('package/snippets/pdae_theme_sort_by.html', facet_titles=facet_titles, search_facets=search_facets, sorting=sorting, query=q) }}
             </div>
           </div>
           <div class="py-16">
