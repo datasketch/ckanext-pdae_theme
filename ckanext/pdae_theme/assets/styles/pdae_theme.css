@@ -449,24 +449,23 @@ a:hover {
 */
 
 .dataset-search-input-container {
-  position: relative;
+  display: flex;
 }
 
 .dataset-search-input-control {
   background-color: #ffffff;
   border: 0;
   width: 100%;
-  padding: 12px 36px 12px 16px;
+  padding: 12px;
 }
 
-.dataset-search-input-icon {
-  /* position-absolute top-50 end-0 translate-middle pe-2 */
-  padding-right: 12px;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
+.dataset-search-input-submit {
+  background-color: #ce370f;
+  border: 0;
+  color: #ffffff;
+  flex-shrink: 0;
+  padding: 0 16px;
+  text-align: center;
 }
 
 .footer-section {
@@ -477,6 +476,7 @@ a:hover {
 
 .footer-section-top-col {
   margin-bottom: 32px;
+  text-align: center;
 }
 
 .footer-section-top-col:last-child {
@@ -609,6 +609,7 @@ a:hover {
 @media screen and (min-width: 992px) {
   .footer-section-top-col {
     margin-bottom: 0;
+    text-align: left;
   }
   
   .footer-section-bottom-row {

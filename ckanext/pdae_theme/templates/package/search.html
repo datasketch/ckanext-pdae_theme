@@ -23,6 +23,11 @@
               {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets, hide_empty=true) }}
             {% endfor %}
           </div>
+          <div class="text-center mt-32">
+            <a href="{{ h.url_for('dataset.search') }}" class="btn btn-sinopia">
+              Restablecer filtros
+            </a>
+          </div>
         </div>
         <div class="col-md-9">
           <div class="row">

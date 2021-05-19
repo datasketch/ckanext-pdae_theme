@@ -56,7 +56,8 @@
         <ul class="pdae-navbar justify-content-between pdae-navbar-xs">
           <li class="pdae-nav-item text-blue-sapphire">
             <a href="{{ h.url_for('home.index') }}">
-              <img src="/images/site-logo.svg" alt="">
+              <!-- <img src="/images/site-logo.png" alt=""> -->
+              <img src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="">
             </a>
           </li>
           <li class="pdae-nav-item text-blue-sapphire">
@@ -68,7 +69,8 @@
         <ul class="pdae-navbar pdae-navbar-md" id="navbar-menu">
           <li class="pdae-nav-item text-blue-sapphire hidden-xs hidden-sm">
             <a href="{{ h.url_for('home.index') }}">
-              <img src="/images/site-logo.svg" alt="">
+              <!-- <img src="/images/site-logo.png" alt=""> -->
+              <img src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="">
             </a>
           </li>
           <li class="pdae-nav-item text-blue-sapphire{% if is_home %} active{% endif %}">
@@ -117,63 +119,6 @@
         </ul>
       </div>
     </nav>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-cultured">
-      <div class="container-fluid">
-        <a href="{{ h.url_for('home.index') }}" class="navbar-brand">
-          <img src="/images/site-logo.svg" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-label="Desplegar menú">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menu">
-          <ul class="navbar-nav w-100 align-items-center justify-content-around">
-            <li class="nav-item">
-              <a href="{{ h.url_for('home.index') }}" class="nav-link text-center{% if is_home %} active{% endif %}" {% if is_home %}aria-current="page"{% endif %}>
-                Inicio
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="{{ h.url_for('dataset.search') }}" class="nav-link text-center{% if is_dataset_search %} active{% endif %}" {% if is_dataset_search %}aria-current="page"{% endif %}>
-                Catálogo de<br/>Datos Abiertos
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-center">
-                Blog / Noticias
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-center">
-                Normativa
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-center">
-                Centro de<br/>aprendizaje
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link text-center">
-                Participación<br/>ciudadana
-              </a>
-            </li>
-            {% if c.userobj %}
-              <li class="nav-item bg-blue-sapphire flex-shrink-0">
-                <a href="{{ h.url_for('/user/_logout') }}" class="nav-link text-center text-white">
-                  Cerrar sesión
-                </a>
-              </li>
-            {% else %}
-              <li class="nav-item bg-blue-sapphire flex-shrink-0">
-                <a href="{{ h.url_for('user.login') }}" class="nav-link text-center text-white" {% if is_user_login %}aria-current="page"{% endif %}>
-                  Portal de gestores
-                </a>
-              </li>
-            {% endif %}
-          </ul>
-        </div>
-      </div>
-    </nav> -->
     <div class="flag"></div>
   </header>
 {% endblock %}

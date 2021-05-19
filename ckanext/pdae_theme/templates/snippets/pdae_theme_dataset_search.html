@@ -1,11 +1,10 @@
 <form method="get" action="{% url_for 'dataset.search' %}">
   <div class="dataset-search-input-container">
     <input type="text" placeholder="Busca por palabras claves" class="dataset-search-input-control" aria-label="{{ _('Search datasets') }}" name="q" value="{{ query }}" autocomplete="off">
-    <img src="/images/loupe.svg" alt="" class="dataset-search-input-icon">
+    <button type="submit" class="dataset-search-input-submit">
+      <i class="bi bi-search"></i>
+    </button>
   </div>
   <div class="text-center mt-20">
-    <button type="submit" class="btn btn-lg btn-sinopia fs-md mt-4">
-      Buscar
-    </a>
   </div>
 </form>
