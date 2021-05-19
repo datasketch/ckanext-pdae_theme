@@ -110,13 +110,13 @@
           </li>
           {% if c.userobj %}
             <li class="pdae-nav-item flex-shrink-0">
-              <a href="{{ h.url_for('/user/_logout') }}" class="bg-blue-sapphire text-white">
+              <a href="{{ h.url_for('/user/_logout') }}" class="btn btn-blue-sapphire" style="text-align: left;">
                 Cerrar sesión
               </a>
             </li>
           {% else %}
             <li class="pdae-nav-item flex-shrink-0">
-              <a href="{{ h.url_for('user.login') }}" class="bg-blue-sapphire text-white" {% if is_user_login %}aria-current="page"{% endif %}>
+              <a href="{{ h.url_for('user.login') }}" class="btn btn-blue-sapphire fw-light" {% if is_user_login %}aria-current="page"{% endif %} style="text-align: left;">
                 Portal de gestores
               </a>
             </li>
