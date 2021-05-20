@@ -644,7 +644,7 @@ a:hover {
 }
 
 .slider-wrapper {
-  padding: 0 48px;
+  padding: 0 24px;
   position: relative;
 }
 
@@ -658,7 +658,7 @@ a:hover {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 18px;
+  width: 12px;
 }
 
 .slider-prev.swiper-button-disabled,
@@ -668,12 +668,12 @@ a:hover {
 }
 
 .slider-prev {
-  left: 12px;
+  left: 0;
   transform: translateY(-50%) rotate(180deg);
 }
 
 .slider-next {
-  right: 12px;
+  right: 0;
 }
 
 @media screen and (min-width: 992px) {
@@ -720,14 +720,11 @@ a:hover {
   }
 
   .slider-wrapper {
-    padding: 0 64px;
+    padding: 0 36px;
   }
 
-  .slider-prev {
-    left: 16px;
-  }
-  
+  .slider-prev,
   .slider-next {
-    right: 16px;
+    width: 18px
   }
 }

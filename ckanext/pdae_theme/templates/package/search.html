@@ -29,7 +29,8 @@
           {% if ns.show_filters %}
             <div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">
               {% for facet in facet_titles %}
-                {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets, hide_empty=true) }}
+                {% set first = loop.index == 1 %}
+                {{ h.snippet('snippets/facet_list.html', title=facet_titles[facet], name=facet, search_facets=search_facets, hide_empty=true, is_first_panel=first) }}
               {% endfor %}
             </div>
             <div class="text-center mt-32">

@@ -6,13 +6,13 @@
     {% if items or not hide_empty %}
       <div class="panel bg-blue-sapphire border-0">
         <div id="{{ name }}-filter-heading" class="panel-heading" role="tab">
-          <h2 class="panel-title">
-            <a role="button" data-toggle="collapse" href="#{{ name }}-filter" aria-expanded="true" aria-controls="{{ name }}-filter" class="d-block text-decoration-none">
+          <h3 class="panel-title">
+            <a role="button" data-toggle="collapse" href="#{{ name }}-filter" aria-expanded="true" aria-controls="{{ name }}-filter" class="d-block text-decoration-none{% if not is_first_panel %} collapsed{% endif %}" {% if parent %}data-parent="#{{parent}}"{% endif %}>
               {{ title }}
             </a>
-          </h2>
+          </h3>
         </div>
-        <div id="{{ name }}-filter" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="{{ name }}-filter-heading">
+        <div id="{{ name }}-filter" class="panel-collapse collapse{% if is_first_panel %} in{% endif %}" role="tabpanel" aria-labelledby="{{ name }}-filter-heading">
           <div class="panel-body bg-white border-0">
             {% if items %}
               {% for item in items %}

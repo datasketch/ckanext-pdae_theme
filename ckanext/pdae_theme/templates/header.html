@@ -126,5 +126,14 @@
       </div>
     </nav>
     <div class="flag"></div>
+    {% set announce = h.get_announce() %}
+    {% if announce %}
+      <div class="announce">
+        <i class="bi bi-exclamation-triangle"></i>
+        <div class="announce-content">
+          {{ h.render_markdown(announce) }}
+        </div>
+      </div>
+    {% endif %}
   </header>
 {% endblock %}
