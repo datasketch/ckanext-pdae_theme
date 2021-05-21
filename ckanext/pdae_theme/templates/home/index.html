@@ -2,30 +2,40 @@
 
 {% set tags = h.get_facet_items_dict('tags', c.search_facets, limit=5) %}
 {% set organizations = h.get_facet_items_dict('organization', c.search_facets, limit=5) %}
+{% set featured_banner = h.get_featured_banner() %}
 
 {% block content %}
 <main id="content">
   {{ self.flash() }}
   {% snippet "snippets/pdae_theme_header_search.html", title="Busca en nuestro catálogo de Datos Abiertos", query=q %}
-  <section class="section has-bg-image text-white" style="background-image: url(/images/textura-roja.jpg);">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-          <div class="text-center">
-            <h2 class="fs-35 fw-light">
-              Datos de <span class="fw-bold">la pandemia</span>
-            </h2>
-            <p class="fs-22">
-              ¿Quieres conocer los datos que se han generado durante la pandemia por COVID-19 en Ecuador?
-            </p>
-            <a href="#" class="btn btn-lg btn-light mt-16">
-              Explorar
-            </a>
+  {% set show_featured_banner = h.show_featured_banner() %}
+  {% if show_featured_banner %}
+    <section class="section has-bg-image text-white" style="background-image: url(/images/textura-roja.jpg);">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="text-center">
+              {% if featured_banner.title %}
+                <h2 class="fs-35 fw-light">
+                  {{ h.render_markdown(featured_banner.title) }}
+                </h2>
+              {% endif %}
+              {% if featured_banner.text %}
+                <div class="fs-22">
+                  {{ h.render_markdown(featured_banner.text) }}
+                </div>
+              {% endif %}
+              {% if featured_banner.button and featured_banner.href %}
+                <a href="{{ featured_banner.href }}" class="btn btn-lg btn-light mt-16">
+                  {{ featured_banner.button }}
+                </a>
+              {% endif %}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  {% endif %}
   <section class="bg-cultured section-lg">
     <div class="container">
       <div class="text-center">

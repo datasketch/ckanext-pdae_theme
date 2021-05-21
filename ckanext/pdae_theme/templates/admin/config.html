@@ -6,4 +6,12 @@
   {{ super() }}
   <h3>Configuración extra</h3>
   {{ form.markdown('ckan.pdae_theme.announce', id='field-ckan-pdae-theme-announce', label="Anuncio", value=data['ckan.pdae_theme.announce'], error=errors['ckan.pdae_theme.announce'], placeholder="Texto de anuncio") }}
+  
+  {{ form.input('ckan.pdae_theme.featured_banner_title', id='field-ckan-pdae-theme-featured-banner-title', label='Título del banner destacado', value=data['ckan.pdae_theme.featured_banner_title'], error=errors['ckan.pdae_theme.featured_banner_title'], placeholder='Datos de la pandemia') }}
+
+  {{ form.markdown('ckan.pdae_theme.featured_banner_text', id='field-ckan-pdae-theme-featured-banner-text', label='Texto del banner destacado', value=data['ckan.pdae_theme.featured_banner_text'], error=errors['ckan.pdae_theme.featured_banner_text'], placeholder='¿Quieres conocer los datos que se han generado durante la pandemia por COVID-19 en Ecuador?') }}
+
+  {{ form.input('ckan.pdae_theme.featured_banner_button', id='field-ckan-pdae-theme-featured-banner-button', label='Texto del botón del banner destacado', value=data['ckan.pdae_theme.featured_banner_button'], error=errors['ckan.pdae_theme.featured_banner_button'], placeholder='Explorar') }}
+
+  {{ form.input('ckan.pdae_theme.featured_banner_href', id='field-ckan-pdae-theme-featured-banner-href', label='Enlace del botón del banner destacado', value=data['ckan.pdae_theme.featured_banner_href'], error=errors['ckan.pdae_theme.featured_banner_href'], placeholder='https://example.com') }}
 {% endblock %}

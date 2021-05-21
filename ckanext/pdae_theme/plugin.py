@@ -17,6 +17,23 @@ def get_announce():
     return announce
 
 
+def get_featured_banner():
+    featured_banner = {
+        'title': config.get('ckan.pdae_theme.featured_banner_title', ''),
+        'text': config.get('ckan.pdae_theme.featured_banner_text', ''),
+        'button': config.get('ckan.pdae_theme.featured_banner_button', ''),
+        'href': config.get('ckan.pdae_theme.featured_banner_href', '')
+    }
+    return featured_banner
+
+
+def show_featured_banner():
+    featured_banner = get_featured_banner()
+    title = featured_banner['title']
+    text = featured_banner['text']
+    return bool(title or text)
+
+
 def learn():
     return render_template('home/learn.html')
 
@@ -36,14 +53,20 @@ class PdaeThemePlugin(plugins.SingletonPlugin):
         ignore_missing = toolkit.get_validator('ignore_missing')
         unicode_safe = toolkit.get_validator('unicode_safe')
         schema.update({
-            'ckan.pdae_theme.announce': [ignore_missing, unicode_safe]
+            'ckan.pdae_theme.announce': [ignore_missing, unicode_safe],
+            'ckan.pdae_theme.featured_banner_title': [ignore_missing, unicode_safe],
+            'ckan.pdae_theme.featured_banner_text': [ignore_missing, unicode_safe],
+            'ckan.pdae_theme.featured_banner_button': [ignore_missing, unicode_safe],
+            'ckan.pdae_theme.featured_banner_href': [ignore_missing, unicode_safe]
         })
         return schema
 
     def get_helpers(self):
         return {
             'pdae_theme_get_datasets': get_datasets,
-            'get_announce': get_announce
+            'get_announce': get_announce,
+            'get_featured_banner': get_featured_banner,
+            'show_featured_banner': show_featured_banner
         }
 
     def get_blueprint(self):
