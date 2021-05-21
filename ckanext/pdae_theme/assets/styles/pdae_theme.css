@@ -542,6 +542,11 @@ a:hover {
   grid-template-areas: "d" "c" "b" "a";
 }
 
+.home-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
 .learn-resources .nav-tabs.nav-justified > li > a {
   background-color: #0f5a6b;
   color: #ffffff;
@@ -692,6 +697,10 @@ a:hover {
     gap: 30px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas: "a b c d";
+  }
+
+  .home-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .pdae-nav-item {

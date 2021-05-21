@@ -1,0 +1,27 @@
+{% if show_featured_banner %}
+  <section class="section has-bg-image text-white" style="background-image: url(/images/textura-roja.jpg);">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="text-center">
+            {% if featured_banner.title %}
+              <h2 class="fs-35 fw-light">
+                {{ h.render_markdown(featured_banner.title) }}
+              </h2>
+            {% endif %}
+            {% if featured_banner.text %}
+              <div class="fs-22">
+                {{ h.render_markdown(featured_banner.text) }}
+              </div>
+            {% endif %}
+            {% if featured_banner.button and featured_banner.href %}
+              <a href="{{ featured_banner.href }}" class="btn btn-lg btn-light mt-16">
+                {{ featured_banner.button }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
