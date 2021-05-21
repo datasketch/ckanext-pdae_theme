@@ -460,6 +460,10 @@ a:hover {
   .md\:justify-content-end {
     justify-content: flex-end;
   }
+
+  .md\:text-end {
+    text-align: right;
+  }
 }
 
 /*
@@ -565,6 +569,7 @@ a:hover {
 
 .mock-checkbox {
   background-color: #0F5A6B1A;
+  flex-shrink: 0;
   height: 16px;
   position: relative;
   width: 16px;

@@ -2,11 +2,17 @@
 
 {% block primary_content %}
 <div class="bg-white p-20">
-  <div class="d-flex align-items-center justify-content-between">
-    {% if pkg.tags %}
-      {% snippet "package/snippets/pdae_theme_tags.html", tags=pkg.tags %}
-    {% endif %}
-    {% snippet "package/snippets/pdae_theme_social_share.html" %}
+  <div class="row">
+    <div class="col-md-9">
+      {% if pkg.tags %}
+        {% snippet "package/snippets/pdae_theme_tags.html", tags=pkg.tags %}
+      {% endif %}
+    </div>
+    <div class="col-md-3">
+      <div class="mt-16 md:mt-0">
+        {% snippet "package/snippets/pdae_theme_social_share.html" %}
+      </div>
+    </div>
   </div>
   <div class="row mt-16">
     <div class="col-md-10">

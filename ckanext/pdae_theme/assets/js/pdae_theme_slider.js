@@ -21,11 +21,13 @@ ckan.module('pdae_theme_slider', function ($) {
         breakpoints: {
           768: {
             slidesPerView: 2,
-            spaceBetween: 32
+            spaceBetween: 32,
+            slidesPerGroup: 2,
           },
           992: {
             slidesPerView: 3,
-            spaceBetween: 32
+            spaceBetween: 32,
+            slidesPerGroup: 3
           }
         }
       })
