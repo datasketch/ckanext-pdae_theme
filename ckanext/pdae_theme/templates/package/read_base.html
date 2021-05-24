@@ -19,7 +19,9 @@
       {% endif %}
       <div class="row mt-16">
         <div class="col-md-8">
-          {% block primary_content %}{% endblock %}
+          {% block primary_content %}
+            {{ super() }}
+          {% endblock %}
         </div>
         <div class="col-md-4 mt-32 md:mt-0">
           {% block secondary_content %}

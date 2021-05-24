@@ -25,10 +25,25 @@ Volver al conjunto de datos
 
 {% block primary_content %}
 <div class="bg-white p-20">
-  {% snippet "package/snippets/pdae_theme_social_share.html" %}
+  {% if is_activity_archive %}
+    <div class="alert alert-danger">
+      {% trans url=h.url_for(pkg.type ~ '.read', id=pkg.id) %}
+        You're currently viewing an old version of this dataset. Data files may not match the old version of the metadata. <a href="{{ url }}">View the current version</a>.
+      {% endtrans %}
+    </div>
+  {% endif %}
+  <div class="row{% if is_activity_archive %} mt-20{% endif %}">
+    <div class="col-md-9">
+      <p class="text-blue-sapphire mb-0 fs-22"><em>Recurso</em></p>
+    </div>
+    <div class="col-md-3">
+      <div class="mt-16 md:mt-0">
+        {% snippet "package/snippets/pdae_theme_social_share.html" %}
+      </div>
+    </div>
+  </div>
   <div class="row mt-16">
     <div class="col-md-10">
-      <p class="mb-0 fs-22 text-blue-sapphire"><em>Recurso</em></p>
       <h1 class="fs-35 text-blue-sapphire fw-bold leading-tight mt-0" title="{{ h.resource_display_name(res) }}">
         {{ h.resource_display_name(res) }}
       </h1>
@@ -48,9 +63,37 @@ Volver al conjunto de datos
           Este recurso no tiene una descripción
         </p>
       {% endif %}
+      <div class="mt-20">
+        <a href="{{ res.url }}" class="btn btn-sinopia">
+          {% if res.resource_type in ('listing', 'service') %}
+            {{ _('View') }} <i class="bi bi-eye"></i>
+          {% elif res.resource_type == 'api' %}
+            {{ _('API Endpoint') }} <i class="bi bi-key"></i>
+          {% elif not res.has_views and not res.url_type == 'upload' %}
+            {{ _('Go to resource') }} <i class="bi bi-link-45deg"></i>
+          {% else %}
+            {{ _('Download') }} <i class="bi bi-download"></i>
+          {% endif %}
+        </a>
+      </div>
       <div class="mt-4">
-        <h3 class="text-blue-sapphire fw-bold fs-5">Tipo de archivo</h3>
+        <h3 class="text-blue-sapphire fw-bold fs-22">Tipo de archivo</h3>
         <span class="pdae-resource-format fs-16">{{res.format or 'data'}}</span>
+      </div>
+      <div class="mt-4">
+        <h3 class="text-blue-sapphire fw-bold fs-22">Fecha de actualización</h3>
+        <p class="text-jungle-green fs-18">
+          {{ h.render_datetime(res.metadata_modified, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}
+        </p>
+      </div>
+      <div class="mt-4">
+        <h3 class="text-blue-sapphire fw-bold fs-22">Fecha de creación</h3>
+        <p class="text-jungle-green fs-18">
+          {{ h.render_datetime(res.created, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}
+        </p>
+      </div>
+      <div class="mt-4">
+        <h3 class="text-blue-sapphire fw-bold fs-22">Vista previa</h3>
       </div>
       <div class="mt-20">
         <a href="#" class="btn btn-sinopia">
