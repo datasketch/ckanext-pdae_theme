@@ -24,12 +24,12 @@
           <em>{{ pkg.organization.title }}</em>
         </p>
       {% endif %}
-      {% set resources = h.dict_list_reduce(pkg.resources, 'format') %}
-      {% if resources %}
+      {% set formats = h.dict_list_reduce(pkg.resources, 'format') %}
+      {% if formats %}
         <ul class="list-inline d-flex align-items-center">
-          {% for resource in resources %}
+          {% for format in formats %}
             <li class="py-5 text-white">
-              <a href="{% url_for 'dataset.search', res_format=resource %}" class="text-decoration-none bg-sinopia py-4 px-8">{{ resource }}</a>
+              <a href="{% url_for 'dataset.search', res_format=format %}" class="pdae-resource-format">{{ format }}</a>
             </li>
           {% endfor %}
         </ul>
@@ -46,15 +46,13 @@
     </div>
   </div>
   <div class="mt-4">
-    <h2 class="text-blue-sapphire fw-bold fs-5">Dimensiones</h2>
-    <p class="fs-md text-jungle-green mb-0">156,789 filas x 15 columnas</p>
-  </div>
-  <div class="mt-4">
-    <h2 class="text-blue-sapphire fw-bold fs-5">Vista previa</h2>
+    {% block package_resources %}
+      {% snippet "package/snippets/pdae_theme_resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
+    {% endblock %}
   </div>
   <div class="mt-4">
     <h2 class="text-blue-sapphire fw-bold fs-5">
-      Nivel de apertura de datos <span class="badge" title="El nivel de apertura de datos se refiere a..."><i class="bi bi-info-circle text-blue-sapphire"></i></span>
+      Nivel de apertura de datos <span class="badge bg-transparent" title="El nivel de apertura de datos se refiere a..."><i class="bi bi-info-circle text-blue-sapphire"></i></span>
     </h2>
     <p>
       <i class="bi bi-star-fill text-yellow-star"></i>

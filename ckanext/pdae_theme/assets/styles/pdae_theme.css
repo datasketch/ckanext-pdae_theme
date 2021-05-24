@@ -150,6 +150,10 @@ a:hover {
   background-color: #ce370f;
 }
 
+.bg-transparent {
+  background-color: transparent;
+}
+
 .border-0 {
   border: 0 !important;
 }
@@ -591,6 +595,15 @@ a:hover {
   font-weight: 700;
 }
 
+.pdae-resource-format {
+  background-color: #ce370f;
+  color: #ffffff;
+  display: inline-block;
+  padding: 4px 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 .pdae-navbar {
   list-style-type: none;
   margin-bottom: 0;
@@ -651,6 +664,15 @@ a:hover {
 
 .pdae-nav-item a:hover {
   text-decoration: none;
+}
+
+.pdae-resource-item {
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; margin-bottom: 16px;
+  padding: 16px;
+}
+
+.pdae-resource-item:hover {
+  background-color: #fbf9f8;
 }
 
 .slider-wrapper {
