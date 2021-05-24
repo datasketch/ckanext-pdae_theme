@@ -235,6 +235,10 @@ a:hover {
   font-size: 14px;
 }
 
+.fs-16 {
+  font-size: 16px;
+}
+
 .fs-18 {
   font-size: 18px;
 }
@@ -413,6 +417,11 @@ a:hover {
 
 .text-blue-sapphire {
   color: #0f5a6b;
+}
+
+.text-break {
+  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .text-decoration-none,

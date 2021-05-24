@@ -5,26 +5,26 @@
   {{ self.flash() }}
   <section class="bg-cultured section">
     <div class="container">
-      <a href="{{ h.url_for('dataset.search') }}" class="fw-bold text-sinopia text-decoration-none fs-22">
+      <a href="{% block back_to_url %}{{ h.url_for('dataset.search') }}{% endblock %}" class="fw-bold text-sinopia text-decoration-none fs-22">
         <i class="b bi-chevron-left"></i>
-        <span>Volver al catálogo</span>
+        <span>{% block back_to_text %}Volver al catálogo{% endblock %}</span>
       </a>
-      {% if not is_activity_archive %}
-        {% if h.check_access('package_update', {'id': pkg.id}) %}
-          <div class="text-right">
-            <a href="{{ h.url_for('%s.edit' % pkg.type, id=pkg.name) }}" class="btn btn-sinopia">
-              <i class="bi bi-wrench"></i>
-              {{ _('Manage') }}
-            </a>
-          </div>
-        {% endif %}
+      {% if h.check_access('package_update', {'id': pkg.id}) and not is_activity_archive %}
+        <div class="text-right">
+          <a href="{% block manage_url %}{{ h.url_for('%s.edit' % pkg.type, id=pkg.name) }}{% endblock %}" class="btn btn-sinopia">
+            <i class="bi bi-wrench"></i>
+            {{ _('Manage') }}
+          </a>
+        </div>
       {% endif %}
       <div class="row mt-16">
         <div class="col-md-8">
           {% block primary_content %}{% endblock %}
         </div>
         <div class="col-md-4 mt-32 md:mt-0">
-          {% block secondary_content %}{% endblock %}
+          {% block secondary_content %}
+            {% snippet "package/snippets/pdae_theme_dataset_metadata.html", title="Metadatos", pkg=pkg %}
+          {% endblock %}
         </div>
       </div>
     </div>

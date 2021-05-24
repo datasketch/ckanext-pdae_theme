@@ -1,0 +1,68 @@
+{% extends "package/read_base.html" %}
+
+{% set res = resource %}
+
+{% block head_extras -%}
+  {{ super() }}
+  {% set description = h.markdown_extract(h.get_translated(res, 'description'), extract_length=200) if res.description else h.markdown_extract(h.get_translated(package, 'notes'), extract_length=200) %}
+  <meta property="og:title" content="{{ h.dataset_display_name(package) }} - {{ h.resource_display_name(res) }} - {{ g.site_title }}">
+  <meta property="og:description" content="{{ description|forceescape }}">
+{% endblock -%}
+
+{% block subtitle %}{{ h.dataset_display_name(package) }} {{ g.template_title_delimiter }} {{ h.resource_display_name(res) }}{% endblock %}
+
+{% block back_to_url %}
+  {{ h.url_for(package.type ~ '.read', id=package.name) }}
+{% endblock %}
+
+{% block back_to_text %}
+Volver al conjunto de datos
+{% endblock %}
+
+{% block manage_url %}
+  {{ h.url_for('%s_resource.edit' % package.type, id=package.name, resource_id=res.id) }}
+{% endblock %}
+
+{% block primary_content %}
+<div class="bg-white p-20">
+  {% snippet "package/snippets/pdae_theme_social_share.html" %}
+  <div class="row mt-16">
+    <div class="col-md-10">
+      <p class="mb-0 fs-22 text-blue-sapphire"><em>Recurso</em></p>
+      <h1 class="fs-35 text-blue-sapphire fw-bold leading-tight mt-0" title="{{ h.resource_display_name(res) }}">
+        {{ h.resource_display_name(res) }}
+      </h1>
+      {% if package.organization %}
+        <p class="fw-bold fs-22 text-sinopia">
+          <em>{{ package.organization.title }}</em>
+        </p>
+      {% endif %}
+      {% if pkg.notes %}
+        <div class="text-jungle-green fs-md mt-16 leading-normal">
+          {% if res.description %}
+            {{ h.render_markdown(res.description) }}
+          {% endif %}
+        </div>
+      {% else %}
+        <p class="text-jungle-green fs-md mt-4 mb-0">
+          Este recurso no tiene una descripción
+        </p>
+      {% endif %}
+      <div class="mt-4">
+        <h3 class="text-blue-sapphire fw-bold fs-5">Tipo de archivo</h3>
+        <span class="pdae-resource-format fs-16">{{res.format or 'data'}}</span>
+      </div>
+      <div class="mt-20">
+        <a href="#" class="btn btn-sinopia">
+          <i class="bi bi-exclamation-triangle"></i>
+          <span class="ms-2">Reportar recurso</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block secondary_content %}
+  {% snippet "package/snippets/pdae_theme_dataset_metadata.html", title="Metadatos del conjunto de datos", pkg=package %}
+{% endblock %}

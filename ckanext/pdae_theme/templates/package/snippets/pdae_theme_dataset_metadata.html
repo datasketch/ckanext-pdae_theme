@@ -1,0 +1,93 @@
+{#
+  Renders dataset metadata.
+
+  pkg - A package dict
+  title - A title for the element
+
+  Example:
+
+    {% snippet "package/snippets/pdae_theme_dataset_metadata.html", pkg=pkg, title="Some title" %}
+
+#}
+
+<div class="bg-white p-20">
+  <h2 class="text-sinopia fw-bold fs-22 m-0 leading-tight">{{ title }}</h2>
+  {% if pkg.organization %}
+    <div class="mt-16 text-jungle-green fs-18">
+      <p class="m-0">Fuente</p>
+      <p class="fw-bold m-0">
+        {{ pkg.organization.title }}
+      </p>
+    </div>
+  {% endif %}
+  {% if pkg.url %}
+    <div class="mt-16 text-jungle-green fs-18">
+      <p class="m-0">Página web</p>
+      <p class="fw-bold m-0">
+        <a href="{{ pkg.url }}" class="text-underline text-break" target="_blank">
+          {{ pkg.url }}
+        </a>
+      </p>
+    </div>
+  {% endif %}
+  {% if pkg.author %}
+    <div class="mt-16 text-jungle-green fs-18">
+      <p class="m-0">Autor</p>
+      <p class="fw-bold m-0">
+        {{ pkg.author }}
+      </p>
+    </div>
+  {% endif %}
+  {% if pkg.author_email %}
+    <div class="mt-16 text-jungle-green fs-18">
+      <p class="m-0">Correo electrónico</p>
+      <p class="fw-bold m-0">
+        <a href="mailto:{{pkg.author_email}}" class="text-underline text-break">{{pkg.author_email}}</a>
+      </p>
+    </div>
+  {% endif %}
+  {% if pkg.metadata_modified %}
+  <div class="mt-16 text-jungle-green fs-18">
+    <p class="m-0">Fecha de actualización</p>
+    <p class="fw-bold m-0">
+      {{ h.render_datetime(pkg.metadata_modified, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}</span>
+    </p>
+  </div>
+  {% endif %}
+  {% if pkg.metadata_created %}
+    <div class="mt-16 text-jungle-green fs-18">
+      <p class="m-0">Fecha de creación</p>
+      <p class="fw-bold m-0">
+        {{ h.render_datetime(pkg.metadata_created, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}</span>
+      </p>
+    </div>
+  {% endif %}
+  {% if pkg.license_title %}
+    <div class="mt-16 text-jungle-green fs-18">
+      <p class="m-0">Licencia de uso</p>
+      <p class="fw-bold m-0">
+        {% if pkg.license_url %}
+          <a class="text-underline" href="{{ pkg.license_url }}" rel="dc:rights" target="_blank">
+            {{ pkg.license_title }}
+          </a>
+          {% if pkg.isopen %}
+            <a href="http://opendefinition.org/okd/" title="{{ _('This dataset satisfies the Open Definition.') }}">
+              <img class="open-data" src="{{ h.url_for_static('/base/images/od_80x15_blue.png') }}" alt="[Open Data]" />
+            </a>
+          {% endif %}
+        {% else %}
+          {% if pkg_dict.license_id %}
+            <span property="dc:rights">{{ pkg.license_title }}</span>
+            {% if pkg.isopen %}
+              <a href="http://opendefinition.org/okd/" title="{{ _('This dataset satisfies the Open Definition.') }}">
+                <img class="open-data" src="{{ h.url_for_static('/base/images/od_80x15_blue.png') }}" alt="[Open Data]" />
+              </a>
+            {% endif %}
+          {% else %}
+            <span>{{ _('No License Provided') }}</span>
+          {% endif %}
+        {% endif %}
+      </p>
+    </div>
+  {% endif %}
+</div>
