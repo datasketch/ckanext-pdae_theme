@@ -38,10 +38,11 @@ def learn():
     return render_template('home/learn.html')
 
 
-class PdaeThemePlugin(plugins.SingletonPlugin):
+class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.ITemplateHelpers)
+    plugins.implements(plugins.IDatasetForm)
 
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
@@ -78,3 +79,37 @@ class PdaeThemePlugin(plugins.SingletonPlugin):
         for rule in rules:
             blueprint.add_url_rule(*rule)
         return blueprint
+
+    def _modify_package_schema(self, schema):
+        schema.update({
+            'custom_text': [toolkit.get_validator('ignore_missing'),
+                            toolkit.get_converter('convert_to_extras')]
+        })
+        return schema
+
+    def create_package_schema(self):
+        schema = super(PdaeThemePlugin, self).create_package_schema()
+        schema = self._modify_package_schema(schema)
+        return schema
+
+    def update_package_schema(self):
+        schema = super(PdaeThemePlugin, self).update_package_schema()
+        schema = self._modify_package_schema(schema)
+        return schema
+
+    def show_package_schema(self):
+        schema = super(PdaeThemePlugin, self).show_package_schema()
+
+        ignore_missing = toolkit.get_validator('ignore_missing')
+        convert_from_extras = toolkit.get_converter('convert_from_extras')
+
+        schema.update({
+            'custom_text': [convert_from_extras, ignore_missing]
+        })
+        return schema
+
+    def is_fallback(self):
+        return True
+
+    def package_types(self):
+        return []
