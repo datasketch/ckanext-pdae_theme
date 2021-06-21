@@ -83,13 +83,13 @@ Volver al conjunto de datos
       <div class="mt-4">
         <h3 class="text-blue-sapphire fw-bold fs-22">Fecha de actualización</h3>
         <p class="text-jungle-green fs-18">
-          {{ h.render_datetime(res.metadata_modified, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}
+          {{ h.pdae_theme_render_datetime(res.metadata_modified) }}
         </p>
       </div>
       <div class="mt-4">
         <h3 class="text-blue-sapphire fw-bold fs-22">Fecha de creación</h3>
         <p class="text-jungle-green fs-18">
-          {{ h.render_datetime(res.created, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}
+          {{ h.pdae_theme_render_datetime(res.created) }}
         </p>
       </div>
       <div class="mt-4">

@@ -50,7 +50,7 @@
   <div class="mt-16 text-jungle-green fs-18">
     <p class="m-0">Fecha de actualización</p>
     <p class="fw-bold m-0">
-      {{ h.render_datetime(pkg.metadata_modified, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}
+      {{ h.pdae_theme_render_datetime(pkg.metadata_modified) }}
     </p>
   </div>
   {% endif %}
@@ -58,7 +58,7 @@
     <div class="mt-16 text-jungle-green fs-18">
       <p class="m-0">Fecha de creación</p>
       <p class="fw-bold m-0">
-        {{ h.render_datetime(pkg.metadata_created, date_format="%d de %B de %Y", with_hours=False, with_seconds=False) }}
+        {{ h.pdae_theme_render_datetime(pkg.metadata_created) }}
       </p>
     </div>
   {% endif %}
