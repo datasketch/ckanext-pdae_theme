@@ -32,6 +32,10 @@ def get_featured_banner():
     return featured_banner
 
 
+def get_update_frequency():
+    return {"update_frequency": update_frequency}
+
+
 def show_featured_banner():
     featured_banner = get_featured_banner()
     title = featured_banner["title"]
@@ -39,7 +43,7 @@ def show_featured_banner():
     return bool(title or text)
 
 
-def pdae_theme_render_datetime(date_str, date_format = "d 'de' MMMM 'de' y", locale = ""):
+def pdae_theme_render_datetime(date_str, date_format="d 'de' MMMM 'de' y", locale=""):
     if not date_str:
         return ""
     if not locale:
@@ -50,6 +54,31 @@ def pdae_theme_render_datetime(date_str, date_format = "d 'de' MMMM 'de' y", loc
 
 def learn():
     return render_template("home/learn.html")
+
+
+def create_update_frequency():
+    user = toolkit.get_action("get_site_user")({"ignore_auth": True}, {})
+    context = {"user": user["name"]}
+    try:
+        data = {"id": "update_frequency"}
+        toolkit.get_action("vocabulary_show")(context, data)
+    except toolkit.ObjectNotFound:
+        data = {"name": "update_frequency"}
+        vocab = toolkit.get_action("vocabulary_create")(context, data)
+        for tag in ("Tiempo real", "Diaria", "Semanal", "Mensual", "Anual"):
+            data = {"name": tag, "vocabulary_id": vocab["id"]}
+            toolkit.get_action("tag_create")(context, data)
+
+
+def update_frequency():
+    create_update_frequency()
+    try:
+        tag_list = toolkit.get_action("tag_list")
+        update_frequency = tag_list(
+            data_dict={"vocabulary_id": "update_frequency"})
+        return update_frequency
+    except toolkit.ObjectNotFound:
+        return None
 
 
 class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
@@ -83,6 +112,7 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             "get_featured_banner": get_featured_banner,
             "show_featured_banner": show_featured_banner,
             "pdae_theme_render_datetime": pdae_theme_render_datetime,
+            "update_frequency": update_frequency
         }
 
     def get_blueprint(self):
@@ -97,8 +127,12 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 
     def _modify_package_schema(self, schema):
         schema.update({
-            "custom_text": [toolkit.get_validator("ignore_missing"),
-                            toolkit.get_converter("convert_to_extras")]
+            "dataset_lang": [toolkit.get_validator("ignore_missing"),
+                             toolkit.get_converter("convert_to_extras")]
+        })
+        schema.update({
+            "update_frequency": [toolkit.get_validator("ignore_missing"),
+                                   toolkit.get_converter("convert_to_tags")("update_frequency")]
         })
         return schema
 
@@ -119,7 +153,17 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         convert_from_extras = toolkit.get_converter("convert_from_extras")
 
         schema.update({
-            "custom_text": [convert_from_extras, ignore_missing]
+            "dataset_lang": [convert_from_extras, ignore_missing]
+        })
+
+        schema["tags"]["__extras"].append(
+            toolkit.get_converter("free_tags_only"))
+        schema.update({
+            "update_frequency": [
+                toolkit.get_converter("convert_from_tags")(
+                    "update_frequency"),
+                toolkit.get_validator("ignore_missing")
+            ]
         })
         return schema
 

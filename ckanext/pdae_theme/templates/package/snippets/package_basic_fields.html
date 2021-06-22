@@ -1,5 +1,17 @@
 {% ckan_extends %}
 
 {% block package_basic_fields_custom %}
-  {{ form.input('custom_text', label=_('Custom Text'), id='field-custom_text', placeholder=_('custom text'), value=data.custom_text, error=errors.custom_text, classes=['control-medium']) }}
+  {{ form.input('dataset_lang', label="Lenguaje", id="field-dataset_lang", placeholder="ej. Español", value=data.dataset_lang, error=errors.dataset_lang, classes=["control-medium"]) }}
+  <div class="form-group control-group">
+    <label for="field-update_frequency" class="control-label">
+      Frecuencia de actualización
+    </label>
+    <div class="controls">
+      <select name="update_frequency" id="field-update_frequency" data-module="autocomplete">
+        {% for freq in h.update_frequency() %}
+          <option value="{{ freq }}" {% if update_frequency in data.get("update_frequency", []) %}selected="selected"{% endif %}>{{ freq }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
 {% endblock %}
