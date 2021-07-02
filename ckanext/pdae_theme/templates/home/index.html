@@ -1,7 +1,7 @@
 {% ckan_extends %}
 
-{% set tags = h.get_facet_items_dict('tags', c.search_facets, limit=5) %}
-{% set organizations = h.get_facet_items_dict('organization', c.search_facets, limit=5) %}
+{% set tags = h.get_facet_items_dict('tags', c.search_facets, limit=10) %}
+{% set organizations = h.get_facet_items_dict('organization', c.search_facets, limit=10) %}
 {% set featured_banner = h.get_featured_banner() %}
 
 {% set stats = h.get_site_statistics() %}
@@ -55,48 +55,54 @@
       {% endif %}
     </div>
   </section>
-  <section class="home-stats text-white">
-    <div class="has-bg-image" style="background-image: url(/images/waves-blue.jpg);">
-      <div class="section d-flex flex-column align-items-center justify-content-between">
-        <h2 class="text-center fs-35 fw-light leading-tight">
-          Explora los <span class="fw-bold">temas con<br/>más publicaciones</span>
-        </h2>
-        <div class="col-md-10">
+  <div class="section has-bg-image home-topics text-white">
+    <div class="container">
+      <div class="row text-center d-flex align-items-center flex-wrap">
+        <div class="col-xs-12 col-md-6">
+          <h2 class="fs-35 fw-light leading-tight">
+            Explora los <span class="fw-bold">temas con<br/>más publicaciones</span>
+          </h2>
+          <a href="#" class="btn btn-lg btn-light mt-20 hidden-xs hidden-sm">Ver temas</a>
+        </div>
+        <div class="col-xs-12 col-md-6">
           <ul class="list-inline d-flex flex-wrap justify-content-center mt-16">
             {% for tag in tags %}
-              <li class="py-5">
+              <li class="py-5 home-list-item">
                 <a href="{% url_for 'dataset.search', tags=tag.name %}" class="btn btn-teal-blue fw-light">
                   {{ tag.display_name | title }}
                 </a>
               </li>
             {% endfor %}
           </ul>
+          <a href="#" class="btn btn-lg btn-light mt-20 hidden-md hidden-lg">Ver temas</a>
         </div>
-        <a href="#" class="btn btn-lg btn-light mt-20">Ver ranking</a>
       </div>
     </div>
-    <div class="has-bg-image" style="background-image: url(/images/waves-orange.jpg);">
-      <div class="section d-flex flex-column align-items-center justify-content-between">
-        <h2 class="text-center fs-35 fw-light leading-tight">
-          Explora las <span class="fw-bold">entidades que más<br/>conjuntos de datos publican</span>
-        </h2>
-        <div class="col-md-10">
+  </div>
+  <div class="section has-bg-image home-entities text-white">
+    <div class="container">
+      <div class="row text-center d-flex align-items-center flex-wrap">
+        <div class="col-xs-12 col-md-6">
+          <h2 class="fs-35 fw-light leading-tight">
+            Explora las <span class="fw-bold">entidades que más<br/>conjuntos de datos publican</span>
+          </h2>
+          <a href="#" class="btn btn-lg btn-light mt-20 hidden-xs hidden-sm">Ver entidades</a>
+        </div>
+        <div class="col-xs-12 col-md-6">
           <ul class="list-inline d-flex flex-wrap justify-content-center mt-16">
             {% for org in organizations %}
-              <li class="py-5">
+              <li class="py-5 home-list-item">
                 <a href="{% url_for 'dataset.search', organization=org.name %}" class="btn btn-sinopia-i fw-light">
                   {{ org.display_name }}
                 </a>
               </li>
             {% endfor %}
           </ul>
+          <a href="#" class="btn btn-lg btn-light mt-20 hidden-md hidden-lg">Ver entidades</a>
         </div>
-        <a href="#" class="btn btn-lg btn-light mt-20">
-          Ver ranking
-        </a>
       </div>
     </div>
-  </section>
+  </div>
   <section class="bg-cultured section-lg">
     <div class="container">
       <div class="text-center">
