@@ -10,6 +10,10 @@
 
 {% set ns = namespace(show_filters=false) %}
 
+{% set stats = h.get_site_statistics() %}
+{% set dataset_count = stats.dataset_count %}
+{% set organization_count = stats.organization_count %}
+
 
 {% block content %}
 <main id="content">
@@ -20,8 +24,28 @@
     {% endif %}
   {% endfor %}
   {{ self.flash() }}
-  {% snippet "snippets/pdae_theme_header_search.html", title="Catálogo de Datos Abiertos", query=q %}
-  <section class="bg-cultured pb-5">
+  <section class="bg-blue-sapphire section-lg text-white" id="home-main-banner">
+    <div class="container">
+      <div class="row d-flex align-items-end flex-wrap">
+        <div class="col-xs-12 col-md-7 text-center md:text-start">
+          <h1 class="fs-45 fw-bold mt-0 leading-none">
+            Catálogo de Datos Abiertos
+          </h1>
+          <div class="row">
+            <div class="col-md-8">
+              <p class="fs-22 mt-20 leading-tight">
+                Explora más de <span class="fw-bold">{{ dataset_count }} conjuntos de datos</span> de más de <span class="fw-bold">{{ organization_count }} instituciones</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-10 col-xs-offset-1 col-md-5 col-md-offset-0 mt-32 md:mt-0">
+          {% snippet "snippets/pdae_theme_dataset_search.html", query=q %}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bg-cultured pt-64">
     <div class="container">
       <div class="row">
         <div class="col-md-3">

@@ -4,10 +4,37 @@
 {% set organizations = h.get_facet_items_dict('organization', c.search_facets, limit=5) %}
 {% set featured_banner = h.get_featured_banner() %}
 
+{% set stats = h.get_site_statistics() %}
+{% set dataset_count = stats.dataset_count %}
+{% set organization_count = stats.organization_count %}
+
 {% block content %}
 <main id="content">
   {{ self.flash() }}
-  {% snippet "snippets/pdae_theme_header_search.html", title="Busca en nuestro catálogo de Datos Abiertos", query=q %}
+  <section class="bg-blue-sapphire section-lg text-white" id="home-main-banner">
+    <div class="container">
+      <div class="row d-flex align-items-end flex-wrap">
+        <div class="col-xs-8 col-xs-offset-2 col-md-5 col-md-offset-0 col-md-push-7">
+          <img class="img-responsive center-block" src="/images/logo-home.png" alt="">
+        </div>
+        <div class="col-md-7 col-md-pull-5 mt-32 text-center md:mt-0 md:text-start">
+          <h1 class="fs-52 fw-bold mt-0 leading-none">
+            Busca en nuestro catálogo de Datos Abiertos
+          </h1>
+          <div class="row">
+            <div class="col-md-8">
+              <p class="fs-22 mt-20 leading-tight">
+                Explora más de <span class="fw-bold">{{ dataset_count }} conjuntos de datos</span> de más de <span class="fw-bold">{{ organization_count }} instituciones</span>.
+              </p>
+              <div class="mt-20">
+                {% snippet "snippets/pdae_theme_dataset_search.html", query=query %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   {% set show_featured_banner = h.show_featured_banner() %}
   {{ h.snippet("home/snippets/pdae_theme_featured_banner.html", show_featured_banner=show_featured_banner, featured_banner=featured_banner) }}
   <section class="bg-cultured section-lg">
