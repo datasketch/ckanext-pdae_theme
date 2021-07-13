@@ -1,8 +1,8 @@
 <footer>
-  <div class="bg-blue-sapphire footer-section">
+  <div class="bg-teal-blue footer-section">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 footer-section-top-col">
+        <div class="col-md-4 footer-section-col">
           <ul class="list-unstyled">
             <li>
               <a href="{{ h.url_for(controller='dataset', action='search') }}">
@@ -21,7 +21,7 @@
             </li>
           </ul>
         </div>
-        <div class="col-md-3 footer-section-top-col">
+        <div class="col-md-3 footer-section-col">
           <p class="fw-bold fs-18">Contáctanos</p>
           <ul class="list-inline">
             <li>
@@ -41,42 +41,31 @@
             </li>
           </ul>
         </div>
-        <div class="col-md-5 footer-section-top-col">
-          <ul class="list-unstyled">
+        <div class="col-md-5 footer-section-col">
+          <ul class="list-unstyled md:text-end">
             <li>Av. Patria y Av. 12 de Octubre Edificio Planifica Ecuador</li>
             <li>Código Postal: 170525/ Quito - Ecuador</li>
             <li>Teléfono: 593-2 3 97-8900</li>
-            <li class="fw-bold">www.planificacion.gob.ec</li>
+            <li class="fw-bold">
+              <a href="http://www.planificacion.gob.ec" target="_blank">www.planificacion.gob.ec</a>
+            </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
-  <div class="bg-space-cadet footer-section">
-    <img class="footer-gov hidden-xs hidden-sm" src="/images/footer-gov.png" alt="">
-    <div class="container hidden-sm hidden-xs">
-      <div class="row d-flex flex-wrap align-items-center">
-        <div class="col-xs-12 col-md-4 col-md-push-4">
-          <img class="img-responsive center-block" src="/images/footer-entities.svg" alt="">
+  <div class="bg-white footer-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-md-push-4 footer-section-col">
+          <img style="max-width: 300px;" class="img-responsive center-block" src="/images/footer-ministerio.png" alt="">
         </div>
-        <div class="col-xs-12 col-md-4 col-md-pull-4">
-          <img class="img-responsive" src="/images/giz.svg" alt="">
+        <div class="col-md-4 col-md-push-4 footer-section-col">
+          <img style="max-width: 300px;" class="img-responsive center-block" src="/images/footer-gov.png" alt="">
         </div>
-      </div>
-    </div>
-    <div class="hidden-md hidden-lg">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-sm-offset-3">
-            <img class="img-responsive center-block" src="/images/footer-entities.svg" alt="">
-          </div>
+        <div class="col-md-4 col-md-pull-8 footer-section-col">
+          <img style="max-width: 300px;" class="img-responsive center-block" src="/images/giz.svg" alt="">
         </div>
-      </div>
-      <div class="bg-white mt-32">
-        <img src="/images/footer-gov-mobile.svg" alt="">
-      </div>
-      <div class="container mt-32">
-        <img class="img-responsive center-block" src="/images/giz.svg" alt="">
       </div>
     </div>
   </div>
