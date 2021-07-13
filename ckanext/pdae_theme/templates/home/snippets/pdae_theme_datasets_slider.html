@@ -30,15 +30,18 @@
                     {% endif %}
                   </p>
                   {% if dataset.resources %}
-                    <ul class="list-inline d-flex align-items-center">
-                      {% for resource in h.dict_list_reduce(dataset.resources, 'format') %}
-                        <li class="py-5 text-white">
-                          <a href="{{ h.url_for(dataset.type ~ '.read', id=dataset.name) }}" class="text-decoration-none bg-sinopia py-4 px-8 fs-14" data-format="{{ resource.lower() }}">
-                            <span>{{ resource }}</span>
-                          </a>
-                        </li>
-                      {% endfor %}
-                    </ul>
+                    <div class="mt-8">
+                      <p class="pdae-formats-label">Formatos disponibles</p>
+                      <ul class="list-unstyled d-flex align-items-center overflow-x-auto">
+                        {% for resource in h.dict_list_reduce(dataset.resources, 'format') %}
+                          <li class="px-4 d-flex">
+                            <span class="pdae-tag pdae-tag-sm">
+                              {{ resource }}
+                            </span>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
                   {% endif %}
                 </div>
               </div>

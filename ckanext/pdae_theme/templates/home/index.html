@@ -62,19 +62,19 @@
           <h2 class="fs-35 fw-light leading-tight">
             Explora los <span class="fw-bold">temas con<br/>más publicaciones</span>
           </h2>
-          <a href="#" class="btn btn-lg btn-light mt-20 hidden-xs hidden-sm">Ver temas</a>
+          <a href="#" class="btn btn-lg btn-blue-sapphire-i mt-20 hidden-xs hidden-sm">Ver temas</a>
         </div>
         <div class="col-xs-12 col-md-6">
-          <ul class="list-inline d-flex flex-wrap justify-content-center mt-16">
+          <ul class="list-unstyled mt-16">
             {% for tag in tags %}
-              <li class="py-5 home-list-item">
-                <a href="{% url_for 'dataset.search', tags=tag.name %}" class="btn btn-teal-blue fw-light">
+              <li class="pdae-explore-tag-container">
+                <a href="{% url_for 'dataset.search', tags=tag.name %}" class="pdae-explore-tag pdae-explore-tag-blue-sapphire">
                   {{ tag.display_name | title }}
                 </a>
               </li>
             {% endfor %}
           </ul>
-          <a href="#" class="btn btn-lg btn-light mt-20 hidden-md hidden-lg">Ver temas</a>
+          <a href="#" class="btn btn-lg btn-blue-sapphire mt-20 hidden-md hidden-lg">Ver temas</a>
         </div>
       </div>
     </div>
@@ -86,19 +86,19 @@
           <h2 class="fs-35 fw-light leading-tight">
             Explora las <span class="fw-bold">entidades que más<br/>conjuntos de datos publican</span>
           </h2>
-          <a href="#" class="btn btn-lg btn-light mt-20 hidden-xs hidden-sm">Ver entidades</a>
+          <a href="#" class="btn btn-lg btn-sinopia-i mt-20 hidden-xs hidden-sm">Ver entidades</a>
         </div>
         <div class="col-xs-12 col-md-6">
-          <ul class="list-inline d-flex flex-wrap justify-content-center mt-16">
+          <ul class="list-unstyled mt-16">
             {% for org in organizations %}
-              <li class="py-5 home-list-item">
-                <a href="{% url_for 'dataset.search', organization=org.name %}" class="btn btn-sinopia-i fw-light">
+              <li class="pdae-explore-tag-container">
+                <a href="{% url_for 'dataset.search', organization=org.name %}" class="pdae-explore-tag pdae-explore-tag-sinopia">
                   {{ org.display_name }}
                 </a>
               </li>
             {% endfor %}
           </ul>
-          <a href="#" class="btn btn-lg btn-light mt-20 hidden-md hidden-lg">Ver entidades</a>
+          <a href="#" class="btn btn-lg btn-sinopia-i mt-20 hidden-md hidden-lg">Ver entidades</a>
         </div>
       </div>
     </div>

@@ -14,10 +14,12 @@
   --blue-sapphire: #0f5a6b;
   --cultured: #fbf9f8;
   --eagle-green: #0a3f4c;
+  --jungle-green: #102223;
+  --nickel: #697072;
   --sinopia: #ce370f;
+  --sonic-silver: #707070;
   --space-cadet: #20295C;
   --teal-blue: #1d6d7f;
-  --jungle-green: #102223;
 }
 
 /*
@@ -184,6 +186,12 @@ a:hover {
 .btn-blue-sapphire:hover {
   background-color: var(--blue-sapphire);
   color: white;
+}
+
+.btn-blue-sapphire-i,
+.btn-blue-sapphire-i:hover {
+  background-color: white;
+  color: var(--blue-sapphire);
 }
 
 .btn-light,
@@ -371,6 +379,11 @@ a:hover {
   overflow-x: auto;
 }
 
+.px-4 {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
 .p-16 {
   padding: 16px;
 }
@@ -464,7 +477,11 @@ a:hover {
 }
 
 .text-jungle-green {
-  color: var(----jungle-green);
+  color: var(--jungle-green);
+}
+
+.text-nickle {
+  color: var(--nickel);
 }
 
 .text-sinopia {
@@ -692,7 +709,7 @@ a:hover {
 
 .pdae-navbar-md.navbar-open + .pdae-nav-overlay {
   position: fixed;
-  background-color: var(----jungle-green);
+  background-color: var(--jungle-green);
   opacity: 0.85;
   top: 0;
   left: 0;
@@ -735,6 +752,51 @@ a:hover {
 
 .pdae-resource-item:hover {
   background-color: var(--cultured);
+}
+
+.pdae-formats-label {
+  color: var(--nickel);
+  font-style: italic;
+  font-size: 14px;
+}
+
+.pdae-tag {
+  padding: 4px 8px;
+  font-size: 14px;
+  color: var(--nickel);
+  border: 1px solid var(--sonic-silver);
+}
+
+.pdae-tag-sm {
+  font-size: 12px;
+}
+
+.pdae-explore-tag-container {
+  overflow: auto;
+  padding: 10px;
+  display: inline-block;
+}
+
+.pdae-explore-tag {
+  border: 1px solid white;
+  color: white;
+  font-size: 16px;
+  padding: 6px 12px; 
+  white-space: nowrap;
+}
+
+.pdae-explore-tag:hover {
+  text-decoration: none;
+}
+
+.pdae-explore-tag-blue-sapphire:hover {
+  background-color: white;
+  color: var(--blue-sapphire);
+}
+
+.pdae-explore-tag-sinopia:hover {
+  background-color: white;
+  color: var(--sinopia);
 }
 
 .slider-wrapper {
