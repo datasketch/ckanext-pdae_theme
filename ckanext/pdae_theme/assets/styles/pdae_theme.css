@@ -550,6 +550,10 @@ a:hover {
   text-decoration: underline;
 }
 
+#data-access-banner {
+  background-image: url("/images/data-access-mobile.jpg");
+}
+
 .dataset-search-input-container {
   display: flex;
 }
@@ -767,6 +771,10 @@ a:hover {
 }
 
 @media screen and (min-width: 992px) {
+  #data-access-banner {
+    background-image: url("/images/data-access.jpg");
+  }
+  
   #home-main-banner {
     background-image: url("/images/bg-home.svg");
   }
