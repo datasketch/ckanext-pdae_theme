@@ -947,10 +947,6 @@ a:hover {
     padding: 0 16px;
   }
 
-  .footer-translated {
-    
-  }
-
   .footer-bottom {
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "c a b";
