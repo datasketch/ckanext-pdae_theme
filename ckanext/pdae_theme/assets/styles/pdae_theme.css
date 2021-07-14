@@ -226,6 +226,10 @@ a:hover {
   display: block;
 }
 
+.d-inline-block {
+  display: inline-block;
+}
+
 .d-flex {
   display: flex;
   flex-direction: row;
@@ -542,7 +546,7 @@ a:hover {
 
 .announce {
   align-items: flex-start;
-  background-color: var(--blue-sapphire);
+  background-color: var(--eagle-green);
   color: white;
   display: flex;
   padding: 8px 16px;
@@ -742,6 +746,17 @@ a:hover {
 }
 
 .pdae-nav-item a:hover {
+  text-decoration: none;
+}
+
+.pdae-package-item {
+  background: white;
+  display: block;
+  padding: 24px;
+}
+
+.pdae-package-item:hover {
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),0 2px 4px -1px rgba(0,0,0,0.06);
   text-decoration: none;
 }
 
