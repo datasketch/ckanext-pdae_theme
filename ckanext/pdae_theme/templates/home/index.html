@@ -2,6 +2,9 @@
 
 {% set tags = h.get_facet_items_dict('tags', c.search_facets, limit=10) %}
 {% set organizations = h.get_facet_items_dict('organization', c.search_facets, limit=10) %}
+{% set groups_facet = h.unselected_facet_items('groups', limit=None) %}
+{% set groups_count = groups_facet | length %}
+{% set groups = h.get_featured_groups(groups_count) %}
 {% set featured_banner = h.get_featured_banner() %}
 
 {% set stats = h.get_site_statistics() %}
@@ -35,6 +38,18 @@
       </div>
     </div>
   </section>
+  <div class="pdae-groups-banner section-lg">
+    <div class="container">
+      <div class="pdae-groups-list">
+        {% for group in groups %}
+          <a href="{{ h.url_for(group.type ~ '.read', id=group.name) }}" class="pdae-group-list-item">
+            <img src="{{ group.image_display_url }}" alt="{{ group.display_name }}">
+            <span class="mt-4">{{ group.display_name }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
   {% set show_featured_banner = h.show_featured_banner() %}
   {{ h.snippet("home/snippets/pdae_theme_featured_banner.html", show_featured_banner=show_featured_banner, featured_banner=featured_banner) }}
   <section class="bg-cultured section-lg">
