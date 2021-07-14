@@ -266,6 +266,10 @@ a:hover {
   flex-wrap: wrap;
 }
 
+.fs-12 {
+  font-size: 12px;
+}
+
 .fs-14 {
   font-size: 14px;
 }
@@ -617,6 +621,32 @@ a:hover {
   margin-bottom: 0;
 }
 
+.footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  grid-template-areas: "a" "b" "c";
+}
+
+.footer-bottom-col {
+  max-width: 400px;
+  border: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-bottom-a {
+  grid-area: a;
+}
+
+.footer-bottom-b {
+  grid-area: b;
+}
+
+.footer-bottom-c {
+  grid-area: c;
+}
+
 .featured-banner {
   background-image: url("/images/bg-featured-mobile.jpg")
 }
@@ -914,6 +944,27 @@ a:hover {
   .footer-section-col {
     margin-bottom: 0;
     text-align: left;
+  }
+
+  .footer-bottom {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "c a b";
+  }
+
+  .footer-bottom-col {
+    align-items: flex-start;
+    border-right: 1px solid var(--sonic-silver);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 100%;
+    padding: 0 16px;
+  }
+
+  .footer-bottom-col:last-child {
+    border: none;
   }
 
   .pdae-group-list-item {

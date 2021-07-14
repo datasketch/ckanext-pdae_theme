@@ -80,7 +80,7 @@
           <a href="#" class="btn btn-lg btn-blue-sapphire-i mt-20 hidden-xs hidden-sm">Ver temas</a>
         </div>
         <div class="col-xs-12 col-md-6">
-          <ul class="list-unstyled mt-16">
+          <ul class="list-unstyled mt-16 overflow-x-auto">
             {% for tag in tags %}
               <li class="pdae-explore-tag-container">
                 <a href="{% url_for 'dataset.search', tags=tag.name %}" class="pdae-explore-tag pdae-explore-tag-blue-sapphire">
@@ -104,7 +104,7 @@
           <a href="#" class="btn btn-lg btn-sinopia-i mt-20 hidden-xs hidden-sm">Ver entidades</a>
         </div>
         <div class="col-xs-12 col-md-6">
-          <ul class="list-unstyled mt-16">
+          <ul class="list-unstyled mt-16 overflow-x-auto">
             {% for org in organizations %}
               <li class="pdae-explore-tag-container">
                 <a href="{% url_for 'dataset.search', organization=org.name %}" class="pdae-explore-tag pdae-explore-tag-sinopia">
