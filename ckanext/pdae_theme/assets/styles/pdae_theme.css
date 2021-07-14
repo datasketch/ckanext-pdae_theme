@@ -201,7 +201,8 @@ a:hover {
 }
 
 .btn-sinopia,
-.btn-sinopia:hover {
+.btn-sinopia:hover,
+.btn-sinopia:focus {
   background-color: var(--sinopia);
   color: white;
 }
@@ -761,18 +762,20 @@ a:hover {
 }
 
 .pdae-resource-item {
-  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; margin-bottom: 16px;
+  box-shadow: 0px 0px 3px #00000029;
+  margin-bottom: 16px;
   padding: 16px;
+  display: block;
 }
 
 .pdae-resource-item:hover {
   background-color: var(--cultured);
+  text-decoration: none;
 }
 
 .pdae-formats-label {
   color: var(--nickel);
   font-style: italic;
-  font-size: 14px;
 }
 
 .pdae-tag {

@@ -15,23 +15,28 @@
 {% set url_action = pkg.type ~ ('_resource.edit' if url_is_edit and can_edit else '_resource.read') %}
 {% set url = h.url_for(url_action, id=pkg.id if is_activity_archive else pkg.name, resource_id=res.id, **({'activity_id': request.args['activity_id']} if 'activity_id' in request.args else {})) %}
 
-<li data-id="{{ res.id }}" class="pdae-resource-item">
+<a data-id="{{ res.id }}" class="pdae-resource-item" href="{{ url }}" title="{{ res.name or res.description }}" data-format="{{ res.format.lower() or 'data'}}">
   {% block resource_item_title %}
-    <div class="d-flex justify-content-between align-items-center">
-      <a class="text-blue-sapphire fs-22 fw-bold" href="{{ url }}" title="{{ res.name or res.description }}" data-format="{{ res.format.lower() or 'data'}}">
-        {{ h.resource_display_name(res) | truncate(50) }}
-        {{ h.popular('views', res.tracking_summary.total, min=10) if res.tracking_summary }}
-      </a>
-      <span class="pdae-resource-format flex-shrink-0">
-        {{ res.format or 'data' }}
-      </span>
+    <div class="d-flex justify-content-between">
+      <div>
+        <h2 class="text-blue-sapphire fs-22 fw-bold m-0">
+          {{ h.resource_display_name(res) | truncate(50) }}
+          {{ h.popular('views', res.tracking_summary.total, min=10) if res.tracking_summary }}
+        </h2>
+        {% if res.description %}
+          <div class="row mt-8">
+            <div class="col-md-9">
+              <p class="text-jungle-green mb-0">
+                {{ h.markdown_extract(h.get_translated(res, 'description'), extract_length=100) }}
+              </p>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <div class="md:text-end">
+        <p class="pdae-formats-label">Formato</p>
+        <span class="pdae-tag">{{ res.format or 'data' }}</span>
+      </div>
     </div>
   {% endblock %}
-  {% block resource_item_description %}
-    {% if res.description %}
-      <p class="text-jungle-green mb-0">
-        {{ h.markdown_extract(h.get_translated(res, 'description'), extract_length=80) }}
-      </p>
-    {% endif %}
-  {% endblock %}
-</li>
+</a>

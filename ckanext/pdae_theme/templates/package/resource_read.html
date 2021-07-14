@@ -34,7 +34,7 @@ Volver al conjunto de datos
   {% endif %}
   <div class="row{% if is_activity_archive %} mt-20{% endif %}">
     <div class="col-md-9">
-      <p class="text-blue-sapphire mb-0 fs-22"><em>Recurso</em></p>
+      <p class="text-blue-sapphire mb-0 fs-22"><em>Archivo</em></p>
     </div>
     <div class="col-md-3">
       <div class="mt-16 md:mt-0">
@@ -77,8 +77,8 @@ Volver al conjunto de datos
         </a>
       </div>
       <div class="mt-4">
-        <h3 class="text-blue-sapphire fw-bold fs-22">Tipo de archivo</h3>
-        <span class="pdae-resource-format fs-16">{{res.format or 'data'}}</span>
+        <h3 class="text-blue-sapphire fw-bold fs-22">Formato</h3>
+        <span class="pdae-tag">{{res.format or 'data'}}</span>
       </div>
       <div class="mt-4">
         <h3 class="text-blue-sapphire fw-bold fs-22">Fecha de actualización</h3>

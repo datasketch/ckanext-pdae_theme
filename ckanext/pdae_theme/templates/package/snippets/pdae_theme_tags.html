@@ -1,10 +1,9 @@
 {% if tags %}
-<ul class="list-inline d-flex flex-wrap">
+<p class="pdae-formats-label mb-0">Etiquetas</p>
+<ul class="list-unstyled">
   {% for tag in tags %}
-    <li class="text-white py-5">
-      <a class="text-decoration-none bg-blue-sapphire py-4 px-8 fs-14" href="{% url_for 'dataset.search', tags=tag.name %}">
-        {{ tag.display_name }}
-      </a>
+  <li class="d-inline-block py-5">
+      <span class="pdae-tag">{{ tag.display_name }}</span>
     </li>
   {% endfor %}
 </ul>
