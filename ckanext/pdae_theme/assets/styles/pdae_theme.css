@@ -36,7 +36,8 @@ body {
 }
 
 a,
-a:hover {
+a:hover,
+a:focus {
   color: inherit;
 }
 
@@ -183,19 +184,22 @@ a:hover {
 }
 
 .btn-blue-sapphire,
-.btn-blue-sapphire:hover {
+.btn-blue-sapphire:hover,
+.btn-blue-sapphire:focus {
   background-color: var(--blue-sapphire);
   color: white;
 }
 
 .btn-blue-sapphire-i,
-.btn-blue-sapphire-i:hover {
+.btn-blue-sapphire-i:hover,
+.btn-blue-sapphire-i:focus {
   background-color: white;
   color: var(--blue-sapphire);
 }
 
 .btn-light,
-.btn-light:hover {
+.btn-light:hover,
+.btn-light:focus {
   border: 1px solid white;
   color: white;
 }
@@ -208,13 +212,15 @@ a:hover {
 }
 
 .btn-sinopia-i,
-.btn-sinopia-i:hover {
+.btn-sinopia-i:hover,
+.btn-sinopia-i:focus {
   background-color: white;
   color: var(--sinopia);
 }
 
 .btn-teal-blue,
-.btn-teal-blue:hover {
+.btn-teal-blue:hover,
+.btn-teal-blue:focus {
   background-color: var(--teal-blue);
   color: white;
 }
