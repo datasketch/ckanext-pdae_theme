@@ -68,7 +68,7 @@ Volver al conjunto de datos
         {% set resource_url = h.url_for('%s_resource.read' % package.type, id=package.name, resource_id=res.id) %}
         {% set data_url = resource.url %}
         {% if ('format' in res) and ('csv' == res.format | lower ) %}
-          <a href="/visualiza/?data={{ data_url }}&resource={{ resource_url }}&origin={{ origin_url }}" class="btn btn-sinopia">
+          <a href="/visualiza/?lang=es&data={{ data_url }}&resource={{ resource_url }}&origin={{ origin_url }}" class="btn btn-sinopia">
             Visualizar datos
           </a>
         {% endif %}
