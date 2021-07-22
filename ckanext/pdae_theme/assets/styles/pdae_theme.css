@@ -611,6 +611,12 @@ a:focus {
   text-align: center;
 }
 
+.footer-image {
+  height: 100%;
+  object-fit: contain;
+  width: auto;
+}
+
 .footer-section {
   color: white;
   padding-bottom: 32px;
