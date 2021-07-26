@@ -1,5 +1,17 @@
 {% ckan_extends %}
 
+{% block meta %}
+  {{ super() }}
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src=https://www.googletagmanager.com/gtag/js?id=G-983H1L4B69></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-983H1L4B69');
+  </script>
+{% endblock %}
+
 {% block custom_styles %}
   {{ super() }}
   {% asset 'ckanext-pdae_theme/pdae_theme_css' %}
