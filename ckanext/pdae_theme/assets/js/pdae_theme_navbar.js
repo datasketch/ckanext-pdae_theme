@@ -7,8 +7,7 @@ ckan.module('pdae_theme_navbar', function ($) {
       const target = document.getElementById(this.options.target)
       triggers.forEach(function (trigger) {
         trigger.addEventListener('click', function () {
-          target.classList.toggle('navbar-open')
-          document.body.classList.toggle('dark')
+          target.classList.toggle('nav-open')
         })
       })
     }

@@ -53,39 +53,37 @@
   <header>
     <nav class="bg-cultured" data-module="pdae_theme_navbar" data-module-trigger="navbar-switch" data-module-target="navbar-menu">
       <div class="container-fluid">
-        <ul class="pdae-navbar justify-content-between pdae-navbar-xs">
+        <ul class="pdae-nav-xs list-unstyled mb-0">
           <li class="pdae-nav-item">
             <a href="{{ h.url_for('home.index') }}">
-              <!-- <img src="/images/site-logo.png" alt=""> -->
               <img src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="">
             </a>
           </li>
           <li class="pdae-nav-item">
-            <button class="fs-35 btn bg-cultured text-blue-sapphire navbar-switch">
+            <button class="btn bg-cultured text-blue-sapphire fs-35 navbar-switch">
               <i class="bi bi-list"></i>
             </button>
           </li>
         </ul>
-        <ul class="pdae-navbar pdae-navbar-md" id="navbar-menu">
-          <li class="pdae-nav-item text-end hidden-md hidden-lg">
+        <ul class="pdae-nav-md list-unstyled mb-0" id="navbar-menu">
+          <li class="pdae-nav-item text-end visible-xs visible-sm">
             <button class="fs-22 btn btn-blue-sapphire navbar-switch">
               <i class="bi bi-x-lg"></i>
             </button>
           </li>
           <li class="pdae-nav-item hidden-xs hidden-sm">
             <a href="{{ h.url_for('home.index') }}">
-              <!-- <img src="/images/site-logo.png" alt=""> -->
               <img src="{{ h.url_for_static_or_external(g.site_logo) }}" alt="">
             </a>
           </li>
-          <li class="pdae-nav-item{% if is_home %} active{% endif %}">
-            <a href="{{ h.url_for('home.index') }}" class="" {% if is_home %}aria-current="page"{% endif %}>
+          <li class="pdae-nav-item">
+            <a href="{{ h.url_for('home.index') }}">
               Inicio
             </a>
           </li>
-          <li class="pdae-nav-item{% if is_dataset_search %} active{% endif %}">
-            <a href="{{ h.url_for('dataset.search') }}" {% if is_dataset_search %}aria-current="page"{% endif %}>
-              Catálogo de Datos Abiertos
+          <li class="pdae-nav-item">
+            <a href="{{ h.url_for('dataset.search') }}">
+              Catálogo de<br>Datos Abiertos
             </a>
           </li>
           <li class="pdae-nav-item">
@@ -99,24 +97,38 @@
             </a>
           </li>
           <li class="pdae-nav-item">
-            <a href="/centro-de-aprendizaje/preguntas-frecuentes">
+            <span href="#">
               Centro de aprendizaje
-            </a>
+            </span>
+            <ul class="pdae-nav-submenu list-unstyled mb-0">
+              <li class="hidden-xs hidden-sm">
+                <span>Centro de aprendizaje</span>
+              </li>
+              <li>
+                <a href="/centro-de-aprendizaje/preguntas-frecuentes">Preguntas frecuentes</a>
+              </li>
+              <li>
+                <a href="/centro-de-aprendizaje/manuales">Manuales de usuario</a>
+              </li>
+              <li>
+                <a href="/centro-de-aprendizaje/cursos">Cursos de capacitación</a>
+              </li>
+            </ul>
           </li>
           <li class="pdae-nav-item">
             <a href="#">
-              Participación ciudadana
+              Participación<br>ciudadana
             </a>
           </li>
           {% if c.userobj %}
-            <li class="pdae-nav-item flex-shrink-0">
-              <a href="{{ h.url_for('/user/_logout') }}" class="btn btn-blue-sapphire" style="text-align: left;">
+            <li class="pdae-nav-item">
+              <a href="{{ h.url_for('/user/_logout') }}" class="btn pdae-nav-login">
                 Cerrar sesión
               </a>
             </li>
           {% else %}
-            <li class="pdae-nav-item flex-shrink-0">
-              <a href="{{ h.url_for('user.login') }}" class="btn btn-blue-sapphire fw-light" {% if is_user_login %}aria-current="page"{% endif %} style="text-align: left;">
+            <li class="pdae-nav-item">
+              <a href="{{ h.url_for('user.login') }}" class="btn pdae-nav-login fw-light"}>
                 Iniciar sesión
               </a>
             </li>
