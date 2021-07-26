@@ -6,7 +6,6 @@ from babel.dates import format_date
 from ckan.common import config
 from ckan.lib.helpers import lang
 from ckanext import pdae_theme
-from flask import Blueprint, render_template
 
 
 def get_datasets(sort_key="metadata_modified desc"):
@@ -52,10 +51,6 @@ def pdae_theme_render_datetime(date_str, date_format="d 'de' MMMM 'de' y", local
     return format_date(datetime_, format=date_format, locale=locale)
 
 
-def learn():
-    return render_template("home/learn.html")
-
-
 def create_update_frequency():
     user = toolkit.get_action("get_site_user")({"ignore_auth": True}, {})
     context = {"user": user["name"]}
@@ -83,7 +78,6 @@ def update_frequency():
 
 class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
-    plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IDatasetForm)
 
@@ -115,16 +109,6 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             "update_frequency": update_frequency
         }
 
-    def get_blueprint(self):
-        blueprint = Blueprint(self.name, self.__module__)
-        blueprint.template_folder = "templates"
-        rules = [
-            ("/centro-de-aprendizaje", "learn", learn)
-        ]
-        for rule in rules:
-            blueprint.add_url_rule(*rule)
-        return blueprint
-
     def _modify_package_schema(self, schema):
         schema.update({
             "dataset_lang": [toolkit.get_validator("ignore_missing"),
@@ -132,7 +116,7 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
         })
         schema.update({
             "update_frequency": [toolkit.get_validator("ignore_missing"),
-                                   toolkit.get_converter("convert_to_tags")("update_frequency")]
+                                 toolkit.get_converter("convert_to_tags")("update_frequency")]
         })
         return schema
 

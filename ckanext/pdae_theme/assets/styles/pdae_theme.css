@@ -681,23 +681,6 @@ a:focus {
   background-image: url("/images/bg-entities-mobile.jpg");
 }
 
-.learn-resources .nav-tabs.nav-justified > li > a {
-  background-color: var(--blue-sapphire);
-  color: white;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.learn-resources .nav-tabs > li.active > a {
-  background-color: var(--cultured);
-  color: var(--blue-sapphire);
-}
-
-.learn-resources .nav-tabs.nav-justified > li.active > a,
-.learn-resources .nav-tabs.nav-justified > li > a {
-  border-bottom-color: transparent;
-}
-
 .login-form .form-control {
   border-radius: 0;
   border: 0;
