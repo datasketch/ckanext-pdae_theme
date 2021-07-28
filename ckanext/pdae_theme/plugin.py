@@ -75,6 +75,18 @@ def update_frequency():
     except toolkit.ObjectNotFound:
         return None
 
+def get_menu_labels():
+    menu = {
+        'dataset': config.get("ckan.pdae_theme.dataset_link_label", "Catálogo de Datos Abiertos"),
+        'blog': config.get("ckan.pdae_theme.blog_link_label", "Blog / Noticias"),
+        'regulations': config.get("ckan.pdae_theme.regulations_link_label", "Normativa"),
+        'learn': config.get("ckan.pdae_theme.learn_link_label", "Centro de aprendizaje"),
+        'faq': config.get("ckan.pdae_theme.learn_faq_link_label", "Preguntas frecuentes"),
+        'manuals': config.get("ckan.pdae_theme.learn_manuals_link_label", "Manuales de usuario"),
+        'courses': config.get("ckan.pdae_theme.learn_courses_link_label", "Cursos de capacitación"),
+        'participation': config.get("ckan.pdae_theme.participation_link_label", "Participación ciudadana")
+    }
+    return menu
 
 class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
@@ -95,7 +107,15 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             "ckan.pdae_theme.featured_banner_title": [ignore_missing, unicode_safe],
             "ckan.pdae_theme.featured_banner_text": [ignore_missing, unicode_safe],
             "ckan.pdae_theme.featured_banner_button": [ignore_missing, unicode_safe],
-            "ckan.pdae_theme.featured_banner_href": [ignore_missing, unicode_safe]
+            "ckan.pdae_theme.featured_banner_href": [ignore_missing, unicode_safe],
+            "ckan.pdae_theme.dataset_link_label": [unicode_safe],
+            "ckan.pdae_theme.blog_link_label": [unicode_safe],
+            "ckan.pdae_theme.regulations_link_label": [unicode_safe],
+            "ckan.pdae_theme.learn_link_label": [unicode_safe],
+            "ckan.pdae_theme.learn_faq_link_label": [unicode_safe],
+            "ckan.pdae_theme.learn_manuals_link_label": [unicode_safe],
+            "ckan.pdae_theme.learn_courses_link_label": [unicode_safe],
+            "ckan.pdae_theme.participation_link_label": [unicode_safe],
         })
         return schema
 
@@ -106,7 +126,8 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             "get_featured_banner": get_featured_banner,
             "show_featured_banner": show_featured_banner,
             "pdae_theme_render_datetime": pdae_theme_render_datetime,
-            "update_frequency": update_frequency
+            "update_frequency": update_frequency,
+            'get_menu_labels': get_menu_labels
         }
 
     def _modify_package_schema(self, schema):

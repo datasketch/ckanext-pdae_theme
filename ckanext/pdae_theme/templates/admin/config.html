@@ -4,7 +4,26 @@
 
 {% block admin_form %}
   {{ super() }}
+  <h3>Menú</h3>
+  
+  {{ form.input('ckan.pdae_theme.dataset_link_label', id='field-ckan.pdae-theme-dataset-link-label', label="Título: Catálogo de Datos Abiertos", value=data['ckan.pdae_theme.dataset_link_label'], error=errors['ckan.pdae_theme.dataset_link_label'], placeholder="Catálogo de Datos Abiertos") }}
+
+  {{ form.input('ckan.pdae_theme.blog_link_label', id='field-ckan.pdae-theme-blog-link-label', label="Título: Blog y noticias", value=data['ckan.pdae_theme.blog_link_label'], error=errors['ckan.pdae_theme.blog_link_label'], placeholder="Blog / Noticias") }}
+
+  {{ form.input('ckan.pdae_theme.regulations_link_label', id='field-ckan.pdae-theme-regulations-link-label', label="Título: Normativa", value=data['ckan.pdae_theme.regulations_link_label'], error=errors['ckan.pdae_theme.regulations_link_label'], placeholder="Normativa") }}
+  
+  {{ form.input('ckan.pdae_theme.learn_link_label', id='field-ckan.pdae-theme-learn-link-label', label="Título: Centro de aprendizaje", value=data['ckan.pdae_theme.learn_link_label'], error=errors['ckan.pdae_theme.learn_link_label'], placeholder="Centro de aprendizaje") }}
+
+  {{ form.input('ckan.pdae_theme.learn_faq_link_label', id='field-ckan.pdae-theme-learn-faq-link-label', label="Título: Preguntas frecuentes", value=data['ckan.pdae_theme.learn_faq_link_label'], error=errors['ckan.pdae_theme.learn_faq_link_label'], placeholder="Preguntas frecuentes") }}
+
+  {{ form.input('ckan.pdae_theme.learn_manuals_link_label', id='field-ckan.pdae-theme-learn-manuals-link-label', label="Título: Manuales de usuario", value=data['ckan.pdae_theme.learn_manuals_link_label'], error=errors['ckan.pdae_theme.learn_manuals_link_label'], placeholder="Manuales de usuario") }}
+
+  {{ form.input('ckan.pdae_theme.learn_courses_link_label', id='field-ckan.pdae-theme-learn-courses-link-label', label="Título: Cursos de capacitación", value=data['ckan.pdae_theme.learn_courses_link_label'], error=errors['ckan.pdae_theme.learn_courses_link_label'], placeholder="Cursos de capacitación") }}
+  
+  {{ form.input('ckan.pdae_theme.participation_link_label', id='field-ckan.pdae-theme-participation-link-label', label="Título: Participación ciudadana", value=data['ckan.pdae_theme.participation_link_label'], error=errors['ckan.pdae_theme.participation_link_label'], placeholder="Participación ciudadana") }}
+  
   <h3>Configuración extra</h3>
+  
   {{ form.markdown('ckan.pdae_theme.announce', id='field-ckan-pdae-theme-announce', label="Anuncio", value=data['ckan.pdae_theme.announce'], error=errors['ckan.pdae_theme.announce'], placeholder="Texto de anuncio") }}
   
   {{ form.input('ckan.pdae_theme.featured_banner_title', id='field-ckan-pdae-theme-featured-banner-title', label='Título del banner destacado', value=data['ckan.pdae_theme.featured_banner_title'], error=errors['ckan.pdae_theme.featured_banner_title'], placeholder='Datos de la pandemia') }}

@@ -3,6 +3,7 @@
 {% set is_home = c.controller == 'home' and c.action == 'index' %}
 {% set is_dataset_search = c.controller == 'dataset' and c.action == 'search' %}
 {% set is_user_login = c.controller == 'user' and c.action == 'login' %}
+{% set menu_labels = h.get_menu_labels() %}
 
 {% block header_wrapper %}
   {% if c.userobj %}
@@ -83,41 +84,47 @@
           </li>
           <li class="pdae-nav-item">
             <a href="{{ h.url_for('dataset.search') }}">
-              Catálogo de<br>Datos Abiertos
+              {{ menu_labels['dataset'] }}
             </a>
           </li>
           <li class="pdae-nav-item">
             <a href="/blog">
-              Blog / Noticias
+              {{ menu_labels['blog'] }}
             </a>
           </li>
           <li class="pdae-nav-item">
             <a href="/normativa">
-              Normativa
+              {{ menu_labels['regulations'] }}
             </a>
           </li>
           <li class="pdae-nav-item">
             <span href="#">
-              Centro de aprendizaje
+              {{ menu_labels['learn'] }}
             </span>
             <ul class="pdae-nav-submenu list-unstyled mb-0">
               <li class="hidden-xs hidden-sm">
-                <span>Centro de aprendizaje</span>
+                <span>{{ menu_labels['learn'] }}</span>
               </li>
               <li>
-                <a href="/centro-de-aprendizaje/preguntas-frecuentes">Preguntas frecuentes</a>
+                <a href="/centro-de-aprendizaje/preguntas-frecuentes">
+                  {{ menu_labels['faq'] }}
+                </a>
               </li>
               <li>
-                <a href="/centro-de-aprendizaje/manuales">Manuales de usuario</a>
+                <a href="/centro-de-aprendizaje/manuales">
+                  {{ menu_labels['manuals'] }}
+                </a>
               </li>
               <li>
-                <a href="/centro-de-aprendizaje/cursos">Cursos de capacitación</a>
+                <a href="/centro-de-aprendizaje/cursos">
+                  {{ menu_labels['courses'] }}
+                </a>
               </li>
             </ul>
           </li>
           <li class="pdae-nav-item">
             <a href="#">
-              Participación<br>ciudadana
+              {{ menu_labels['participation'] }}
             </a>
           </li>
           {% if c.userobj %}

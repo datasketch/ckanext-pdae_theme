@@ -785,6 +785,7 @@ a:focus {
   background-color: var(--blue-sapphire);
   display: block;
   height: 100%;
+  overflow: auto;
   position: fixed;
   right: 0;
   top: 0;
@@ -977,6 +978,7 @@ a:focus {
   
   .pdae-nav-item {
     color: var(--blue-sapphire);
+    max-width: 180px;
     padding: 0;
     text-align: center;
   }
@@ -1023,6 +1025,7 @@ a:focus {
     padding-left: 0;
     position: absolute;
     top: 0;
+    z-index: 1;
   }
 
   .pdae-nav-xs {
