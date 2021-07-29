@@ -47,6 +47,11 @@
     </div>
   </div>
   <div class="mt-4">
+    <a href="{{ h.url_for(pkg.type ~ '.groups', id=pkg.id if is_activity_archive else pkg.name) }}" class="btn btn-sinopia">
+      Ver grupos
+    </a>
+  </div>
+  <div class="mt-4">
     {% block package_resources %}
       {% snippet "package/snippets/pdae_theme_resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
     {% endblock %}
