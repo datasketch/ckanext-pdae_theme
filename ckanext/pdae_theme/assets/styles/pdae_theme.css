@@ -636,7 +636,7 @@ a:focus {
 .footer-bottom {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 48px;
   grid-template-areas: "a" "b" "c";
 }
 
@@ -954,14 +954,11 @@ a:focus {
   .footer-bottom {
     grid-template-columns: repeat(3, 1fr);
     grid-template-areas: "c a b";
+    gap: 16px;
   }
 
   .footer-bottom-col {
-    align-items: flex-start;
     border-right: 1px solid var(--sonic-silver);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     margin-left: 0;
     margin-right: 0;
     max-width: 100%;
