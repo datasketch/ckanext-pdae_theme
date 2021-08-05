@@ -33,4 +33,13 @@
   {{ form.input('ckan.pdae_theme.featured_banner_button', id='field-ckan-pdae-theme-featured-banner-button', label='Texto del botón del banner destacado', value=data['ckan.pdae_theme.featured_banner_button'], error=errors['ckan.pdae_theme.featured_banner_button'], placeholder='Explorar') }}
 
   {{ form.input('ckan.pdae_theme.featured_banner_href', id='field-ckan-pdae-theme-featured-banner-href', label='Enlace del botón del banner destacado', value=data['ckan.pdae_theme.featured_banner_href'], error=errors['ckan.pdae_theme.featured_banner_href'], placeholder='https://example.com') }}
+
+  <h3>Contacto</h3>
+
+  {{ form.input('ckan.pdae_theme.support_email', id='field-ckan-pdae-theme-support-email', label='Correo electrónico de contacto', value=data['ckan.pdae_theme.support_email'], error=errors['ckan.pdae_theme.support_email'], placeholder='soporte@domain.com') }}
+
+  {{ form.input('ckan.pdae_theme.twitter', id='field-ckan-pdae-theme-twitter', label='URL de Twitter', value=data['ckan.pdae_theme.twitter'], error=errors['ckan.pdae_theme.twitter'], placeholder='https://twitter.com/usuario') }}
+
+  {{ form.input('ckan.pdae_theme.facebook', id='field-ckan-pdae-theme-facebook', label='URL de Facebook', value=data['ckan.pdae_theme.facebook'], error=errors['ckan.pdae_theme.facebook'], placeholder='https://www.facebook.com/usuario') }}
+
 {% endblock %}

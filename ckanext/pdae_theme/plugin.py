@@ -88,6 +88,16 @@ def get_menu_labels():
     }
     return menu
 
+def get_support_email():
+    email = config.get("ckan.pdae_theme.support_email", "datosabiertos@planificacion.gob.ec")
+    return email
+
+def get_social_media():
+    return {
+        "twitter": config.get("ckan.pdae_theme.twitter"),
+        "facebook": config.get("ckan.pdae_theme.facebook")
+    }
+
 class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
@@ -116,6 +126,9 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             "ckan.pdae_theme.learn_manuals_link_label": [unicode_safe],
             "ckan.pdae_theme.learn_courses_link_label": [unicode_safe],
             "ckan.pdae_theme.participation_link_label": [unicode_safe],
+            "ckan.pdae_theme.support_email": [unicode_safe],
+            "ckan.pdae_theme.facebook": [unicode_safe],
+            "ckan.pdae_theme.twitter": [unicode_safe]
         })
         return schema
 
@@ -127,7 +140,9 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             "show_featured_banner": show_featured_banner,
             "pdae_theme_render_datetime": pdae_theme_render_datetime,
             "update_frequency": update_frequency,
-            'get_menu_labels': get_menu_labels
+            "get_menu_labels": get_menu_labels,
+            "get_support_email": get_support_email,
+            "get_social_media": get_social_media
         }
 
     def _modify_package_schema(self, schema):

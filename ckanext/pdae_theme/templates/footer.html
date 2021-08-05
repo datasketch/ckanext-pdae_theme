@@ -25,18 +25,13 @@
           <p class="fw-bold fs-18">Contáctanos</p>
           <ul class="list-inline">
             <li class="fs-22">
-              <a href="#" aria-label="Visitar Twitter" target="_blank">
+              <a href="{{ h.get_social_media()['twitter'] }}" aria-label="Visitar Twitter" target="_blank">
                 <i class="bi bi-twitter"></i>
               </a>
             </li>
             <li class="fs-22">
-              <a href="#" aria-label="Visitar Facebook" target="_blank">
+              <a href="{{ h.get_social_media()['facebook'] }}" aria-label="Visitar Facebook" target="_blank">
                 <i class="bi bi-facebook"></i>
-              </a>
-            </li>
-            <li class="fs-22">
-              <a href="#" aria-label="Abrir grupo de Telegram" target="_blank">
-                <i class="bi bi-telegram"></i>
               </a>
             </li>
           </ul>
