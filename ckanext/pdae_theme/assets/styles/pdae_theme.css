@@ -946,6 +946,13 @@ a:focus {
     width: 100%;
   }
 
+  .pdae-groups-list-dataset {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -16px 0 0 -16px;
+    width: calc(100% + 16px);
+  }
+
   .pdae-group-list-item {
     width: calc(100% / 7);
   }

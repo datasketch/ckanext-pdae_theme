@@ -46,11 +46,41 @@
       {% endif %}
     </div>
   </div>
-  <div class="mt-4">
-    <a href="{{ h.url_for(pkg.type ~ '.groups', id=pkg.id if is_activity_archive else pkg.name) }}" class="btn btn-sinopia">
-      Ver grupos
-    </a>
-  </div>
+  {% if pkg.groups %}
+    <h2 class="text-sinopia fw-bold">Grupos</h2>
+    <p class="text-jungle-green fs-md mt-16 leading-normal">Este conjunto de datos pertenece a los siguientes grupos:</p>
+    <div class="row">
+      {% for group in pkg.groups %}
+        <div class="col-xs-12 col-md-6 col-xl-4">
+          <a class="pdae-resource-item" href="{{ h.url_for(group.type or 'group' ~ '.read', id=group.name) }}" title="{{ _('View {name}').format(name=group.display_name) }}">
+            <div class="d-flex justify-content-between">
+              <div>
+                <h2 class="text-blue-sapphire fs-16 fw-bold m-0">
+                  {{ group.display_name }}
+                </h2>
+                {% if group.description %}
+                  <div class="row mt-8">
+                    <div class="col-md-9">
+                      <p class="text-jungle-green mb-0">
+                        {{ h.markdown_extract(h.get_translated(group, 'description'), extract_length=100) }}
+                      </p>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  {% if h.check_access('package_update', {'id': pkg.id}) and not is_activity_archive %}
+    <div class="mt-4">
+      <a href="{{ h.url_for(pkg.type ~ '.groups', id=pkg.id if is_activity_archive else pkg.name) }}" class="btn btn-sinopia">
+        Ver grupos
+      </a>
+    </div>
+  {% endif %}
   <div class="mt-4">
     {% block package_resources %}
       {% snippet "package/snippets/pdae_theme_resources_list.html", pkg=pkg, resources=pkg.resources, is_activity_archive=is_activity_archive %}
