@@ -8,8 +8,11 @@
     </label>
     <div class="controls">
       <select name="update_frequency" id="field-update_frequency" data-module="autocomplete">
+        {% set existing_uf_id = data.get("update_frequency", []) %}
+        <option value="">Por favor selecciona la frecuencia de actualización</option>
         {% for freq in h.update_frequency() %}
-          <option value="{{ freq }}" {% if update_frequency in data.get("update_frequency", []) %}selected="selected"{% endif %}>{{ freq }}</option>
+          {% set is_selected = freq in existing_uf_id %}
+          <option value="{{ freq }}" {% if is_selected %}selected="selected"{% endif %}>{{ freq }}</option>
         {% endfor %}
       </select>
     </div>

@@ -60,7 +60,7 @@ def create_update_frequency():
     except toolkit.ObjectNotFound:
         data = {"name": "update_frequency"}
         vocab = toolkit.get_action("vocabulary_create")(context, data)
-        for tag in ("Tiempo real", "Diaria", "Semanal", "Mensual", "Anual"):
+        for tag in (u"Tiempo real", u"Diaria", u"Semanal", u"Mensual", u"Bimestral", u"Trimestral", u"Semestral", u"Anual"):
             data = {"name": tag, "vocabulary_id": vocab["id"]}
             toolkit.get_action("tag_create")(context, data)
 
@@ -74,6 +74,7 @@ def update_frequency():
         return update_frequency
     except toolkit.ObjectNotFound:
         return None
+
 
 def get_menu_labels():
     menu = {
@@ -158,8 +159,10 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
                              toolkit.get_converter("convert_to_extras")]
         })
         schema.update({
-            "update_frequency": [toolkit.get_validator("ignore_missing"),
-                                 toolkit.get_converter("convert_to_tags")("update_frequency")]
+            "update_frequency": [
+                toolkit.get_validator("ignore_missing"),
+                toolkit.get_converter("convert_to_tags")("update_frequency")
+            ]
         })
         return schema
 
@@ -176,11 +179,11 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def show_package_schema(self):
         schema = super(PdaeThemePlugin, self).show_package_schema()
 
-        ignore_missing = toolkit.get_validator("ignore_missing")
-        convert_from_extras = toolkit.get_converter("convert_from_extras")
-
         schema.update({
-            "dataset_lang": [convert_from_extras, ignore_missing]
+            "dataset_lang": [
+                toolkit.get_converter('convert_from_extras'),
+                toolkit.get_validator('ignore_missing')
+            ]
         })
 
         schema["tags"]["__extras"].append(
