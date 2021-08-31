@@ -2,9 +2,7 @@
 
 {% set tags = h.get_facet_items_dict('tags', c.search_facets, limit=10) %}
 {% set organizations = h.get_facet_items_dict('organization', c.search_facets, limit=10) %}
-{% set groups_facet = h.unselected_facet_items('groups', limit=None) %}
-{% set groups_count = groups_facet | length %}
-{% set groups = h.get_featured_groups(groups_count) %}
+{% set groups = h.get_groups_with_packages() %}
 {% set featured_banner = h.get_featured_banner() %}
 
 {% set stats = h.get_site_statistics() %}

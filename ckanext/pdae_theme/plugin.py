@@ -1,11 +1,11 @@
 from datetime import datetime
 
+import ckan.logic as logic
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from babel.dates import format_date
 from ckan.common import config
 from ckan.lib.helpers import lang
-from ckanext import pdae_theme
 
 
 def get_datasets(sort_key="metadata_modified desc"):
@@ -98,6 +98,12 @@ def get_social_media():
         "facebook": config.get("ckan.pdae_theme.facebook")
     }
 
+def get_groups_with_packages():
+    context = {'ignore_auth': True }
+    groups = logic.get_action('group_list')(context, { "all_fields": True })
+    groups = filter(lambda g: g["package_count"] > 0, groups)
+    return list(groups)
+
 class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
@@ -142,7 +148,8 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             "update_frequency": update_frequency,
             "get_menu_labels": get_menu_labels,
             "get_support_email": get_support_email,
-            "get_social_media": get_social_media
+            "get_social_media": get_social_media,
+            "get_groups_with_packages": get_groups_with_packages
         }
 
     def _modify_package_schema(self, schema):
