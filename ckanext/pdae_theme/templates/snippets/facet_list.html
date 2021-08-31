@@ -15,7 +15,7 @@
         <div id="{{ name }}-filter" class="panel-collapse collapse{% if is_first_panel %} in{% endif %}" role="tabpanel" aria-labelledby="{{ name }}-filter-heading">
           <div class="panel-body bg-white border-0">
             {% if items %}
-              {% for item in items %}
+              {% for item in items | sort(attribute="display_name") %}
                 {% set index = loop.index %}
                 {% set href = h.remove_url_param(name, item.name, extras=extras, alternative_url=alternative_url) if item.active else h.add_url_param(new_params={name: item.name}, extras=extras, alternative_url=alternative_url) %}
                 {% set label = label_function(item) if label_function else item.display_name %}

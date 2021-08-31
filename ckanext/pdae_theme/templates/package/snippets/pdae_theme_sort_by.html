@@ -15,7 +15,7 @@
   <select name="sort" id="field-order-by" class="form-control" aria-label="Ordenar resultados">
     {% for label, value in sorting %}
       {% if label and value %}
-        <option value="{{ value }}"{% if sort_by_selected == value %}selected="selected"{% endif %}>{{ label }}</option>
+        <option value="{{ value }}"{% if sorting_selected == value %}selected="selected"{% endif %}>{{ label }}</option>
       {% endif %}
     {% endfor %}
   </select>
