@@ -5,6 +5,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from babel.dates import format_date
 from ckan.common import config
+from ckan.lib import base
 from ckan.lib.helpers import lang
 
 
@@ -109,6 +110,22 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IDatasetForm)
+    plugins.implements(plugins.IMiddleware)
+
+    def make_middleware(self, app, config):
+        def error_handler(e):
+            extra_vars = {
+                u'code': e.code,
+                u'content': e.description,
+                u'name': e.name
+            }
+            return base.render(u'error_document_template.html', extra_vars), 500
+
+        app.register_error_handler(500, error_handler)
+        return app
+
+    def make_error_log_middleware(self, app, config):
+        return app
 
     def update_config(self, config_):
         toolkit.add_template_directory(config_, "templates")
