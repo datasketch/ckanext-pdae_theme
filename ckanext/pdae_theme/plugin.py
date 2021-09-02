@@ -114,7 +114,7 @@ def get_groups_with_packages():
 def get_organization_count():
     context = {"ignore_auth": True}
     organizations = logic.get_action("organization_list")(
-        context, {"all_fields": True})
+        context, {"all_fields": True, "limit": 1000})
     organizations = filter(lambda o: o["package_count"] > 0, organizations)
     return list(organizations)
 
