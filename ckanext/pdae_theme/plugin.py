@@ -79,14 +79,14 @@ def update_frequency():
 
 def get_menu_labels():
     menu = {
-        'dataset': config.get("ckan.pdae_theme.dataset_link_label", "Catálogo de Datos Abiertos"),
-        'blog': config.get("ckan.pdae_theme.blog_link_label", "Blog / Noticias"),
-        'regulations': config.get("ckan.pdae_theme.regulations_link_label", "Normativa"),
-        'learn': config.get("ckan.pdae_theme.learn_link_label", "Centro de aprendizaje"),
-        'faq': config.get("ckan.pdae_theme.learn_faq_link_label", "Preguntas frecuentes"),
-        'manuals': config.get("ckan.pdae_theme.learn_manuals_link_label", "Manuales de usuario"),
-        'courses': config.get("ckan.pdae_theme.learn_courses_link_label", "Cursos de capacitación"),
-        'participation': config.get("ckan.pdae_theme.participation_link_label", "Participación ciudadana")
+        "dataset": config.get("ckan.pdae_theme.dataset_link_label", "Catálogo de Datos Abiertos"),
+        "blog": config.get("ckan.pdae_theme.blog_link_label", "Blog / Noticias"),
+        "regulations": config.get("ckan.pdae_theme.regulations_link_label", "Normativa"),
+        "learn": config.get("ckan.pdae_theme.learn_link_label", "Centro de aprendizaje"),
+        "faq": config.get("ckan.pdae_theme.learn_faq_link_label", "Preguntas frecuentes"),
+        "manuals": config.get("ckan.pdae_theme.learn_manuals_link_label", "Manuales de usuario"),
+        "courses": config.get("ckan.pdae_theme.learn_courses_link_label", "Cursos de capacitación"),
+        "participation": config.get("ckan.pdae_theme.participation_link_label", "Participación ciudadana")
     }
     return menu
 
@@ -105,10 +105,18 @@ def get_social_media():
 
 
 def get_groups_with_packages():
-    context = {'ignore_auth': True}
-    groups = logic.get_action('group_list')(context, {"all_fields": True})
+    context = {"ignore_auth": True}
+    groups = logic.get_action("group_list")(context, {"all_fields": True})
     groups = filter(lambda g: g["package_count"] > 0, groups)
     return list(groups)
+
+
+def get_organization_count():
+    context = {"ignore_auth": True}
+    organizations = logic.get_action("organization_list")(
+        context, {"all_fields": True})
+    organizations = filter(lambda o: o["package_count"] > 0, organizations)
+    return list(organizations)
 
 
 class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
@@ -120,11 +128,11 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     def make_middleware(self, app, config):
         def error_handler(e):
             extra_vars = {
-                u'code': e.code,
-                u'content': e.description,
-                u'name': e.name
+                u"code": e.code,
+                u"content": e.description,
+                u"name": e.name
             }
-            return base.render(u'error_document_template.html', extra_vars), 500
+            return base.render(u"error_document_template.html", extra_vars), 500
 
         app.register_error_handler(500, error_handler)
         return app
@@ -172,7 +180,8 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
             "get_menu_labels": get_menu_labels,
             "get_support_email": get_support_email,
             "get_social_media": get_social_media,
-            "get_groups_with_packages": get_groups_with_packages
+            "get_groups_with_packages": get_groups_with_packages,
+            "get_organization_count": get_organization_count
         }
 
     def _modify_package_schema(self, schema):
@@ -203,8 +212,8 @@ class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
 
         schema.update({
             "dataset_lang": [
-                toolkit.get_converter('convert_from_extras'),
-                toolkit.get_validator('ignore_missing')
+                toolkit.get_converter("convert_from_extras"),
+                toolkit.get_validator("ignore_missing")
             ]
         })
 

@@ -12,7 +12,7 @@
 
 {% set stats = h.get_site_statistics() %}
 {% set dataset_count = stats.dataset_count %}
-{% set organization_count = h.get_facet_items_dict('organization', c.search_facets) %}
+{% set organization_count = h.get_organization_count() %}
 
 
 {% block content %}
