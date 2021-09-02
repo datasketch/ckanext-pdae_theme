@@ -7,7 +7,7 @@
 
 {% set stats = h.get_site_statistics() %}
 {% set dataset_count = stats.dataset_count %}
-{% set organization_count = stats.organization_count %}
+{% set organization_count = h.get_facet_items_dict('organization', c.search_facets) %}
 
 {% block content %}
 <main id="content">
@@ -25,7 +25,7 @@
           <div class="row">
             <div class="col-md-8">
               <p class="fs-22 mt-20 leading-tight">
-                Explora más de <span class="fw-bold">{{ dataset_count }} conjuntos de datos</span> de más de <span class="fw-bold">{{ organization_count }} instituciones</span>.
+                Explora más de <span class="fw-bold">{{ dataset_count }} conjuntos de datos</span> de más de <span class="fw-bold">{{ organization_count | length }} instituciones</span>.
               </p>
               <div class="mt-20">
                 {% snippet "snippets/pdae_theme_dataset_search.html", query=query %}

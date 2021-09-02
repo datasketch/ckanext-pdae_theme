@@ -90,9 +90,12 @@ def get_menu_labels():
     }
     return menu
 
+
 def get_support_email():
-    email = config.get("ckan.pdae_theme.support_email", "datosabiertos@planificacion.gob.ec")
+    email = config.get("ckan.pdae_theme.support_email",
+                       "datosabiertos@planificacion.gob.ec")
     return email
+
 
 def get_social_media():
     return {
@@ -100,11 +103,13 @@ def get_social_media():
         "facebook": config.get("ckan.pdae_theme.facebook")
     }
 
+
 def get_groups_with_packages():
-    context = {'ignore_auth': True }
-    groups = logic.get_action('group_list')(context, { "all_fields": True })
+    context = {'ignore_auth': True}
+    groups = logic.get_action('group_list')(context, {"all_fields": True})
     groups = filter(lambda g: g["package_count"] > 0, groups)
     return list(groups)
+
 
 class PdaeThemePlugin(plugins.SingletonPlugin, toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
