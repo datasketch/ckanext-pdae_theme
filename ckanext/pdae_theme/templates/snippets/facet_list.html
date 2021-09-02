@@ -4,7 +4,6 @@
   {% set hide_empty = hide_empty or false %}
   {% with items = items or h.get_facet_items_dict(name, search_facets or c.search_facets) %}
     {% if items or not hide_empty %}
-      <pre>{{ items }}</pre>
       <div class="panel bg-blue-sapphire border-0">
         <div id="{{ name }}-filter-heading" class="panel-heading" role="tab">
           <h3 class="panel-title">
