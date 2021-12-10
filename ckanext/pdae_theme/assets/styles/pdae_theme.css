@@ -11,15 +11,15 @@
 }
 
 :root {
-  --blue-sapphire: #0f5a6b;
+  --blue-sapphire: #212A5C;
   --cultured: #fbf9f8;
   --eagle-green: #0a3f4c;
   --jungle-green: #102223;
   --nickel: #697072;
-  --sinopia: #ce370f;
+  --sinopia: #E77E37;
   --sonic-silver: #707070;
   --space-cadet: #20295C;
-  --teal-blue: #1d6d7f;
+  --teal-blue: #212A5C;
 }
 
 /*
@@ -651,7 +651,7 @@ a:focus {
 }
 
 #home-main-banner {
-  background-image: url("/images/bg-home-mobile.svg");
+  background-image: url("/images/bg-home-mobile.jpg");
   background-position: center;
   background-size: cover;
 }
@@ -692,7 +692,7 @@ a:focus {
 }
 
 .pdae-groups-banner {
-  background-image: url("/images/groups-banner.svg");
+  background-image: url("/images/groups-banner.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -916,14 +916,14 @@ a:focus {
   }
   
   #home-main-banner {
-    background-image: url("/images/bg-home.svg");
+    background-image: url("/images/bg-home.jpg");
   }
   
   .home-entities {
     background-image: url("/images/bg-entities.jpg");
   }
 
-  .home-topics,
+  .home-topic
   .featured-banner {
     background-image: url("/images/bg-topics.jpg");
   }
